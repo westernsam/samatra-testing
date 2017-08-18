@@ -1,6 +1,6 @@
 import sbt.Keys.publishTo
 
-name := "Samatra-testing"
+name := "samatra-testing"
 
 lazy val commonSettings = Seq(
   organization := "com.springernature",
