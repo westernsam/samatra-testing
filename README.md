@@ -25,7 +25,7 @@ libraryDependencies += "com.github.springernature:samatra-testing-unit" % "v1.0"
 ### Usage
 You can either match again a HttpResp, or "run" the resp and compare the status code, output, headers, and cookies:
 
-```
+```scala
 whenReady(routes.get("/hello/sam", cookies = Seq(new Cookie("cookie", "expectedValue")))) { result =>
     result shouldBe WithCookies(Seq(AddCookie("cookie", "expectedValue"))) {
       WithHeaders("a" -> "b") {
@@ -59,7 +59,7 @@ libraryDependencies += "com.github.springernature:samatra-testing-asynchttp" % "
 
 Mount any servlet and get back an instance of AsyncHttpClient (2.0.32) to use to make requests (except it's in memory)
 
-```
+```scala
  val http: AsyncHttpClient = client(new ServerConfig {
     mount("/*", Routes(basic))
     mount("/regex/*", Routes(regex))
@@ -83,7 +83,7 @@ libraryDependencies += "com.github.springernature:samatra-testing-jetty" % "v1.0
 
 ### Usage
 
-```
+```scala
 class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with BeforeAndAfterAll with JettyBackend {
 
   val http: AsyncHttpClient = client(new ServerConfig {
@@ -108,7 +108,7 @@ libraryDependencies += "com.github.springernature:samatra-testing-wiremock" % "v
 
 Create an AsyncHttpClient with wiremock backed in. This uses Wiremock servlet to stub/mock http requests, but again all in memory.
 
-```
+```scala
 val wm = new WiremockHelper(wmContextPath = "/wm/*") with InMemoryBacked
 
 wm.wireMock.register(
@@ -144,7 +144,7 @@ libraryDependencies += "com.github.springernature:samatra-testing-htmlunitdriver
 
 Create an Htmlunit selenium driver backed by an in memory async http client.
 
-```
+```scala
 val http: AsyncHttpClient = client(new ServerConfig {
   mount("/home/*", Routes(new Controller {
     get("/Hello") { req =>
