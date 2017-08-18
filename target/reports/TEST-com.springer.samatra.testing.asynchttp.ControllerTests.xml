@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuite 
-errors="0" failures="0" hostname="sams-3xs" name="com.springer.samatra.testing.asynchttp.ControllerTests" tests="19" time="0.354" timestamp="2017-08-18T11:37:33">
+errors="0" failures="0" hostname="sams-3xs" name="com.springer.samatra.testing.asynchttp.ControllerTests" tests="19" time="0.295" timestamp="2017-08-18T13:06:37">
   <properties>
     <property name="jline.esc.timeout" value="0"> </property>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment">
@@ -63,9 +63,8 @@ errors="0" failures="0" hostname="sams-3xs" name="com.springer.samatra.testing.a
     <property name="sun.arch.data.model" value="64"> </property>
     <property name="java.home" value="/home/sam/software/jdk1.8.0_111/jre">
     </property>
-    <property 
-    name="sun.java.command" value="./sbt-launch.jar update clean compile test">
-</property>
+    <property name="sun.java.command" value="./sbt-launch.jar clean +test">
+    </property>
     <property name="java.specification.vendor" value="Oracle Corporation">
     </property>
     <property name="user.language" value="en"> </property>
@@ -89,61 +88,61 @@ errors="0" failures="0" hostname="sams-3xs" name="com.springer.samatra.testing.a
     <property name="sun.cpu.isalist" value=""> </property>
   </properties>
   <testcase 
-  name="Caching Adds no-store for noStore strategy" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.191">
+  name="Caching Adds no-store for noStore strategy" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.157">
 </testcase>
   <testcase 
-  name="Caching Adds visibility and max-age headers for noRevalidate strategy" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.013">
+  name="Caching Adds visibility and max-age headers for noRevalidate strategy" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.008">
 </testcase>
   <testcase 
-  name="Caching Adds Weak ETag support" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.029">
+  name="Caching Adds Weak ETag support" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.024">
 </testcase>
   <testcase 
   name="Caching Adds Strong ETag support" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.004">
 </testcase>
   <testcase 
-  name="Routes should return 404 for not found route" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.01">
+  name="Routes should return 404 for not found route" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.005">
 </testcase>
   <testcase 
-  name="Routes should give query string map" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.001">
+  name="Routes should give query string map" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.003">
 </testcase>
   <testcase 
-  name="Routes should return unicode" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.001">
+  name="Routes should return unicode" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.002">
 </testcase>
   <testcase 
-  name="Routes should return headers only for HEAD" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.003">
+  name="Routes should return headers only for HEAD" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.005">
 </testcase>
   <testcase 
   name="Routes should return 405 for invalid method" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.002">
 </testcase>
   <testcase 
-  name="Routes HEAD should return 200, 302, 404 and 500 error codes" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.009">
+  name="Routes HEAD should return 200, 302, 404 and 500 error codes" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.011">
 </testcase>
   <testcase 
-  name="should return 500 for timeout" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.013">
+  name="should return 500 for timeout" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.009">
 </testcase>
   <testcase 
-  name="should parse path params" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.0">
+  name="should parse path params" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.001">
 </testcase>
   <testcase 
-  name="should not URL decode parsed path params" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.0">
+  name="should not URL decode parsed path params" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.001">
 </testcase>
   <testcase 
-  name="should parse regex params" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.001">
+  name="should parse regex params" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.002">
 </testcase>
   <testcase 
-  name="should not URL decode parsed regex params" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.0">
+  name="should not URL decode parsed regex params" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.001">
 </testcase>
   <testcase 
-  name="should be able to get and post from same uri" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.001">
+  name="should be able to get and post from same uri" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.002">
 </testcase>
   <testcase 
-  name="should be able to set cookies" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.0">
+  name="should be able to set cookies" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.004">
 </testcase>
   <testcase 
   name="should be able to retrieve request uri" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.002">
 </testcase>
   <testcase 
-  name="should be able to use GzipHandler" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.007">
+  name="should be able to use GzipHandler" classname="com.springer.samatra.testing.asynchttp.ControllerTests" time="0.004">
 </testcase>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

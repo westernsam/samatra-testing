@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuite 
-errors="0" failures="0" hostname="sams-3xs" name="com.springer.samatra.testing.unit.ExampleTest" tests="8" time="0.404" timestamp="2017-08-18T11:37:33">
+errors="0" failures="0" hostname="sams-3xs" name="com.springer.samatra.testing.unit.ExampleTest" tests="8" time="0.218" timestamp="2017-08-18T13:06:36">
   <properties>
     <property name="jline.esc.timeout" value="0"> </property>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment">
@@ -63,9 +63,8 @@ errors="0" failures="0" hostname="sams-3xs" name="com.springer.samatra.testing.u
     <property name="sun.arch.data.model" value="64"> </property>
     <property name="java.home" value="/home/sam/software/jdk1.8.0_111/jre">
     </property>
-    <property 
-    name="sun.java.command" value="./sbt-launch.jar update clean compile test">
-</property>
+    <property name="sun.java.command" value="./sbt-launch.jar clean +test">
+    </property>
     <property name="java.specification.vendor" value="Oracle Corporation">
     </property>
     <property name="user.language" value="en"> </property>
@@ -89,16 +88,16 @@ errors="0" failures="0" hostname="sams-3xs" name="com.springer.samatra.testing.u
     <property name="sun.cpu.isalist" value=""> </property>
   </properties>
   <testcase 
-  name="An example of unit testing controllers should put" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.314">
+  name="An example of unit testing controllers should put" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.134">
 </testcase>
   <testcase 
-  name="An example of unit testing controllers should test with helper methods" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.013">
+  name="An example of unit testing controllers should test with helper methods" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.005">
 </testcase>
   <testcase 
-  name="An example of unit testing controllers should test future string" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.021">
+  name="An example of unit testing controllers should test future string" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.009">
 </testcase>
   <testcase 
-  name="An example of unit testing controllers returns 404 on no match" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.001">
+  name="An example of unit testing controllers returns 404 on no match" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.002">
 </testcase>
   <testcase 
   name="An example of unit testing controllers writes errors to output stream" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.01">
@@ -107,10 +106,10 @@ errors="0" failures="0" hostname="sams-3xs" name="com.springer.samatra.testing.u
   name="An example of unit testing controllers returns 405 on on MethodNotAllowed" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.001">
 </testcase>
   <testcase 
-  name="An example of unit testing controllers blows up on no match" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.0">
+  name="An example of unit testing controllers blows up on no match" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.001">
 </testcase>
   <testcase 
-  name="An example of unit testing controllers bug - future of not http response" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.0">
+  name="An example of unit testing controllers bug - future of not http response" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.002">
 </testcase>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

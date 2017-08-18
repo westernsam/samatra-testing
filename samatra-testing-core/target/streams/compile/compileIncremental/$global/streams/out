@@ -1,15 +1,59 @@
 [0m[[0mdebug[0m] [0m[naha] [0m
 [0m[[0mdebug[0m] [0m[naha] Initial source changes: [0m
 [0m[[0mdebug[0m] [0m[naha] 	removed:Set()[0m
-[0m[[0mdebug[0m] [0m[naha] 	added: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	added: Set(/home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/ServletApiHelpers.scala, /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemServletContext.scala, /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemFilterChain.scala)[0m
 [0m[[0mdebug[0m] [0m[naha] 	modified: Set()[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidated products: Set()[0m
 [0m[[0mdebug[0m] [0m[naha] External API changes: API Changes: Set()[0m
 [0m[[0mdebug[0m] [0m[naha] Modified binary dependencies: Set()[0m
-[0m[[0mdebug[0m] [0m[naha] Initial directly invalidated sources: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial directly invalidated sources: Set(/home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/ServletApiHelpers.scala, /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemServletContext.scala, /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemFilterChain.scala)[0m
 [0m[[0mdebug[0m] [0m[naha] [0m
 [0m[[0mdebug[0m] [0m[naha] Sources indirectly invalidated by:[0m
 [0m[[0mdebug[0m] [0m[naha] 	product: Set()[0m
 [0m[[0mdebug[0m] [0m[naha] 	binary dep: Set()[0m
 [0m[[0mdebug[0m] [0m[naha] 	external source: Set()[0m
-[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/ServletApiHelpers.scala, /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemServletContext.scala, /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemFilterChain.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/ServletApiHelpers.scala, /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemServletContext.scala, /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemFilterChain.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Recompiling all 3 sources: invalidated sources (3) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 3 Scala sources to /home/sam/projects/samatra-testing/samatra-testing-core/target/scala-2.11/classes...[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.16:component from component compiler for Scala 2.11.7[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.16:component from component compiler for Scala 2.11.7[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 4cf0dd74, interfacing (CompilerInterface) with Scala compiler version 2.11.7[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-unchecked[0m
+[0m[[0mdebug[0m] [0m	-deprecation:false[0m
+[0m[[0mdebug[0m] [0m	-feature[0m
+[0m[[0mdebug[0m] [0m	-Xfatal-warnings[0m
+[0m[[0mdebug[0m] [0m	-Xlint[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/home/sam/software/jdk1.8.0_111/jre/lib/resources.jar:/home/sam/software/jdk1.8.0_111/jre/lib/rt.jar:/home/sam/software/jdk1.8.0_111/jre/lib/sunrsasign.jar:/home/sam/software/jdk1.8.0_111/jre/lib/jsse.jar:/home/sam/software/jdk1.8.0_111/jre/lib/jce.jar:/home/sam/software/jdk1.8.0_111/jre/lib/charsets.jar:/home/sam/software/jdk1.8.0_111/jre/lib/jfr.jar:/home/sam/software/jdk1.8.0_111/jre/classes:/home/sam/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/sam/projects/samatra-testing/samatra-testing-core/target/scala-2.11/classes:/home/sam/.ivy2/cache/javax.servlet/javax.servlet-api/jars/javax.servlet-api-3.1.0.jar[0m
+[0m[[0mdebug[0m] [0mScala compilation took 3.960470046 s[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/ServletApiHelpers.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/ServletApiHelpers.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/ServletApiHelpers.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(/home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/ServletApiHelpers.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/ServletApiHelpers.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, OnCookie, committed, wait, $asInstanceOf, writer, httpResponse, productArity, equals, OnBody, asInstanceOf, OnStatus, synchronized, $isInstanceOf, characterEncoding, statusText, respHeaders, WriterType, canEqual, productPrefix, notifyAll, out, isInstanceOf, httpServletRequest$default$8, contentType, ==, clone, stream, status, ServletApiHelpers, $init$, UNDECIDED, OnHeader, toString, !=, getClass, httpServletRequest$default$7, httpServletRequest$default$6, WRITER, ne, respCookies, eq, productIterator, httpServletRequest, ##, finalize, productElement, hashCode, STREAM.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemServletContext.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemServletContext.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemServletContext.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(/home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemServletContext.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemServletContext.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	getServlet, notify, InMemServletregistration, getRealPath, getEffectiveMinorVersion, addServlet, getResourcePaths, removeAttribute, wait, $asInstanceOf, setAttribute, getDefaultSessionTrackingModes, equals, getVirtualServerName, getMappings, getNamedDispatcher, asInstanceOf, InMemServletContext, getRequestDispatcher, synchronized, createServlet, $isInstanceOf, getServletRegistration, getRunAsRole, getClassLoader, getResource, getEffectiveMajorVersion, getServletContextName, getContextPath, notifyAll, attributes, getName, getJspConfigDescriptor, getResourceAsStream, getInitParameters, isInstanceOf, getServlets, getInitParameter, <init>, getClassName, getServletNames, setInitParameter, ==, getSessionCookieConfig, clone, getEffectiveSessionTrackingModes, setSessionTrackingModes, getAttribute, addFilter, getMinorVersion, getContext, toString, declareRoles, createFilter, getMajorVersion, !=, createListener, getClass, getInitParameterNames, getFilterRegistration, initParams, addListener, ne, getFilterRegistrations, getServerInfo, getAttributeNames, getServletRegistrations, eq, log, setInitParameters, ##, finalize, addMapping, hashCode, getMimeType.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemFilterChain.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemFilterChain.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemFilterChain.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(/home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemFilterChain.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The /home/sam/projects/samatra-testing/samatra-testing-core/src/main/scala/com/springer/samatra/testing/servlet/InMemFilterChain.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, wait, $asInstanceOf, equals, asInstanceOf, synchronized, $isInstanceOf, notifyAll, isInstanceOf, <init>, doFilter, apply, ==, clone, toString, !=, getClass, InMemFilterChain, ne, fs, eq, ##, finalize, hashCode.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] New invalidations:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Previously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Set()[0m
+[0m[[0mdebug[0m] [0m[naha] All newly invalidated sources after taking into account (previously) recompiled sources:Set()[0m

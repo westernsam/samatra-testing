@@ -1,22 +1,22 @@
 [0m[[0minfo[0m] [0m[32mControllerTests:[0m[0m
 [0m[[0minfo[0m] [0m[32mCaching[0m[0m
-[0m[[0minfo[0m] [0m[32m- Adds no-store for noStore strategy (190 milliseconds)[0m[0m
-[0m[[0minfo[0m] [0m[32m- Adds visibility and max-age headers for noRevalidate strategy (13 milliseconds)[0m[0m
-[0m[[0minfo[0m] [0m[32m- Adds Weak ETag support (29 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- Adds no-store for noStore strategy (157 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- Adds visibility and max-age headers for noRevalidate strategy (8 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- Adds Weak ETag support (24 milliseconds)[0m[0m
 [0m[[0minfo[0m] [0m[32m- Adds Strong ETag support (4 milliseconds)[0m[0m
 [0m[[0minfo[0m] [0m[32mRoutes[0m[0m
-[0m[[0minfo[0m] [0m[32m- should return 404 for not found route (10 milliseconds)[0m[0m
-[0m[[0minfo[0m] [0m[32m- should give query string map (1 millisecond)[0m[0m
-[0m[[0minfo[0m] [0m[32m- should return unicode (0 milliseconds)[0m[0m
-[0m[[0minfo[0m] [0m[32m- should return headers only for HEAD (3 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return 404 for not found route (5 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should give query string map (3 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return unicode (2 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return headers only for HEAD (4 milliseconds)[0m[0m
 [0m[[0minfo[0m] [0m[32m- should return 405 for invalid method (2 milliseconds)[0m[0m
-[0m[[0minfo[0m] [0m[32m- HEAD should return 200, 302, 404 and 500 error codes (9 milliseconds)[0m[0m
-[0m[[0minfo[0m] [0m[32m- should return 500 for timeout (13 milliseconds)[0m[0m
-[0m[[0minfo[0m] [0m[32m- should parse path params (0 milliseconds)[0m[0m
-[0m[[0minfo[0m] [0m[32m- should not URL decode parsed path params (0 milliseconds)[0m[0m
-[0m[[0minfo[0m] [0m[32m- should parse regex params (1 millisecond)[0m[0m
-[0m[[0minfo[0m] [0m[32m- should not URL decode parsed regex params (0 milliseconds)[0m[0m
-[0m[[0minfo[0m] [0m[32m- should be able to get and post from same uri (1 millisecond)[0m[0m
-[0m[[0minfo[0m] [0m[32m- should be able to set cookies (0 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- HEAD should return 200, 302, 404 and 500 error codes (11 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return 500 for timeout (9 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should parse path params (1 millisecond)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should not URL decode parsed path params (1 millisecond)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should parse regex params (2 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should not URL decode parsed regex params (1 millisecond)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should be able to get and post from same uri (2 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should be able to set cookies (4 milliseconds)[0m[0m
 [0m[[0minfo[0m] [0m[32m- should be able to retrieve request uri (2 milliseconds)[0m[0m
-[0m[[0minfo[0m] [0m[32m- should be able to use GzipHandler (7 milliseconds)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should be able to use GzipHandler (4 milliseconds)[0m[0m

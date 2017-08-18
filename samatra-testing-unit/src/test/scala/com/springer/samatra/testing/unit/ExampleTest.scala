@@ -4,7 +4,7 @@ import java.net.URLEncoder.encode
 import java.time.{Clock, LocalDate, ZoneId, ZoneOffset}
 import javax.servlet.http.{Cookie, HttpServletRequest, HttpServletResponse}
 
-import com.springer.samatra.routing.Routings.{Controller, Routes}
+import com.springer.samatra.routing.Routings.{Controller, HttpResp, Routes}
 import com.springer.samatra.routing.StandardResponses._
 import com.springer.samatra.testing.unit.ControllerTestHelpers._
 import org.scalatest.FunSpec
@@ -35,10 +35,12 @@ class ExampleTest extends FunSpec with ScalaFutures {
     }
 
     get("/request-response") { req =>
-      (_: HttpServletRequest, resp: HttpServletResponse) => {
-        resp.setDateHeader("Date", LocalDate.of(2017, 5, 18).atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli)
-        resp.setStatus(200)
-        resp.getWriter.print("sam")
+      new HttpResp {
+        def process(req: HttpServletRequest, resp: HttpServletResponse) = {
+          resp.setDateHeader("Date", LocalDate.of(2017, 5, 18).atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli)
+          resp.setStatus(200)
+          resp.getWriter.print("sam")
+        }
       }
     }
 
