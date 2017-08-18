@@ -9,6 +9,11 @@ Copyright © 2017 Springer Nature
 ## Maintenance
 Submit issues and PR's to this github.
 
+## Supported platforms
+
+Scala 2.12, 2.11
+AsyncHttpClient 2.0.32
+
 ## Unit test Samarta controllers
 
 ### Getting
