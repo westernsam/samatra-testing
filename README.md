@@ -40,7 +40,7 @@ whenReady(routes.get("/request-response")) { result =>
   }
 }
 ```
-See [ExampleTest]() for further examples.
+See [ExampleTest](samatra-testing-unit/src/test/scala/com/springer/samatra/testing/unit/ExampleTest.scala) for further examples.
 
 ## Test any servlet/filter without starting a server
 
@@ -63,7 +63,7 @@ Mount any servlet and get back an instance of AsyncHttpClient (2.0.32) to use to
   })
 ```
 
-See [ControllerTest]() for further examples. 
+See [ControllerTest](samatra-testing-asynchttp/src/test/scala/com/springer/samatra/testing/asynchttp/ControllerTests.scala) for further examples. 
 
 You can set up your servlet under test _and_ all of the http services it calls as stubs (or wiremocks), all in memory.
 (You need to be careful that the http is passed by name to your servlet, or stackoverflow ensues)
@@ -89,7 +89,7 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
   })
 ```
 
-See [ControllerTest]() for more details.
+See [ControllerTest](samatra-testing/blob/master/samatra-testing-jetty/src/test/scala/com/springer/samatra/testing/servlet/ControllerTests.scala) for more details.
 
 ## Wire(less)mock
 
@@ -125,7 +125,7 @@ wm.wireMock.verifyThat(
     
 ```
 
-See [WiremockTest]() for more details.
+See [WiremockTest](samatra-testing-wiremock/src/test/scala/com/springer/samatra/testing/wiremock/WiremockTest.scala) for more details.
 
 ## Htmlunitdriver without a server
 
@@ -159,4 +159,4 @@ driver.getTitle shouldBe "Hi Sam"
 
 ```
 
-See [HtmlUnitTest]() for more details.
+See [HtmlUnitTest](samatra-testing-htmlunitdriver/src/test/scala/com/springer/samatra/testing/webdriver/HtmlUnitTest.scala) for more details.
