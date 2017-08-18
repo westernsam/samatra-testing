@@ -35,7 +35,7 @@ whenReady(routes.get("/hello/sam", cookies = Seq(new Cookie("cookie", "expectedV
 }
 ```
 or
-```
+```scala
 whenReady(routes.get("/request-response")) { result =>
     val (statusCode, headers, _, body) = result.run()
     
