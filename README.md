@@ -65,7 +65,7 @@ Mount any servlet and get back an instance of AsyncHttpClient (2.0.32) to use to
 
 See [ControllerTest]() for further examples. 
 
-You can set up your servlet under test _and_ and of the http services it calls as stubs (or wiremocked), all in memory.
+You can set up your servlet under test _and_ all of the http services it calls as stubs (or wiremocks), all in memory.
 (You need to be careful that the http is passed by name to your servlet, or stackoverflow ensues)
 
 ## Don't trust the in memory magic? - start with a jetty backend instead ...
@@ -132,7 +132,7 @@ See [WiremockTest]() for more details.
 ### Getting
 ```
 resolvers += "jitpack" at "https://jitpack.io",
-libraryDependencies += "com.github.springernature:samatra-testing-htmkunitdriver" % "v1.0"
+libraryDependencies += "com.github.springernature:samatra-testing-htmlunitdriver" % "v1.0"
 ```
 
 ### Usage
