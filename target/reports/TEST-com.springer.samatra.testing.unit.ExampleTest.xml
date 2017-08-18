@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite 
+errors="0" failures="0" hostname="sams-3xs" name="com.springer.samatra.testing.unit.ExampleTest" tests="8" time="0.404" timestamp="2017-08-18T11:37:33">
+  <properties>
+    <property name="jline.esc.timeout" value="0"> </property>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment">
+    </property>
+    <property 
+    name="sun.boot.library.path" value="/home/sam/software/jdk1.8.0_111/jre/lib/amd64">
+</property>
+    <property name="java.vm.version" value="25.111-b14"> </property>
+    <property name="java.vm.vendor" value="Oracle Corporation"> </property>
+    <property name="java.vendor.url" value="http://java.oracle.com/">
+    </property>
+    <property name="path.separator" value=":"> </property>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM">
+    </property>
+    <property name="file.encoding.pkg" value="sun.io"> </property>
+    <property name="user.country" value="GB"> </property>
+    <property name="sun.java.launcher" value="SUN_STANDARD"> </property>
+    <property name="sun.os.patch.level" value="unknown"> </property>
+    <property 
+    name="java.vm.specification.name" value="Java Virtual Machine Specification">
+</property>
+    <property name="user.dir" value="/home/sam/projects/samatra-testing">
+    </property>
+    <property name="java.runtime.version" value="1.8.0_111-b14"> </property>
+    <property 
+    name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment">
+</property>
+    <property 
+    name="java.endorsed.dirs" value="/home/sam/software/jdk1.8.0_111/jre/lib/endorsed">
+</property>
+    <property name="os.arch" value="amd64"> </property>
+    <property name="java.io.tmpdir" value="/tmp"> </property>
+    <property name="line.separator" value=" "> </property>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation">
+    </property>
+    <property name="os.name" value="Linux"> </property>
+    <property name="sun.jnu.encoding" value="UTF-8"> </property>
+    <property 
+    name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib">
+</property>
+    <property name="sun.nio.ch.bugLevel" value=""> </property>
+    <property 
+    name="java.specification.name" value="Java Platform API Specification">
+</property>
+    <property name="java.class.version" value="52.0"> </property>
+    <property 
+    name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers">
+</property>
+    <property name="os.version" value="4.10.0-32-generic"> </property>
+    <property name="user.home" value="/home/sam"> </property>
+    <property name="user.timezone" value="Europe/London"> </property>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob">
+    </property>
+    <property name="file.encoding" value="UTF-8"> </property>
+    <property name="java.specification.version" value="1.8"> </property>
+    <property name="user.name" value="sam"> </property>
+    <property name="java.class.path" value="./sbt-launch.jar"> </property>
+    <property name="jline.shutdownhook" value="false"> </property>
+    <property name="java.vm.specification.version" value="1.8"> </property>
+    <property name="sun.arch.data.model" value="64"> </property>
+    <property name="java.home" value="/home/sam/software/jdk1.8.0_111/jre">
+    </property>
+    <property 
+    name="sun.java.command" value="./sbt-launch.jar update clean compile test">
+</property>
+    <property name="java.specification.vendor" value="Oracle Corporation">
+    </property>
+    <property name="user.language" value="en"> </property>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"> </property>
+    <property name="java.vm.info" value="mixed mode"> </property>
+    <property name="java.version" value="1.8.0_111"> </property>
+    <property 
+    name="java.ext.dirs" value="/home/sam/software/jdk1.8.0_111/jre/lib/ext:/usr/java/packages/lib/ext">
+</property>
+    <property 
+    name="sun.boot.class.path" value="/home/sam/software/jdk1.8.0_111/jre/lib/resources.jar:/home/sam/software/jdk1.8.0_111/jre/lib/rt.jar:/home/sam/software/jdk1.8.0_111/jre/lib/sunrsasign.jar:/home/sam/software/jdk1.8.0_111/jre/lib/jsse.jar:/home/sam/software/jdk1.8.0_111/jre/lib/jce.jar:/home/sam/software/jdk1.8.0_111/jre/lib/charsets.jar:/home/sam/software/jdk1.8.0_111/jre/lib/jfr.jar:/home/sam/software/jdk1.8.0_111/jre/classes">
+</property>
+    <property name="java.vendor" value="Oracle Corporation"> </property>
+    <property name="file.separator" value="/"> </property>
+    <property 
+    name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/">
+</property>
+    <property name="sun.cpu.endian" value="little"> </property>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"> </property>
+    <property name="sun.desktop" value="gnome"> </property>
+    <property name="sun.cpu.isalist" value=""> </property>
+  </properties>
+  <testcase 
+  name="An example of unit testing controllers should put" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.314">
+</testcase>
+  <testcase 
+  name="An example of unit testing controllers should test with helper methods" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.013">
+</testcase>
+  <testcase 
+  name="An example of unit testing controllers should test future string" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.021">
+</testcase>
+  <testcase 
+  name="An example of unit testing controllers returns 404 on no match" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.001">
+</testcase>
+  <testcase 
+  name="An example of unit testing controllers writes errors to output stream" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.01">
+</testcase>
+  <testcase 
+  name="An example of unit testing controllers returns 405 on on MethodNotAllowed" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.001">
+</testcase>
+  <testcase 
+  name="An example of unit testing controllers blows up on no match" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.0">
+</testcase>
+  <testcase 
+  name="An example of unit testing controllers bug - future of not http response" classname="com.springer.samatra.testing.unit.ExampleTest" time="0.0">
+</testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

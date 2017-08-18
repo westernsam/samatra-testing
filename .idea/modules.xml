@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/asynchttp.iml" filepath="$PROJECT_DIR$/.idea/modules/asynchttp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/asynchttpjetty.iml" filepath="$PROJECT_DIR$/.idea/modules/asynchttpjetty.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/asynchttpjetty-build.iml" filepath="$PROJECT_DIR$/.idea/modules/asynchttpjetty-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core.iml" filepath="$PROJECT_DIR$/.idea/modules/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core-build.iml" filepath="$PROJECT_DIR$/.idea/modules/core-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/htmlunitdriver.iml" filepath="$PROJECT_DIR$/.idea/modules/htmlunitdriver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/htmlunitdriver-build.iml" filepath="$PROJECT_DIR$/.idea/modules/htmlunitdriver-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samatra-testing-asynchttp-asynchttp-build.iml" filepath="$PROJECT_DIR$/.idea/modules/samatra-testing-asynchttp-asynchttp-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samatra-testing-unit-unit-build.iml" filepath="$PROJECT_DIR$/.idea/modules/samatra-testing-unit-unit-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samatratesting.iml" filepath="$PROJECT_DIR$/.idea/modules/samatratesting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/samatratesting-build.iml" filepath="$PROJECT_DIR$/.idea/modules/samatratesting-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/unit.iml" filepath="$PROJECT_DIR$/.idea/modules/unit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wiremock.iml" filepath="$PROJECT_DIR$/.idea/modules/wiremock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wiremock-build.iml" filepath="$PROJECT_DIR$/.idea/modules/wiremock-build.iml" />
+    </modules>
+  </component>
+</project>

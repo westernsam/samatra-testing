@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="com.springernature"
+		module="htmlunitdriver_2.12"
+		revision="0.1-SNAPSHOT"
+		status="integration"
+		publication="20170818113723"
+	>
+		<description>
+		htmlunitdriver
+		</description>
+	</info>
+	<configurations>
+		<conf name="compile" visibility="public" description=""/>
+		<conf name="runtime" visibility="public" description="" extends="compile"/>
+		<conf name="test" visibility="public" description="" extends="runtime"/>
+		<conf name="provided" visibility="public" description=""/>
+		<conf name="optional" visibility="public" description=""/>
+		<conf name="compile-internal" visibility="private" description="" extends="compile,optional,provided"/>
+		<conf name="runtime-internal" visibility="private" description="" extends="runtime,optional"/>
+		<conf name="test-internal" visibility="private" description="" extends="test,optional,provided"/>
+		<conf name="plugin" visibility="private" description=""/>
+		<conf name="sources" visibility="public" description=""/>
+		<conf name="docs" visibility="public" description=""/>
+		<conf name="pom" visibility="public" description=""/>
+		<conf name="scala-tool" visibility="private" description=""/>
+	</configurations>
+	<publications>
+		<artifact name="htmlunitdriver_2.12" type="pom" ext="pom" conf="pom"/>
+		<artifact name="htmlunitdriver_2.12" type="jar" ext="jar" conf="compile"/>
+		<artifact name="htmlunitdriver_2.12" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		<artifact name="htmlunitdriver_2.12" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+	</publications>
+	<dependencies>
+		<dependency org="org.scala-lang" name="scala-compiler" rev="2.12.3" conf="scala-tool->default,optional(default)"/>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.12.3" conf="scala-tool->default,optional(default);compile->default(compile)"/>
+		<dependency org="com.springernature" name="asynchttp_2.12" rev="0.1-SNAPSHOT" conf="compile->default(compile)"/>
+		<dependency org="org.seleniumhq.selenium" name="htmlunit-driver" rev="2.27" conf="compile->default(compile)"/>
+		<dependency org="com.github.springernature" name="samatra_2.12" rev="v1.3" conf="test->default(compile)"/>
+		<dependency org="org.scalatest" name="scalatest_2.12" rev="3.0.0" conf="test->default(compile)"/>
+	</dependencies>
+</ivy-module>

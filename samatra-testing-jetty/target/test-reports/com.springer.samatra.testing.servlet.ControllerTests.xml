@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuite hostname="sams-3xs" name="com.springer.samatra.testing.servlet.ControllerTests" tests="19" errors="0" failures="0" skipped="0" time="0.633">
+                     <properties>
+      <property name="jline.esc.timeout" value="0"/><property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/><property name="sun.boot.library.path" value="/home/sam/software/jdk1.8.0_111/jre/lib/amd64"/><property name="java.vm.version" value="25.111-b14"/><property name="java.vm.vendor" value="Oracle Corporation"/><property name="java.vendor.url" value="http://java.oracle.com/"/><property name="path.separator" value=":"/><property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/><property name="file.encoding.pkg" value="sun.io"/><property name="user.country" value="GB"/><property name="sun.java.launcher" value="SUN_STANDARD"/><property name="sun.os.patch.level" value="unknown"/><property name="java.vm.specification.name" value="Java Virtual Machine Specification"/><property name="user.dir" value="/home/sam/projects/samatra-testing"/><property name="java.runtime.version" value="1.8.0_111-b14"/><property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/><property name="java.endorsed.dirs" value="/home/sam/software/jdk1.8.0_111/jre/lib/endorsed"/><property name="os.arch" value="amd64"/><property name="java.io.tmpdir" value="/tmp"/><property name="line.separator" value="
+"/><property name="java.vm.specification.vendor" value="Oracle Corporation"/><property name="os.name" value="Linux"/><property name="sun.jnu.encoding" value="UTF-8"/><property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/><property name="java.specification.name" value="Java Platform API Specification"/><property name="java.class.version" value="52.0"/><property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/><property name="os.version" value="4.10.0-32-generic"/><property name="user.home" value="/home/sam"/><property name="user.timezone" value="Europe/London"/><property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/><property name="file.encoding" value="UTF-8"/><property name="java.specification.version" value="1.8"/><property name="java.class.path" value="./sbt-launch.jar"/><property name="user.name" value="sam"/><property name="jline.shutdownhook" value="false"/><property name="java.vm.specification.version" value="1.8"/><property name="sun.java.command" value="./sbt-launch.jar update clean compile test"/><property name="java.home" value="/home/sam/software/jdk1.8.0_111/jre"/><property name="sun.arch.data.model" value="64"/><property name="user.language" value="en"/><property name="java.specification.vendor" value="Oracle Corporation"/><property name="awt.toolkit" value="sun.awt.X11.XToolkit"/><property name="java.vm.info" value="mixed mode"/><property name="java.version" value="1.8.0_111"/><property name="java.ext.dirs" value="/home/sam/software/jdk1.8.0_111/jre/lib/ext:/usr/java/packages/lib/ext"/><property name="sun.boot.class.path" value="/home/sam/software/jdk1.8.0_111/jre/lib/resources.jar:/home/sam/software/jdk1.8.0_111/jre/lib/rt.jar:/home/sam/software/jdk1.8.0_111/jre/lib/sunrsasign.jar:/home/sam/software/jdk1.8.0_111/jre/lib/jsse.jar:/home/sam/software/jdk1.8.0_111/jre/lib/jce.jar:/home/sam/software/jdk1.8.0_111/jre/lib/charsets.jar:/home/sam/software/jdk1.8.0_111/jre/lib/jfr.jar:/home/sam/software/jdk1.8.0_111/jre/classes"/><property name="java.vendor" value="Oracle Corporation"/><property name="file.separator" value="/"/><property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/><property name="sun.io.unicode.encoding" value="UnicodeLittle"/><property name="sun.cpu.endian" value="little"/><property name="sun.desktop" value="gnome"/><property name="sun.cpu.isalist" value=""/>
+    </properties>
+                     <testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="Caching Adds no-store for noStore strategy" time="0.443">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="Caching Adds visibility and max-age headers for noRevalidate strategy" time="0.018">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="Caching Adds Weak ETag support" time="0.019">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="Caching Adds Strong ETag support" time="0.014">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="Routes should return 404 for not found route" time="0.01">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="Routes should give query string map" time="0.005">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="Routes should return unicode" time="0.003">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="Routes should return headers only for HEAD" time="0.007">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="Routes should return 405 for invalid method" time="0.009">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="Routes HEAD should return 200, 302, 404 and 500 error codes" time="0.023">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="should return 500 for timeout" time="0.016">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="should parse path params" time="0.006">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="should not URL decode parsed path params" time="0.002">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="should parse regex params" time="0.002">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="should not URL decode parsed regex params" time="0.002">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="should be able to get and post from same uri" time="0.003">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="should be able to set cookies" time="0.001">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="should be able to retrieve request uri" time="0.003">
+                                                 
+                                               </testcase><testcase classname="com.springer.samatra.testing.servlet.ControllerTests" name="should be able to use GzipHandler" time="0.047">
+                                                 
+                                               </testcase>
+                     <system-out></system-out>
+                     <system-err></system-err>
+                   </testsuite>

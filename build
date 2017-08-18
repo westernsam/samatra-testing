@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ ! -z "$GO_PIPELINE_LABEL" ]; then
+    echo "Running in go, pointing ivy cache to ../.ivy2"
+    GO_AGENT_EXTRA_SBT="-Dsbt.ivy.home=../.ivy2"
+fi
+
+rm -rf ./target/scala-*/
+
+./sbt clean test +publish

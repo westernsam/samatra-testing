@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SBT: com.flipkart.zjsonpatch:zjsonpatch:0.3.0:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.flipkart.zjsonpatch/zjsonpatch/jars/zjsonpatch-0.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/com.flipkart.zjsonpatch/zjsonpatch/srcs/zjsonpatch-0.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

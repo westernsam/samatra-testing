@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="com.springernature"
+		module="unit_2.12"
+		revision="0.1-SNAPSHOT"
+		conf="compile"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
+		date="20170818113720"/>
+	<dependencies>
+		<module organisation="com.github.springernature" name="samatra_2.12">
+			<revision name="v1.3" status="release" pubdate="20170623110723" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/springernature/samatra" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="3">
+				<license name="MIT License" url="https://api.github.com/licenses/mit"/>
+				<metadata-artifact status="no" details="" size="4276" time="0" location="/home/sam/.ivy2/cache/com.github.springernature/samatra_2.12/ivy-v1.3.xml" searched="false" origin-is-local="false" origin-location="https://jitpack.io/com/github/springernature/samatra_2.12/v1.3/samatra_2.12-v1.3.pom"/>
+				<caller organisation="com.springernature" name="unit_2.12" conf="compile" rev="v1.3" rev-constraint-default="v1.3" rev-constraint-dynamic="v1.3" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="samatra_2.12" type="jar" ext="jar" status="no" details="" size="145219" time="0" location="/home/sam/.ivy2/cache/com.github.springernature/samatra_2.12/jars/samatra_2.12-v1.3.jar">
+						<origin-location is-local="false" location="https://jitpack.io/com/github/springernature/samatra_2.12/v1.3/samatra_2.12-v1.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.springernature" name="core_2.12">
+			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818113720" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="1">
+				<metadata-artifact status="failed" details="" size="0" time="0" searched="false"/>
+				<caller organisation="com.springernature" name="unit_2.12" conf="compile" rev="0.1-SNAPSHOT" rev-constraint-default="0.1-SNAPSHOT" rev-constraint-dynamic="0.1-SNAPSHOT" callerrev="0.1-SNAPSHOT"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="javax.servlet" name="javax.servlet-api">
+			<revision name="3.1.0" status="release" pubdate="20130426005239" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://servlet-spec.java.net" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="2">
+				<license name="CDDL + GPLv2 with classpath exception" url="https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html"/>
+				<metadata-artifact status="no" details="" size="4276" time="0" location="/home/sam/.ivy2/cache/javax.servlet/javax.servlet-api/ivy-3.1.0.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.pom"/>
+				<caller organisation="com.springernature" name="core_2.12" conf="compile" rev="3.1.0" rev-constraint-default="3.1.0" rev-constraint-dynamic="3.1.0" callerrev="0.1-SNAPSHOT"/>
+				<caller organisation="com.github.springernature" name="samatra_2.12" conf="default, compile, runtime, master" rev="3.1.0" rev-constraint-default="3.1.0" rev-constraint-dynamic="3.1.0" callerrev="v1.3"/>
+				<artifacts>
+					<artifact name="javax.servlet-api" type="jar" ext="jar" status="no" details="" size="95806" time="0" location="/home/sam/.ivy2/cache/javax.servlet/javax.servlet-api/jars/javax.servlet-api-3.1.0.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.12.3" status="release" pubdate="20170725114730" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.12.3/" downloaded="false" searched="false" default="false" conf="default, compile, runtime(*), master(compile), runtime, default(compile), compile(*), master" position="0">
+				<license name="BSD 3-Clause" url="http://www.scala-lang.org/license.html"/>
+				<metadata-artifact status="no" details="" size="2653" time="0" location="/home/sam/.ivy2/cache/org.scala-lang/scala-library/ivy-2.12.3.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3.pom"/>
+				<caller organisation="com.springernature" name="core_2.12" conf="compile" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="0.1-SNAPSHOT"/>
+				<caller organisation="com.springernature" name="unit_2.12" conf="compile" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="0.1-SNAPSHOT"/>
+				<caller organisation="com.github.springernature" name="samatra_2.12" conf="default, compile, runtime, master" rev="2.12.3" rev-constraint-default="2.12.3" rev-constraint-dynamic="2.12.3" callerrev="v1.3"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="no" details="" size="5246851" time="0" location="/home/sam/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.12.3.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.3/scala-library-2.12.3.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
