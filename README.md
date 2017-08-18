@@ -1,4 +1,4 @@
-# Samatra-testing
+# Samatra-testing[![Build Status](https://travis-ci.org/springernature/samatra-testing.svg?branch=master)](https://travis-ci.org/springernature/samatra-testing) [![](https://jitpack.io/v/springernature/samatra-testing.svg)](https://jitpack.io/#springernature/samatra-testing)
 
 Samatra-testing is a collection of utilities for testing Samatra controllers or any other servlets in memory, without requiring a running server. 
 
