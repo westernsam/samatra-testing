@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="htmlunitdriver-build" external.linked.project.path="$MODULE_DIR$/../../samatra-testing-htmlunitdriver/project" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" sbt.imports="SUB:DOLLAR16bfff1b897bce6f4907.asynchttp, SUB:DOLLAR16bfff1b897bce6f4907.asynchttpjetty, SUB:DOLLAR16bfff1b897bce6f4907.core, SUB:DOLLAR16bfff1b897bce6f4907.htmlunitdriver, SUB:DOLLAR16bfff1b897bce6f4907.samatratesting, SUB:DOLLAR16bfff1b897bce6f4907.unit, SUB:DOLLAR16bfff1b897bce6f4907.wiremock, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, sbt._, Keys._, dsl._" sbt.resolvers="http://repo.tools.springer-sbm.com:8081/nexus/content/repositories/releases/|maven|Repo Tools Sonatype Nexus OSS Releases, file:/home/sam/.sbt/preloaded|maven|local-preloaded, https://jitpack.io|maven|jitpack, /home/sam/.ivy2/cache|ivy|Local cache, https://oss.sonatype.org/content/repositories/snapshots/|maven|Sonatype OSS Snapshots, http://developer.marklogic.com/maven2|maven|MarkLogic, file:/home/sam/.ivy2/cache/|maven|Local Ivy Repository, https://repo1.maven.org/maven2/|maven|public" type="SBT_MODULE" version="4">
+<module external.linked.project.id="samatra-testing-core-build" external.linked.project.path="$MODULE_DIR$/../../samatra-testing-core/project" external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" sbt.imports="SUB:DOLLAR9a45315a1b89fba35594.samatraSUB:DOLLARminustesting, SUB:DOLLAR9a45315a1b89fba35594.samatraSUB:DOLLARminustestingSUB:DOLLARminusasynchttp, SUB:DOLLAR9a45315a1b89fba35594.samatraSUB:DOLLARminustestingSUB:DOLLARminuscore, SUB:DOLLAR9a45315a1b89fba35594.samatraSUB:DOLLARminustestingSUB:DOLLARminushtmlunitdriver, SUB:DOLLAR9a45315a1b89fba35594.samatraSUB:DOLLARminustestingSUB:DOLLARminusjetty, SUB:DOLLAR9a45315a1b89fba35594.samatraSUB:DOLLARminustestingSUB:DOLLARminusunit, SUB:DOLLAR9a45315a1b89fba35594.samatraSUB:DOLLARminustestingSUB:DOLLARminuswiremock, _root_.sbt.plugins.IvyPlugin, _root_.sbt.plugins.JvmPlugin, _root_.sbt.plugins.CorePlugin, _root_.sbt.plugins.JUnitXmlReportPlugin, _root_.sbt.plugins.Giter8TemplatePlugin, sbt._, Keys._, dsl._" sbt.resolvers="file:$USER_HOME$/.sbt/preloaded|maven|local-preloaded, https://jitpack.io|maven|jitpack, /home/sam/.ivy2/cache|ivy|Local cache, https://oss.sonatype.org/content/repositories/snapshots/|maven|Sonatype OSS Snapshots, https://repo1.maven.org/maven2/|maven|public" type="SBT_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <output url="file://$MODULE_DIR$/../../samatra-testing-htmlunitdriver/project/target/idea-classes" />
-    <output-test url="file://$MODULE_DIR$/../../samatra-testing-htmlunitdriver/project/target/idea-test-classes" />
+    <output url="file://$MODULE_DIR$/../../samatra-testing-core/project/target/idea-classes" />
+    <output-test url="file://$MODULE_DIR$/../../samatra-testing-core/project/target/idea-test-classes" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../samatra-testing-htmlunitdriver/project">
-      <sourceFolder url="file://$MODULE_DIR$/../../samatra-testing-htmlunitdriver/project" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../samatra-testing-htmlunitdriver/project/project/target" />
-      <excludeFolder url="file://$MODULE_DIR$/../../samatra-testing-htmlunitdriver/project/target" />
+    <content url="file://$MODULE_DIR$/../../samatra-testing-core/project">
+      <sourceFolder url="file://$MODULE_DIR$/../../samatra-testing-core/project" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../samatra-testing-core/project/project/target" />
+      <excludeFolder url="file://$MODULE_DIR$/../../samatra-testing-core/project/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="samatratesting-build" />
+    <orderEntry type="module" module-name="samatra-testing-build" />
     <orderEntry type="module-library">
       <library name="SBT: sbt-and-plugins">
         <CLASSES>

@@ -1,4 +1,6 @@
-name:= "Samatra-testing"
+import sbt.Keys.publishTo
+
+name := "Samatra-testing"
 
 lazy val commonSettings = Seq(
   organization := "com.springernature",
@@ -14,36 +16,38 @@ lazy val commonSettings = Seq(
   crossScalaVersions := Seq(scalaVersion.value, "2.11.7"),
 
   resolvers ++= Seq(
-    "Local Ivy Repository" at s"file:///${Path.userHome.absolutePath}/.ivy2/cache",
     "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",
-    "jitpack" at "https://jitpack.io",
-    "Repo Tools Sonatype Nexus OSS Releases" at "http://repo.tools.springer-sbm.com:8081/nexus/content/repositories/releases/",
-    "MarkLogic" at "http://developer.marklogic.com/maven2"
-  )
+    "jitpack" at "https://jitpack.io"
+  ),
+  publishMavenStyle := true,
+  publishTo := {
+    Some(Resolver.file("Local Maven Repository", new File(Path.userHome.absolutePath + "~/.m2/repository")))
+  }
 )
 
-lazy val core = project.in(file("samatra-testing-core"))
+lazy val `samatra-testing-core` = project.in(file("samatra-testing-core"))
   .settings(commonSettings: _*)
 
-lazy val unit = project.in(file("samatra-testing-unit"))
+lazy val `samatra-testing-unit` = project.in(file("samatra-testing-unit"))
   .settings(commonSettings: _*)
-  .dependsOn(core)
+  .dependsOn(`samatra-testing-core`)
 
-lazy val asynchttp = project.in(file("samatra-testing-asynchttp"))
+lazy val `samatra-testing-asynchttp` = project.in(file("samatra-testing-asynchttp"))
   .settings(commonSettings: _*)
-  .dependsOn(core)
+  .dependsOn(`samatra-testing-core`)
 
-lazy val asynchttpjetty = project.in(file("samatra-testing-jetty"))
+lazy val `samatra-testing-jetty` = project.in(file("samatra-testing-jetty"))
   .settings(commonSettings: _*)
-  .dependsOn(asynchttp)
+  .dependsOn(`samatra-testing-asynchttp`)
 
-lazy val wiremock = project.in(file("samatra-testing-wiremock"))
+lazy val `samatra-testing-wiremock` = project.in(file("samatra-testing-wiremock"))
   .settings(commonSettings: _*)
-  .dependsOn(asynchttp, asynchttpjetty % "compile->test")
+  .dependsOn(`samatra-testing-asynchttp`, `samatra-testing-jetty` % "compile->test")
 
-lazy val htmlunitdriver = project.in(file("samatra-testing-htmlunitdriver"))
+lazy val `samatra-testing-htmlunitdriver` = project.in(file("samatra-testing-htmlunitdriver"))
   .settings(commonSettings: _*)
-  .dependsOn(asynchttp)
+  .dependsOn(`samatra-testing-asynchttp`)
 
-val samatratesting: sbt.Project = project.in(file("."))
-  .aggregate(core, unit, asynchttp, asynchttpjetty, wiremock, htmlunitdriver)
+val `samatra-testing`: sbt.Project = project.in(file("."))
+  .settings(commonSettings: _*)
+  .aggregate(`samatra-testing-core`, `samatra-testing-unit`, `samatra-testing-asynchttp`, `samatra-testing-jetty`, `samatra-testing-wiremock`, `samatra-testing-htmlunitdriver`)

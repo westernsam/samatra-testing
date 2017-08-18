@@ -4,7 +4,7 @@
 		module="wiremock_2.12"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20170818113723"
+		publication="20170818125042"
 	>
 		<description>
 		wiremock

@@ -1,7 +1,276 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="023ca776-8c8e-48b2-b1d3-72cb8671250c" name="Default" comment="" />
+    <list default="true" id="023ca776-8c8e-48b2-b1d3-72cb8671250c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/samatra-testing-core-build.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/samatra-testing-core.iml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/SBT__org_scala_lang_scala_library_2_10_6_jar.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/asynchttp.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/asynchttpjetty-build.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/asynchttpjetty.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/core-build.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/htmlunitdriver-build.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/htmlunitdriver.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/samatra-testing-asynchttp-asynchttp-build.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/samatra-testing-unit-unit-build.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/samatratesting-build.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/samatratesting.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/unit.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/wiremock-build.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/wiremock.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$asynchttp$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$asynchttp$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$asynchttp$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$asynchttp$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$asynchttp$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$asynchttpjetty$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$asynchttpjetty$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$asynchttpjetty$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$asynchttpjetty$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$asynchttpjetty$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$commonSettings$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$commonSettings$10.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$commonSettings$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$commonSettings$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$commonSettings$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$commonSettings$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$commonSettings$6.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$commonSettings$7.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$commonSettings$8$$anonfun$apply$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$commonSettings$8.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$commonSettings$9.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$core$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$core$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$core$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$core$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$htmlunitdriver$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$htmlunitdriver$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$htmlunitdriver$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$htmlunitdriver$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$htmlunitdriver$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$unit$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$unit$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$unit$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$unit$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$unit$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$wiremock$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$wiremock$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$wiremock$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$wiremock$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$wiremock$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$$anonfun$wiremock$6.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$16bfff1b897bce6f4907.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$2e4a8e76969d061d6442$$anonfun$$sbtdef$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$2e4a8e76969d061d6442$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$2e4a8e76969d061d6442.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$2e4a8e76969d061d6442.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-controllers-unit-testing/target/scala-2.12/classes/com/springer/samatra/testing/unit/ControllerTestHelpers$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-controllers-unit-testing/target/scala-2.12/classes/com/springer/samatra/testing/unit/ControllerTestHelpers$ControllerTests.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-controllers-unit-testing/target/scala-2.12/classes/com/springer/samatra/testing/unit/ControllerTestHelpers$HttpRespToProcessed.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-controllers-unit-testing/target/scala-2.12/classes/com/springer/samatra/testing/unit/ControllerTestHelpers.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-controllers-unit-testing/target/scala-2.12/classes/com/springer/samatra/testing/unit/InMemoryHttpReqResp$$anon$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-controllers-unit-testing/target/scala-2.12/classes/com/springer/samatra/testing/unit/InMemoryHttpReqResp$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-controllers-unit-testing/target/scala-2.12/classes/com/springer/samatra/testing/unit/InMemoryHttpReqResp.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-controllers-unit-testing/target/scala-2.12/test-classes/com/springer/samatra/testing/unit/ExampleTest$$anon$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-controllers-unit-testing/target/scala-2.12/test-classes/com/springer/samatra/testing/unit/ExampleTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/classes/com/springer/samatra/testing/asynchttp/Backend.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/classes/com/springer/samatra/testing/asynchttp/InMemAsyncHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/classes/com/springer/samatra/testing/asynchttp/InMemHttpResponses$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/classes/com/springer/samatra/testing/asynchttp/InMemHttpResponses$BodyPart.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/classes/com/springer/samatra/testing/asynchttp/InMemHttpResponses$Status.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/classes/com/springer/samatra/testing/asynchttp/InMemHttpResponses.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/classes/com/springer/samatra/testing/asynchttp/InMemListenableFuture.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/classes/com/springer/samatra/testing/asynchttp/InMemoryBackend$$anon$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/classes/com/springer/samatra/testing/asynchttp/InMemoryBackend$$anon$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/classes/com/springer/samatra/testing/asynchttp/InMemoryBackend.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/classes/com/springer/samatra/testing/asynchttp/ServerConfig$$anon$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/classes/com/springer/samatra/testing/asynchttp/ServerConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/test-classes/com/springer/samatra/testing/asynchttp/ControllerTests$$anon$2$$anon$1$$anon$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/test-classes/com/springer/samatra/testing/asynchttp/ControllerTests$$anon$2$$anon$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/test-classes/com/springer/samatra/testing/asynchttp/ControllerTests$$anon$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/test-classes/com/springer/samatra/testing/asynchttp/ControllerTests$$anonfun$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/test-classes/com/springer/samatra/testing/asynchttp/ControllerTests.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/test-classes/com/springer/samatra/testing/asynchttp/RoutesFixtures$$anon$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/test-classes/com/springer/samatra/testing/asynchttp/RoutesFixtures$$anon$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/test-classes/com/springer/samatra/testing/asynchttp/RoutesFixtures$$anon$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/test-classes/com/springer/samatra/testing/asynchttp/RoutesFixtures$$anon$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/test-classes/com/springer/samatra/testing/asynchttp/RoutesFixtures$$anon$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/samatra-tesing-asynchttp/target/scala-2.12/test-classes/com/springer/samatra/testing/asynchttp/RoutesFixtures.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.10/inputs" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.10/inputs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.10/output" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.10/output" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" afterPath="$PROJECT_DIR$/samatra-testing-core/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/samatra-testing-core/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.12/output_dsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/test/compileIncremental/$global/streams/export" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/test/compileIncremental/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/$global/update/$global/streams/update_cache_2.12/inputs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/$global/update/$global/streams/update_cache_2.12/output" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/$global/update/$global/streams/update_cache_2.12/output" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/core.iml" afterPath="$PROJECT_DIR$/.idea/modules/core.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build" afterPath="$PROJECT_DIR$/build" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.sbt" afterPath="$PROJECT_DIR$/build.sbt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/default/samatra-testing-build/scala_2.10/sbt_0.13/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/default/samatra-testing-build/scala_2.10/sbt_0.13/0.1-SNAPSHOT/resolved.xml.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/default/samatra-testing-build/scala_2.10/sbt_0.13/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/default/samatra-testing-build/scala_2.10/sbt_0.13/0.1-SNAPSHOT/resolved.xml.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-compile-internal.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-compile-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-compile.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-compile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-docs.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-docs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-optional.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-optional.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-plugin.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-plugin.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-pom.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-provided.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-provided.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-runtime-internal.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-runtime-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-runtime.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-runtime.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-scala-tool.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-scala-tool.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-sources.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-sources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-test-internal.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-test-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-test.xml" afterPath="$PROJECT_DIR$/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-samatra-testing-build-test.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/project/target/streams/$global/ivyConfiguration/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/compile/compileIncremental/$global/streams/out" afterPath="$PROJECT_DIR$/project/target/streams/compile/compileIncremental/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/compile/copyResources/$global/streams/out" afterPath="$PROJECT_DIR$/project/target/streams/compile/copyResources/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/com.springernature/asynchttp_2.12/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/com.springernature/asynchttp_2.12/0.1-SNAPSHOT/resolved.xml.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/com.springernature/asynchttp_2.12/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/com.springernature/asynchttp_2.12/0.1-SNAPSHOT/resolved.xml.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-compile-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-compile-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-compile.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-compile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-docs.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-docs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-optional.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-optional.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-plugin.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-plugin.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-pom.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-provided.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-provided.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-runtime-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-runtime-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-runtime.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-runtime.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-scala-tool.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-scala-tool.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-sources.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-sources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-test-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-test-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-test.xml" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttp_2.12-test.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/$global/ivyConfiguration/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/$global/projectDescriptors/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/$global/projectDescriptors/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/$global/update/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/compile/compileIncremental/$global/streams/export" afterPath="$PROJECT_DIR$/samatra-testing-asynchttp/target/streams/compile/compileIncremental/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/com.springernature/core_2.12/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/com.springernature/core_2.12/0.1-SNAPSHOT/resolved.xml.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/com.springernature/core_2.12/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/com.springernature/core_2.12/0.1-SNAPSHOT/resolved.xml.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-compile-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-compile-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-compile.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-compile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-docs.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-docs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-optional.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-optional.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-plugin.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-plugin.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-pom.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-provided.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-provided.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-runtime-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-runtime-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-runtime.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-runtime.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-scala-tool.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-scala-tool.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-sources.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-sources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-test-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-test-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-test.xml" afterPath="$PROJECT_DIR$/samatra-testing-core/target/scala-2.12/resolution-cache/reports/com.springernature-core_2.12-test.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-core/target/streams/$global/ivyConfiguration/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-core/target/streams/$global/update/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/streams/compile/compileIncremental/$global/streams/export" afterPath="$PROJECT_DIR$/samatra-testing-core/target/streams/compile/compileIncremental/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-core/target/streams/compile/incCompileSetup/$global/streams/inc_compile_2.12" afterPath="$PROJECT_DIR$/samatra-testing-core/target/streams/compile/incCompileSetup/$global/streams/inc_compile_2.12" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/com.springernature/htmlunitdriver_2.12/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/com.springernature/htmlunitdriver_2.12/0.1-SNAPSHOT/resolved.xml.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/com.springernature/htmlunitdriver_2.12/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/com.springernature/htmlunitdriver_2.12/0.1-SNAPSHOT/resolved.xml.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-compile-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-compile-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-compile.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-compile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-docs.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-docs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-optional.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-optional.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-plugin.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-plugin.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-pom.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-provided.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-provided.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-runtime-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-runtime-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-runtime.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-runtime.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-scala-tool.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-scala-tool.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-sources.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-sources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-test-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-test-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-test.xml" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/scala-2.12/resolution-cache/reports/com.springernature-htmlunitdriver_2.12-test.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/$global/ivyConfiguration/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/$global/projectDescriptors/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/$global/projectDescriptors/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/$global/update/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/compile/compileIncremental/$global/streams/export" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/compile/compileIncremental/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/compile/incCompileSetup/$global/streams/inc_compile_2.12" afterPath="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/streams/compile/incCompileSetup/$global/streams/inc_compile_2.12" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/com.springernature/asynchttpjetty_2.12/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/com.springernature/asynchttpjetty_2.12/0.1-SNAPSHOT/resolved.xml.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/com.springernature/asynchttpjetty_2.12/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/com.springernature/asynchttpjetty_2.12/0.1-SNAPSHOT/resolved.xml.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-compile-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-compile-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-compile.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-compile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-docs.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-docs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-optional.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-optional.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-plugin.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-plugin.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-pom.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-provided.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-provided.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-runtime-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-runtime-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-runtime.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-runtime.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-scala-tool.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-scala-tool.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-sources.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-sources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-test-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-test-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-test.xml" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/scala-2.12/resolution-cache/reports/com.springernature-asynchttpjetty_2.12-test.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/$global/ivyConfiguration/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/$global/update/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/compile/compileIncremental/$global/streams/export" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/compile/compileIncremental/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/compile/incCompileSetup/$global/streams/inc_compile_2.12" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/compile/incCompileSetup/$global/streams/inc_compile_2.12" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/test/definedTests/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/test/definedTests/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/test/incCompileSetup/$global/streams/inc_compile_2.12" afterPath="$PROJECT_DIR$/samatra-testing-jetty/target/streams/test/incCompileSetup/$global/streams/inc_compile_2.12" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/com.springernature/unit_2.12/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/com.springernature/unit_2.12/0.1-SNAPSHOT/resolved.xml.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/com.springernature/unit_2.12/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/com.springernature/unit_2.12/0.1-SNAPSHOT/resolved.xml.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-compile-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-compile-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-compile.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-compile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-docs.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-docs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-optional.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-optional.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-plugin.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-plugin.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-pom.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-provided.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-provided.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-runtime-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-runtime-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-runtime.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-runtime.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-scala-tool.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-scala-tool.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-sources.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-sources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-test-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-test-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-test.xml" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/scala-2.12/resolution-cache/reports/com.springernature-unit_2.12-test.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/streams/$global/ivyConfiguration/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/streams/$global/projectDescriptors/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/streams/$global/projectDescriptors/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/streams/$global/update/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-unit/target/streams/compile/compileIncremental/$global/streams/export" afterPath="$PROJECT_DIR$/samatra-testing-unit/target/streams/compile/compileIncremental/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/com.springernature/wiremock_2.12/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/com.springernature/wiremock_2.12/0.1-SNAPSHOT/resolved.xml.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/com.springernature/wiremock_2.12/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/com.springernature/wiremock_2.12/0.1-SNAPSHOT/resolved.xml.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-compile-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-compile-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-compile.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-compile.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-docs.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-docs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-optional.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-optional.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-plugin.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-plugin.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-pom.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-provided.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-provided.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-runtime-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-runtime-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-runtime.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-runtime.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-scala-tool.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-scala-tool.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-sources.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-sources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-test-internal.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-test-internal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-test.xml" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/scala-2.12/resolution-cache/reports/com.springernature-wiremock_2.12-test.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/$global/ivyConfiguration/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/$global/projectDescriptors/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/$global/projectDescriptors/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/$global/update/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/compile/compileIncremental/$global/streams/export" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/compile/compileIncremental/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/compile/incCompileSetup/$global/streams/inc_compile_2.12" afterPath="$PROJECT_DIR$/samatra-testing-wiremock/target/streams/compile/incCompileSetup/$global/streams/inc_compile_2.12" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/$global/ivyConfiguration/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/$global/ivyConfiguration/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/out" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/compile/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/dependencyClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/compile/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/managedClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/test/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/test/managedClasspath/$global/streams/export" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/project/project/target/" />
     <ignored path="$PROJECT_DIR$/project/target/" />
@@ -27,6 +296,8 @@
     <ignored path="$PROJECT_DIR$/samatra-testing-htmlunitdriver/target/" />
     <ignored path="$PROJECT_DIR$/samatra-testing-htmlunitdriver/project/project/target/" />
     <ignored path="$PROJECT_DIR$/samatra-testing-htmlunitdriver/project/target/" />
+    <ignored path="$PROJECT_DIR$/samatra-testing-asynchttp/target/" />
+    <ignored path="$PROJECT_DIR$/samatra-testing-unit/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,8 +332,18 @@
       <file leaf-file-name="build.sbt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.sbt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+            <state relative-caret-position="512">
+              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -111,18 +392,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControllerTests.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/samatra-testing-jetty/src/test/scala/com/springer/samatra/testing/servlet/ControllerTests.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding>
-                <element signature="e#46#62#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RoutesFixtures.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/samatra-testing-jetty/src/test/scala/com/springer/samatra/testing/servlet/RoutesFixtures.scala">
           <provider selected="true" editor-type-id="text-editor">
@@ -149,7 +418,7 @@
         <entry file="file://$PROJECT_DIR$/samatra-testing-jetty/build.sbt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="276">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -158,8 +427,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+            <state relative-caret-position="69">
+              <caret line="3" column="5" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -206,6 +475,7 @@
         <option value="$PROJECT_DIR$/samatra-testing-jetty/src/test/scala/com/springer/samatra/testing/servlet/RoutesFixtures.scala" />
         <option value="$PROJECT_DIR$/samatra-testing-wiremock/build.sbt" />
         <option value="$PROJECT_DIR$/samatra-testing-htmlunitdriver/build.sbt" />
+        <option value="$PROJECT_DIR$/build" />
         <option value="$PROJECT_DIR$/build.sbt" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
@@ -249,11 +519,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/samatra-testing-htmlunitdriver" />
       <recent name="$PROJECT_DIR$/samatra-testing-wiremock" />
       <recent name="$PROJECT_DIR$/samatra-testing-jetty" />
       <recent name="$PROJECT_DIR$/samatra-tesing-asynchttp" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -307,6 +577,24 @@
       <module name="" />
       <envs />
     </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="unit" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -326,6 +614,40 @@
       </option>
       <envs />
       <patterns />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="unit" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="OdpsPythonConfigurationType" factoryName="MaxCompute Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="unit" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="PROJECT_NAME" value="" />
+      <option name="TABLE_NAME" value="" />
+      <option name="TABLE_COLUMNS" value="" />
+      <option name="TABLE_PARTITION" value="" />
+      <option name="MAIN_CLASS" value="" />
     </configuration>
     <configuration default="true" type="tests" factoryName="Nosetests">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -347,6 +669,23 @@
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="unit" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -381,6 +720,17 @@
       <envs />
       <properties />
       <listeners />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="unit" />
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -418,7 +768,7 @@
     </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1503052604962" />
+    <option name="lastUpdateTimestamp" value="1503057600097" />
     <option name="availableProjects">
       <map>
         <entry>
@@ -431,59 +781,59 @@
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value="samatratesting" />
+                <option name="name" value="samatra-testing" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="asynchttp" />
+                <option name="name" value="samatra-testing-asynchttp" />
                 <option name="path" value="$PROJECT_DIR$/samatra-testing-asynchttp" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="core" />
+                <option name="name" value="samatra-testing-core" />
                 <option name="path" value="$PROJECT_DIR$/samatra-testing-core" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="htmlunitdriver" />
+                <option name="name" value="samatra-testing-htmlunitdriver" />
                 <option name="path" value="$PROJECT_DIR$/samatra-testing-htmlunitdriver" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="asynchttpjetty" />
+                <option name="name" value="samatra-testing-jetty" />
                 <option name="path" value="$PROJECT_DIR$/samatra-testing-jetty" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="unit" />
+                <option name="name" value="samatra-testing-unit" />
                 <option name="path" value="$PROJECT_DIR$/samatra-testing-unit" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="wiremock" />
+                <option name="name" value="samatra-testing-wiremock" />
                 <option name="path" value="$PROJECT_DIR$/samatra-testing-wiremock" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="samatratesting-build" />
+                <option name="name" value="samatra-testing-build" />
                 <option name="path" value="$PROJECT_DIR$/project" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="asynchttp-build" />
+                <option name="name" value="samatra-testing-asynchttp-build" />
                 <option name="path" value="$PROJECT_DIR$/samatra-testing-asynchttp/project" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="core-build" />
+                <option name="name" value="samatra-testing-core-build" />
                 <option name="path" value="$PROJECT_DIR$/samatra-testing-core/project" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="htmlunitdriver-build" />
+                <option name="name" value="samatra-testing-htmlunitdriver-build" />
                 <option name="path" value="$PROJECT_DIR$/samatra-testing-htmlunitdriver/project" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="asynchttpjetty-build" />
+                <option name="name" value="samatra-testing-jetty-build" />
                 <option name="path" value="$PROJECT_DIR$/samatra-testing-jetty/project" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="unit-build" />
+                <option name="name" value="samatra-testing-unit-build" />
                 <option name="path" value="$PROJECT_DIR$/samatra-testing-unit/project" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="wiremock-build" />
+                <option name="name" value="samatra-testing-wiremock-build" />
                 <option name="path" value="$PROJECT_DIR$/samatra-testing-wiremock/project" />
               </ExternalProjectPojo>
             </list>
@@ -529,6 +879,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="023ca776-8c8e-48b2-b1d3-72cb8671250c" name="Default" comment="" />
@@ -562,7 +915,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3100834" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32966137" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20114239" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297953" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -790,26 +1143,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.sbt">
+    <entry file="file://$PROJECT_DIR$/samatra-testing-jetty/build.sbt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        <state relative-caret-position="276">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/samatra-testing-jetty/build.sbt">
+    <entry file="file://$PROJECT_DIR$/build">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="115">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.sbt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        <state relative-caret-position="69">
+          <caret line="3" column="5" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
           <folding />
         </state>
       </provider>

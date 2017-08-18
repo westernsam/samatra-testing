@@ -4,7 +4,7 @@
 		module="asynchttpjetty_2.12"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20170818113721"
+		publication="20170818125037"
 	>
 		<description>
 		asynchttpjetty

@@ -7,7 +7,7 @@
 		revision="0.1-SNAPSHOT"
 		conf="test-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20170818113723"/>
+		date="20170818125042"/>
 	<dependencies>
 		<module organisation="com.github.tomakehurst" name="wiremock">
 			<revision name="2.6.0" status="release" pubdate="20170406144431" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://wiremock.org" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="26">
@@ -529,7 +529,7 @@
 			</revision>
 		</module>
 		<module organisation="com.springernature" name="asynchttpjetty_2.12">
-			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818113721" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="test, compile, runtime" position="19">
+			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818125037" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="test, compile, runtime" position="19">
 				<metadata-artifact status="failed" details="" size="0" time="0" searched="false"/>
 				<caller organisation="com.springernature" name="wiremock_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="0.1-SNAPSHOT" rev-constraint-default="0.1-SNAPSHOT" rev-constraint-dynamic="0.1-SNAPSHOT" callerrev="0.1-SNAPSHOT"/>
 				<artifacts>
@@ -537,7 +537,7 @@
 			</revision>
 		</module>
 		<module organisation="com.springernature" name="asynchttp_2.12">
-			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818113720" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="1">
+			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818125037" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="1">
 				<metadata-artifact status="failed" details="" size="0" time="0" searched="false"/>
 				<caller organisation="com.springernature" name="wiremock_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="0.1-SNAPSHOT" rev-constraint-default="0.1-SNAPSHOT" rev-constraint-dynamic="0.1-SNAPSHOT" callerrev="0.1-SNAPSHOT"/>
 				<caller organisation="com.springernature" name="asynchttpjetty_2.12" conf="test, compile, runtime" rev="0.1-SNAPSHOT" rev-constraint-default="0.1-SNAPSHOT" rev-constraint-dynamic="0.1-SNAPSHOT" callerrev="0.1-SNAPSHOT"/>
@@ -833,7 +833,7 @@
 			</revision>
 		</module>
 		<module organisation="com.springernature" name="core_2.12">
-			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818113720" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="2">
+			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818125036" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="2">
 				<metadata-artifact status="failed" details="" size="0" time="0" searched="false"/>
 				<caller organisation="com.springernature" name="asynchttp_2.12" conf="compile" rev="0.1-SNAPSHOT" rev-constraint-default="0.1-SNAPSHOT" rev-constraint-dynamic="0.1-SNAPSHOT" callerrev="0.1-SNAPSHOT"/>
 				<artifacts>

@@ -7,7 +7,7 @@
 		revision="0.1-SNAPSHOT"
 		conf="test-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20170818113720"/>
+		date="20170818125037"/>
 	<dependencies>
 		<module organisation="org.scala-lang" name="scala-reflect">
 			<revision name="2.12.3" status="release" pubdate="20170725114444" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.12.3/" downloaded="false" searched="false" default="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="6">
@@ -35,7 +35,7 @@
 			</revision>
 		</module>
 		<module organisation="com.springernature" name="core_2.12">
-			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818113720" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="1">
+			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818125036" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="1">
 				<metadata-artifact status="failed" details="" size="0" time="0" searched="false"/>
 				<caller organisation="com.springernature" name="unit_2.12" conf="test, compile, provided, test-internal, runtime, optional" rev="0.1-SNAPSHOT" rev-constraint-default="0.1-SNAPSHOT" rev-constraint-dynamic="0.1-SNAPSHOT" callerrev="0.1-SNAPSHOT"/>
 				<artifacts>

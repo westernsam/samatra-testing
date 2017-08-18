@@ -7,7 +7,7 @@
 		revision="0.1-SNAPSHOT"
 		conf="runtime"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20170818113723"/>
+		date="20170818125040"/>
 	<dependencies>
 		<module organisation="org.eclipse.jetty" name="jetty-servlet">
 			<revision name="9.1.5.v20140505" status="release" pubdate="20140505192825" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.eclipse.org/jetty" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="23">
@@ -36,7 +36,7 @@
 			</revision>
 		</module>
 		<module organisation="com.springernature" name="asynchttp_2.12">
-			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818113720" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="1">
+			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818125037" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="1">
 				<metadata-artifact status="failed" details="" size="0" time="0" searched="false"/>
 				<caller organisation="com.springernature" name="asynchttpjetty_2.12" conf="compile, runtime" rev="0.1-SNAPSHOT" rev-constraint-default="0.1-SNAPSHOT" rev-constraint-dynamic="0.1-SNAPSHOT" callerrev="0.1-SNAPSHOT"/>
 				<artifacts>
@@ -330,7 +330,7 @@
 			</revision>
 		</module>
 		<module organisation="com.springernature" name="core_2.12">
-			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818113720" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="2">
+			<revision name="0.1-SNAPSHOT" status="integration" pubdate="20170818125036" resolver="inter-project" artresolver="inter-project" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="2">
 				<metadata-artifact status="failed" details="" size="0" time="0" searched="false"/>
 				<caller organisation="com.springernature" name="asynchttp_2.12" conf="compile" rev="0.1-SNAPSHOT" rev-constraint-default="0.1-SNAPSHOT" rev-constraint-dynamic="0.1-SNAPSHOT" callerrev="0.1-SNAPSHOT"/>
 				<artifacts>
