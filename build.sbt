@@ -7,9 +7,6 @@ lazy val commonSettings = Seq(
   scalaVersion := "2.12.3",
   scalacOptions ++= Seq("-unchecked", "-deprecation:false", "-feature", "-Xfatal-warnings", "-Xlint"),
   testOptions ++= Tests.Argument("-oDF") :: Tests.Argument(TestFrameworks.ScalaTest, "-u", "target/reports/") :: Nil,
-  ivyScala := ivyScala.value map {
-    _.copy(overrideScalaVersion = true)
-  },
   trapExit := false,
   cancelable in Global := true,
   publish := {},
