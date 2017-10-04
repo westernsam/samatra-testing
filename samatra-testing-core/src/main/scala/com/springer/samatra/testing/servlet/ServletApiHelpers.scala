@@ -253,7 +253,7 @@ object ServletApiHelpers {
       override def authenticate(response: HttpServletResponse): Boolean = true
       override def login(username: String, password: String): Unit = ()
       override def getHeader(name: String): String = headersLowerCase.get(name.toLowerCase).map(_.head).orNull
-      override def getHeaders(name: String): util.Enumeration[String] = Collections.enumeration(headersLowerCase(name.toLowerCase).asJava)
+      override def getHeaders(name: String): util.Enumeration[String] = Collections.enumeration(headersLowerCase.getOrElse(name.toLowerCase, List.empty).asJava)
       override def getQueryString: String = uri.getRawQuery
       override def isUserInRole(role: String): Boolean = true
       override def getRemoteUser: String = ""
