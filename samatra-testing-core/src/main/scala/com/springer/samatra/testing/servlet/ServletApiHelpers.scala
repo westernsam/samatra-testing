@@ -2,7 +2,7 @@ package com.springer.samatra.testing.servlet
 
 import java.io._
 import java.net.URLDecoder.decode
-import java.net.{URI, URLEncoder}
+import java.net.{HttpCookie, URI, URLEncoder}
 import java.security.Principal
 import java.text.SimpleDateFormat
 import java.util
@@ -320,7 +320,14 @@ object ServletApiHelpers {
       override def getAttributeNames: util.Enumeration[String] = Collections.enumeration(attributes.keySet())
       override def removeAttribute(name: String): Unit = attributes.remove(name)
 
-      override def getCookies: Array[Cookie] = cookies.toArray
+      override def getCookies: Array[Cookie] = {
+        val headerCookies = for {
+          c <- headersLowerCase.getOrElse("cookie", List.empty)
+          c2 <- HttpCookie.parse(c).asScala
+        } yield new Cookie(c2.getName, c2.getValue)
+
+        (headerCookies ++ cookies).toArray
+      }
 
       override def getParameterValues(name: String): Array[String] = getParameterMap.values().asScala.map(_.head).toArray
       override def getParameterNames: util.Enumeration[String] = Collections.enumeration(getParameterMap.keySet())

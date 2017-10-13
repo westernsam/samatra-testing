@@ -89,6 +89,11 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
       res.getStatusCode shouldBe 404
     }
 
+    it("should give cookie from header") {
+      val res = http.prepareGet("/cookieFromRequest").setHeader("Cookie", "cookie=hello").execute().get
+      res.getResponseBody shouldBe "hello"
+    }
+
     it("should return unicode") {
       val res = http.prepareGet("/unicode").execute().get
       res.getResponseBody shouldBe "Почему это не рабосаетdafafdafdadfadfadf"

@@ -81,6 +81,7 @@ trait RoutesFixtures {
       get("/himynameis/:name")(req => s"hi ${req.captured("name")}")
       get("/throws")(_ => throw new RuntimeException)
       get("/404")(_ => Halt(404))
+      get("/cookieFromRequest")(req => req.cookie("cookie").get)
       get("/file") { _ =>
         WithHeaders("Content-Type" -> "application/xml") {
           Paths.get("build.sbt")
