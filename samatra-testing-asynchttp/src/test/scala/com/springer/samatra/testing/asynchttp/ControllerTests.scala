@@ -94,6 +94,10 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
       res.getResponseBody shouldBe "Почему это не рабосаетdafafdafdadfadfadf"
     }
 
+    it("throw returns 500") {
+      http.prepareGet("/throws").execute().get.getStatusCode shouldBe 500
+    }
+
     it("should return headers only for HEAD") {
       val res = http.prepareHead("/missing").execute().get
       res.getStatusCode shouldBe 404

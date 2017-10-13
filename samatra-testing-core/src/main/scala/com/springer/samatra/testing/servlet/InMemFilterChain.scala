@@ -31,12 +31,13 @@ object InMemFilterChain {
     } catch {
       case t: Throwable =>
         asyncListeners.asScala.foreach(_.onError(new AsyncEvent(request.getAsyncContext, t)))
-        throw t
+        request.setAttribute("javax.servlet.error.exception", t)
     } finally {
       Option(request.getAttribute("javax.servlet.error.exception")).foreach { t =>
         if (!response.isCommitted) {
           val out = new ByteArrayOutputStream()
           t.asInstanceOf[Throwable].printStackTrace(new PrintStream(out))
+          response.sendError(500)
           response.getOutputStream.write(out.toByteArray)
         }
       }
@@ -44,7 +45,7 @@ object InMemFilterChain {
   }
 }
 
-class InMemFilterChain(filters: Seq[(String, Filter)] , path: String, servlet: Option[Servlet]) extends FilterChain {
+class InMemFilterChain(filters: Seq[(String, Filter)], path: String, servlet: Option[Servlet]) extends FilterChain {
   //noinspection ScalaDeprecation
   val fs: mutable.Stack[Filter] = applicableFilters(filters, path)
 
