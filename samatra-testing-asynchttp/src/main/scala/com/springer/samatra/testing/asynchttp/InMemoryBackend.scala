@@ -83,7 +83,8 @@ trait InMemoryBackend extends Backend {
     onCookie = c => {
       val cookie: String = s"${c.getName}=${c.getValue}" +
         Option(c.getPath).map(p => s";Path=$p").getOrElse("") +
-        Option(c.getDomain).map(d => s";Domain=$d").getOrElse("")
+        Option(c.getDomain).map(d => s";Domain=$d").getOrElse("") +
+        Option(c.isHttpOnly).map(_ => s";HttpOnly").getOrElse("")
 
       val headers = new DefaultHttpHeaders()
       headers.add("Set-Cookie", cookie)

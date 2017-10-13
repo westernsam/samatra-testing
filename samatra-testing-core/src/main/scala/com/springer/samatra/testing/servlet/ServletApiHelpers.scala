@@ -232,7 +232,7 @@ object ServletApiHelpers {
     val attributes = new ConcurrentHashMap[String, AnyRef]()
 
     new HttpServletRequest {
-      override def getPathInfo: String = path
+      override def getPathInfo: String = path.substring(getServletPath.length)
       override def getUserPrincipal: Principal = null
       override def getServletPath: String = contextPath
       override def getDateHeader(name: String): Long = if (headersLowerCase.contains(name.toLowerCase)) dateFormat.parse(getHeader(name.toLowerCase)).getTime else -1

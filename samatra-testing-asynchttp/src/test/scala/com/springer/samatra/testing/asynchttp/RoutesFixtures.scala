@@ -30,8 +30,9 @@ trait RoutesFixtures {
             Paths.get("build.sbt")
           }
           case "headers" => WithHeaders("hi" -> "there")("body")
+          case "pathInfo" => req.underlying.getPathInfo
           case "cookies" =>
-            WithCookies(Seq(AddCookie("cookie", "tasty")))("body")
+            WithCookies(Seq(AddCookie("cookie", "tasty", httpOnly = true)))("body")
           case "securedcookies" =>
             WithCookies(Seq(AddCookie("cookie", "tasty", httpOnly = true)))("body")
         }
@@ -79,6 +80,7 @@ trait RoutesFixtures {
     new Controller {
       get("/himynameis/:name")(req => s"hi ${req.captured("name")}")
       get("/throws")(_ => throw new RuntimeException)
+      get("/404")(_ => Halt(404))
       get("/file") { _ =>
         WithHeaders("Content-Type" -> "application/xml") {
           Paths.get("build.sbt")

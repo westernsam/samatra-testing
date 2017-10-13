@@ -32,12 +32,12 @@ object InMemFilterChain {
       case t: Throwable =>
         asyncListeners.asScala.foreach(_.onError(new AsyncEvent(request.getAsyncContext, t)))
         request.setAttribute("javax.servlet.error.exception", t)
+        throw t
     } finally {
       Option(request.getAttribute("javax.servlet.error.exception")).foreach { t =>
         if (!response.isCommitted) {
           val out = new ByteArrayOutputStream()
           t.asInstanceOf[Throwable].printStackTrace(new PrintStream(out))
-          response.sendError(500)
           response.getOutputStream.write(out.toByteArray)
         }
       }

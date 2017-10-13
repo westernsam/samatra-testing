@@ -94,10 +94,6 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
       res.getResponseBody shouldBe "Почему это не рабосаетdafafdafdadfadfadf"
     }
 
-    it("throw returns 500") {
-      http.prepareGet("/throws").execute().get.getStatusCode shouldBe 500
-    }
-
     it("should return headers only for HEAD") {
       val res = http.prepareHead("/missing").execute().get
       res.getStatusCode shouldBe 404
@@ -184,8 +180,16 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
 
   it("should be able to set cookies") {
     val res = http.prepareGet("/future/morethanone/cookies").execute().get
-    res.getCookies.asScala.head.getValue shouldBe "tasty"
+    val head = res.getCookies.asScala.head
+    head.getValue shouldBe "tasty"
+    head.isHttpOnly shouldBe true
   }
+
+  it("pathInfo should not include servlet path") {
+    val res = http.prepareGet("/future/morethanone/pathInfo").execute().get
+    res.getResponseBody shouldBe "/morethanone/pathInfo"
+  }
+
 
   it("should be able to retrieve request uri") {
     val res = http.prepareGet("/uri?foo=bar#qunx").execute().get
