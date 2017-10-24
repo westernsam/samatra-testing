@@ -7,6 +7,6 @@ libraryDependencies ++=
     "org.eclipse.jetty" % "jetty-servlet" % jettyVersion,
     "org.eclipse.jetty" % "jetty-servlets" % jettyVersion,
 
-    "com.github.springernature" %% "samatra" % "v1.3" % "test",
+    "com.github.springernature" %% "samatra" % "v1.4" % "test",
     "org.scalatest" %% "scalatest" % "3.0.0" % "test"
   )

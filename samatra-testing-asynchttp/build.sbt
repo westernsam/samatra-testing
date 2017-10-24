@@ -4,7 +4,7 @@ libraryDependencies ++=
   Seq(
     "org.asynchttpclient" % "async-http-client" % "2.0.37",
 
-    "com.github.springernature" %% "samatra" % "v1.3" % "test",
+    "com.github.springernature" %% "samatra" % "v1.4" % "test",
     "org.eclipse.jetty" % "jetty-server" % jettyVersion % "test",
     "org.eclipse.jetty" % "jetty-servlet" % jettyVersion % "test",
     "org.eclipse.jetty" % "jetty-servlets" % jettyVersion % "test",
