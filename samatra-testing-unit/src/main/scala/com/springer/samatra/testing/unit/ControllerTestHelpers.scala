@@ -73,7 +73,7 @@ object ControllerTestHelpers {
     }
 
     private def futureFrom(resp: HttpResp): Future[HttpResp] = resp match {
-      case FutureHttpResp(fut: Future[_], _, _, _, _) => fut.asInstanceOf[Future[HttpResp]]
+      case FutureHttpResp(fut: Future[_], _, _, _, _, _) => fut.asInstanceOf[Future[HttpResp]]
       case _ => Future.successful(resp)
     }
   }
