@@ -1,13 +1,11 @@
 package com.springer.samatra.testing.servlet
 
-import java.util
-import javax.servlet.{FilterConfig, ServletContext}
+import javax.servlet._
+import javax.servlet.http.HttpServletResponse
 
 import com.springer.samatra.routing.Routings.Routes
 import com.springer.samatra.testing.asynchttp.{JettyBacked, ServerConfig}
 import org.asynchttpclient.AsyncHttpClient
-import org.eclipse.jetty.server.handler.ContextHandler.NoContext
-import org.eclipse.jetty.servlets.GzipFilter
 import org.scalatest.Matchers._
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.{BeforeAndAfterAll, FunSpec}
@@ -17,16 +15,13 @@ import scala.collection.JavaConverters._
 class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with BeforeAndAfterAll with JettyBacked {
 
   val http: AsyncHttpClient = client(new ServerConfig {
-    mount("/*", new GzipFilter() { //just an example - don't use for real - broken with ETag's
-      init(new FilterConfig {
-        override def getServletContext: ServletContext = new NoContext()
-        override def getInitParameterNames: util.Enumeration[String] = null
-        override def getFilterName: String = ""
-        override def getInitParameter(name: String): String = name match {
-          case "minGzipSize" => "0"
-          case _ => null
-        }
-      })
+    mount("/*", new Filter {
+      override def init(filterConfig: FilterConfig): Unit = ()
+      override def destroy(): Unit = ()
+      override def doFilter(request: ServletRequest, response: ServletResponse, chain: FilterChain): Unit = {
+        response.asInstanceOf[HttpServletResponse].setHeader("X-Extra-Header", "extra")
+        chain.doFilter(request, response)
+      }
     })
 
     mount("/*", Routes(basic))
@@ -148,7 +143,7 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
   it("should return 500 for timeout") {
     val res = http.prepareGet("/future/timeout").execute().get
     res.getStatusCode shouldBe 500
-    res.getResponseBody should include ("java.util.concurrent.TimeoutException")
+    res.getResponseBody should include("java.util.concurrent.TimeoutException")
   }
 
   it("should parse path params") {
@@ -189,14 +184,14 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
     res.getResponseBody should endWith("/uri?foo=bar")
   }
 
-  it("should be able to use GzipHandler") {
-    def shouldBeGzipped(path: String): Unit = {
-      val res = http.prepareGet(s"$path").setHeaders(Map("Accept-Encoding" -> Seq("gzip"))).execute().get
-      res.getHeader("Content-Encoding") shouldBe "gzip"
+  it("should be able to use Filter") {
+    def withFilters(path: String): Unit = {
+      val res = http.prepareGet(s"$path").execute().get
+      res.getHeader("X-Extra-Header") shouldBe "extra"
     }
 
-    shouldBeGzipped("/file")
-    shouldBeGzipped("/future/morethanone/file")
-    shouldBeGzipped("/caching/etag/andy")
+    withFilters("/file")
+    withFilters("/future/morethanone/file")
+    withFilters("/caching/etag/andy")
   }
 }
