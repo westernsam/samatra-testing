@@ -11,7 +11,7 @@ import com.springer.samatra.routing.Routings._
 import com.springer.samatra.routing.StandardResponses.{Halt, WithHeaders}
 import com.springer.samatra.testing.servlet.ServletApiHelpers._
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
 object ControllerTestHelpers {
 
@@ -35,22 +35,22 @@ object ControllerTestHelpers {
 
   implicit class ControllerTests(r: Routes)(implicit clock: Clock) {
 
-    def get(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty): Future[HttpResp] =
+    def get(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
       runRequest(r, httpServletRequest(path, "GET", headers, None, cookies, new CountDownLatch(0)))
 
-    def head(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty): Future[HttpResp] =
+    def head(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
       runRequest(r, httpServletRequest(path, "HEAD", headers, None, cookies, new CountDownLatch(0)))
 
-    def post(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty): Future[HttpResp] =
+    def post(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
       runRequest(r, httpServletRequest(path, "POST", headers, Some(body), cookies, new CountDownLatch(0)))
 
-    def put(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty): Future[HttpResp] =
+    def put(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
       runRequest(r, httpServletRequest(path, "PUT", headers, Some(body), cookies, new CountDownLatch(0)))
 
-    def delete(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty): Future[HttpResp] =
+    def delete(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
       runRequest(r, httpServletRequest(path, "DELETE", headers, None, cookies, new CountDownLatch(0)))
 
-    private def runRequest(r: Routes, httpReq: HttpServletRequest): Future[HttpResp] = {
+    private def runRequest(r: Routes, httpReq: HttpServletRequest)(implicit ex: ExecutionContext): Future[HttpResp] = {
       val request = Request(httpReq, started = clock.instant().toEpochMilli)
 
       futureFrom(r.matching(httpReq, null) match {
@@ -72,9 +72,11 @@ object ControllerTestHelpers {
       })
     }
 
-    private def futureFrom(resp: HttpResp): Future[HttpResp] = resp match {
-      case FutureHttpResp(fut: Future[_], _, _, _, _, _) => fut.asInstanceOf[Future[HttpResp]]
-      case _ => Future.successful(resp)
+    private def futureFrom(resp: HttpResp)(implicit ex: ExecutionContext): Future[HttpResp] = {
+      resp match {
+        case FutureHttpResp(fut: Future[_], _, f : Function1[Any, HttpResp], _, _, _) => fut.map(f)
+        case _ => Future.successful(resp)
+      }
     }
   }
 }

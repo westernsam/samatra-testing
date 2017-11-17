@@ -2,6 +2,7 @@ package com.springer.samatra.testing.unit
 
 import java.net.URLEncoder.encode
 import java.time.{Clock, LocalDate, ZoneId, ZoneOffset}
+import java.util.concurrent.Executors
 import javax.servlet.http.{Cookie, HttpServletRequest, HttpServletResponse}
 
 import com.springer.samatra.routing.Routings.{Controller, HttpResp, Routes}
@@ -11,7 +12,7 @@ import org.scalatest.FunSpec
 import org.scalatest.Matchers._
 import org.scalatest.concurrent.ScalaFutures
 
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
 class ExampleTest extends FunSpec with ScalaFutures {
 
@@ -44,6 +45,12 @@ class ExampleTest extends FunSpec with ScalaFutures {
       }
     }
 
+    get("/futurebug") { req =>
+      Future {
+        "hello"
+      }
+    }
+
     get("/hello/:name") { req =>
       Future {
         WithCookies(Seq(AddCookie("cookie", req.cookie("cookie").get))) {
@@ -57,6 +64,7 @@ class ExampleTest extends FunSpec with ScalaFutures {
 
   describe("An example of unit testing controllers") {
     implicit val clock: Clock = Clock.tickMinutes(ZoneId.of("GMT"))
+    implicit val ex: ExecutionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(5))
 
     it("should put") {
       whenReady(routes.put(
@@ -67,6 +75,13 @@ class ExampleTest extends FunSpec with ScalaFutures {
         val (statusCode, headers, _, _) = result.run()
         statusCode shouldBe 302
         headers("Location") shouldBe Seq("/xml/hi")
+      }
+    }
+
+    it("should map http resp inside future") {
+      whenReady(routes.get("/futurebug")) { result =>
+        val (_, _, _, bytes) = result.run()
+        new String(bytes) shouldBe "hello"
       }
     }
 
