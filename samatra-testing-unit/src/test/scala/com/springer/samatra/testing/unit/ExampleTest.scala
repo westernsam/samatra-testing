@@ -15,13 +15,13 @@ import org.scalatest.concurrent.ScalaFutures
 import scala.concurrent.{ExecutionContext, Future}
 
 class ExampleTest extends FunSpec with ScalaFutures {
+  implicit val ex: ExecutionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(5))
 
   val routes: Routes = new Controller {
 
     import com.springer.samatra.routing.FutureResponses.Implicits.fromFuture
     import com.springer.samatra.routing.StandardResponses.Implicits.fromString
 
-    import scala.concurrent.ExecutionContext.Implicits.global
 
     put("/put") { req =>
       Future {
@@ -64,7 +64,6 @@ class ExampleTest extends FunSpec with ScalaFutures {
 
   describe("An example of unit testing controllers") {
     implicit val clock: Clock = Clock.tickMinutes(ZoneId.of("GMT"))
-    implicit val ex: ExecutionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(5))
 
     it("should put") {
       whenReady(routes.put(

@@ -8,7 +8,10 @@ import java.util.{Collections, EventListener}
 import javax.servlet._
 import javax.servlet.descriptor.JspConfigDescriptor
 
+import org.slf4j.LoggerFactory
+
 class InMemServletregistration(servlet: Servlet, initParams: ConcurrentHashMap[String, String]) extends ServletRegistration {
+
   override def addMapping(urlPatterns: String*): util.Set[String] = throw new UnsupportedOperationException
   override def getMappings: util.Collection[String] = Collections.emptyList()
   override def getRunAsRole: String = throw new UnsupportedOperationException
@@ -28,6 +31,7 @@ class InMemServletregistration(servlet: Servlet, initParams: ConcurrentHashMap[S
 }
 
 class InMemServletContext(servlet: Servlet, contextPath: String) extends ServletContext {
+  val logger  = LoggerFactory.getLogger(getClass)
 
   val attributes = new ConcurrentHashMap[String, Object]()
   val initParams = new ConcurrentHashMap[String, String]()
@@ -61,15 +65,9 @@ class InMemServletContext(servlet: Servlet, contextPath: String) extends Servlet
   override def declareRoles(roleNames: String*): Unit = throw new UnsupportedOperationException
   override def getServletContextName: String = throw new UnsupportedOperationException
   override def getSessionCookieConfig: SessionCookieConfig = throw new UnsupportedOperationException
-  override def log(msg: String): Unit = ()
-  override def log(exception: Exception, msg: String): Unit = {
-    print(msg);
-    exception.printStackTrace(System.err)
-  }
-  override def log(message: String, throwable: Throwable): Unit = {
-    print(message);
-    throwable.printStackTrace(System.err)
-  }
+  override def log(msg: String): Unit = logger.info(msg)
+  override def log(exception: Exception, msg: String): Unit = logger.warn(msg, exception)
+  override def log(message: String, throwable: Throwable): Unit = logger.warn(message, throwable)
   override def getMinorVersion: Int = 1
   override def getEffectiveSessionTrackingModes: util.Set[SessionTrackingMode] = throw new UnsupportedOperationException
   override def getRealPath(path: String): String = s"$contextPath/$path"
