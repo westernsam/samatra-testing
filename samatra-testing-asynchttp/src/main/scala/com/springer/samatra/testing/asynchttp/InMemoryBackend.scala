@@ -6,6 +6,7 @@ import javax.servlet._
 import javax.servlet.http.{Cookie, HttpServletRequest, HttpServletResponse}
 
 import com.springer.samatra.testing.asynchttp.InMemHttpResponses.{sendBody, sendStatus}
+import com.springer.samatra.testing.asynchttp.websockets.{UpgradeFilter, UpgradeHandlerAdapter}
 import com.springer.samatra.testing.servlet.InMemFilterChain
 import com.springer.samatra.testing.servlet.ServletApiHelpers.{httpResponse, httpServletRequest}
 import io.netty.handler.codec.http.{DefaultHttpHeaders, HttpHeaders}
@@ -26,7 +27,10 @@ trait InMemoryBackend extends Backend {
   override def client(serverConfig: ServerConfig): AsyncHttpClient = new AsyncHttpClient {
     override def preparePatch(url: String): BoundRequestBuilder = new BoundRequestBuilder(this, "PATCH", false).setUrl(s"http://samatra-inmem$url")
     override def preparePost(url: String): BoundRequestBuilder = new BoundRequestBuilder(this, "POST", false).setUrl(s"http://samatra-inmem$url")
-    override def prepareGet(url: String): BoundRequestBuilder = new BoundRequestBuilder(this, "GET", false).setUrl(s"http://samatra-inmem$url")
+    override def prepareGet(url: String): BoundRequestBuilder = {
+      val (scheme, path) = if (url.indexOf(":") > -1) (url.split(":")(0), url.split(":")(1)) else ("http", url)
+      new BoundRequestBuilder(this, "GET", false).setUrl(s"$scheme://samatra-inmem$path")
+    }
     override def prepareHead(url: String): BoundRequestBuilder = new BoundRequestBuilder(this, "HEAD", false).setUrl(s"http://samatra-inmem$url")
     override def prepareDelete(url: String): BoundRequestBuilder = new BoundRequestBuilder(this, "DELETE", false).setUrl(s"http://samatra-inmem$url")
     override def preparePut(url: String): BoundRequestBuilder = new BoundRequestBuilder(this, "PUT", false).setUrl(s"http://samatra-inmem$url")
@@ -53,9 +57,10 @@ trait InMemoryBackend extends Backend {
         val asyncHandler = new InMemAsyncHandler[T](handler, asyncRequest.getUri)
         val request: HttpServletRequest = makeRequest(asyncRequest, path, servletPath, asyncLatch, asyncListeners)
         val response: HttpServletResponse = mkResponse(asyncHandler, asyncRequest.getUri)
+        val handleWsUpgrade = ("/*", new UpgradeFilter(websockets = serverConfig.websockets, new UpgradeHandlerAdapter(handler)))
 
         try {
-          InMemFilterChain(request, response, serverConfig.filters, contextAndServlet.map(s => (s._2, s._3, s._4)), asyncLatch, asyncListeners)
+          InMemFilterChain(request, response, handleWsUpgrade +: serverConfig.filters, contextAndServlet.map(s => (s._2, s._3, s._4)), asyncLatch, asyncListeners)
         } catch {
           case t: Throwable => handler.onThrowable(t); throw t
         } finally {
@@ -141,7 +146,7 @@ trait InMemoryBackend extends Backend {
       cookie
     })
 
-    httpServletRequest(path, asyncRequest.getMethod, scalaHeaders, maybeBytes, cookies, asyncLatch, listeners, servletPath)
+    httpServletRequest(asyncRequest.getUri.getScheme, path, asyncRequest.getMethod, scalaHeaders, maybeBytes, cookies, asyncLatch, listeners, servletPath)
   }
 
   private def findContextPath(serverConfig: ServerConfig, path: String): Option[(String, Servlet, ServletContext, Map[String, String])] = {

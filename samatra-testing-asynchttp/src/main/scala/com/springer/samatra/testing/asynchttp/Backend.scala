@@ -1,7 +1,11 @@
 package com.springer.samatra.testing.asynchttp
 
+import java.net.URI
 import java.util
-import javax.servlet.{Filter, Servlet, ServletContext}
+import java.util.Collections
+import javax.servlet._
+import javax.websocket.server.{ServerContainer, ServerEndpointConfig}
+import javax.websocket.{ClientEndpointConfig, Endpoint, Extension, Session}
 
 import com.springer.samatra.testing.servlet.InMemServletContext
 import org.asynchttpclient.AsyncHttpClient
@@ -18,7 +22,9 @@ trait Backend {
   def clientAndBaseUrl(serverConfig: ServerConfig): (AsyncHttpClient, String)
 }
 
-class ServerConfig { self =>
+class ServerConfig extends ServerContainer {
+  self =>
+  lazy val websockets: ArrayBuffer[ServerEndpointConfig] = new ArrayBuffer[ServerEndpointConfig]()
   lazy val filters: ArrayBuffer[(String, Filter)] = new ArrayBuffer[(String, Filter)]()
   lazy val routes: ArrayBuffer[(String, Servlet, ServletContext, Map[String, String])] = new ArrayBuffer[(String, Servlet, ServletContext, Map[String, String])]()
 
@@ -26,8 +32,26 @@ class ServerConfig { self =>
   def mount(path: String, s: Servlet): Unit = mount(path, s, new InMemServletContext(s, path))
   def mount(path: String, s: Servlet, context: ServletContext, initParams: Map[String, String] = Map.empty): Unit = routes.append((path, s, context, initParams))
 
-  def ++(other: ServerConfig) : ServerConfig = new ServerConfig() {
+  def ++(other: ServerConfig): ServerConfig = new ServerConfig() {
+    override lazy val websockets: ArrayBuffer[ServerEndpointConfig] = self.websockets ++ other.websockets
     override lazy val filters: ArrayBuffer[(String, Filter)] = self.filters ++ other.filters
     override lazy val routes: ArrayBuffer[(String, Servlet, ServletContext, Map[String, String])] = self.routes ++ other.routes
   }
+
+  override def addEndpoint(endpointClass: Class[_]): Unit = throw new UnsupportedOperationException("todo: use bloody annotations to call other addEndpoint thingy")
+  override def addEndpoint(serverConfig: ServerEndpointConfig): Unit = websockets.append(serverConfig)
+
+  override def setDefaultMaxTextMessageBufferSize(max: Int): Unit = ()
+  override def connectToServer(annotatedEndpointInstance: scala.Any, path: URI): Session = throw new UnsupportedOperationException
+  override def connectToServer(annotatedEndpointClass: Class[_], path: URI): Session = throw new UnsupportedOperationException
+  override def connectToServer(endpointInstance: Endpoint, cec: ClientEndpointConfig, path: URI): Session = throw new UnsupportedOperationException
+  override def connectToServer(endpointClass: Class[_ <: Endpoint], cec: ClientEndpointConfig, path: URI): Session = throw new UnsupportedOperationException
+  override def getDefaultAsyncSendTimeout: Long = -1
+  override def setDefaultMaxBinaryMessageBufferSize(max: Int): Unit = ()
+  override def getDefaultMaxSessionIdleTimeout: Long = -1
+  override def getDefaultMaxTextMessageBufferSize: Int = -1
+  override def setAsyncSendTimeout(timeoutmillis: Long): Unit = ()
+  override def setDefaultMaxSessionIdleTimeout(timeout: Long): Unit = ()
+  override def getDefaultMaxBinaryMessageBufferSize: Int = -1
+  override def getInstalledExtensions: util.Set[Extension] = Collections.emptySet()
 }

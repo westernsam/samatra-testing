@@ -20,7 +20,7 @@ object ControllerTestHelpers {
   implicit class HttpRespToProcessed(resp: HttpResp) {
 
     def run(): (Int, Map[String, Seq[String]], Seq[Cookie], Array[Byte]) = {
-      val ignoredRequest = httpServletRequest("", "", Map.empty, None, Seq.empty)
+      val ignoredRequest = httpServletRequest("http", "", "", Map.empty, None, Seq.empty)
       val (status, headers, cookies, bytes) = InMemoryHttpReqResp(ignoredRequest, resp.process)
 
       val maybeException = Option(ignoredRequest.getAttribute("javax.servlet.error.exception")).map { t =>
@@ -36,19 +36,19 @@ object ControllerTestHelpers {
   implicit class ControllerTests(r: Routes)(implicit clock: Clock) {
 
     def get(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
-      runRequest(r, httpServletRequest(path, "GET", headers, None, cookies, new CountDownLatch(0)))
+      runRequest(r, httpServletRequest("http", path, "GET", headers, None, cookies, new CountDownLatch(0)))
 
     def head(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
-      runRequest(r, httpServletRequest(path, "HEAD", headers, None, cookies, new CountDownLatch(0)))
+      runRequest(r, httpServletRequest("http", path, "HEAD", headers, None, cookies, new CountDownLatch(0)))
 
     def post(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
-      runRequest(r, httpServletRequest(path, "POST", headers, Some(body), cookies, new CountDownLatch(0)))
+      runRequest(r, httpServletRequest("http", path, "POST", headers, Some(body), cookies, new CountDownLatch(0)))
 
     def put(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
-      runRequest(r, httpServletRequest(path, "PUT", headers, Some(body), cookies, new CountDownLatch(0)))
+      runRequest(r, httpServletRequest("http", path, "PUT", headers, Some(body), cookies, new CountDownLatch(0)))
 
     def delete(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
-      runRequest(r, httpServletRequest(path, "DELETE", headers, None, cookies, new CountDownLatch(0)))
+      runRequest(r, httpServletRequest("http", path, "DELETE", headers, None, cookies, new CountDownLatch(0)))
 
     private def runRequest(r: Routes, httpReq: HttpServletRequest)(implicit ex: ExecutionContext): Future[HttpResp] = {
       val request = Request(httpReq, started = clock.instant().toEpochMilli)

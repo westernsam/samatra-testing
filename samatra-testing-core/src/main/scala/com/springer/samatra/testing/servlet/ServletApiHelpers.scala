@@ -20,13 +20,11 @@ object ServletApiHelpers {
 
   def httpResponse(onStatus: OnStatus, onHeader: OnHeader, onCookie: OnCookie, onBody: OnBody) = new InMemHttpServletResponse(onStatus, onHeader, onCookie, onBody)
 
-  def httpServletRequest(url: String, method: String, headers: Map[String, Seq[String]],
+  def httpServletRequest(protocol: String, url: String, method: String, headers: Map[String, Seq[String]],
                          body: Option[Array[Byte]], cookies: Seq[Cookie], countDown: CountDownLatch = new CountDownLatch(0),
                          asyncListeners: util.List[AsyncListener] = Collections.emptyList(), contextPath: String = ""): HttpServletRequest = {
 
-    new InMemHttpServletRequest(url: String, method: String, headers: Map[String, Seq[String]],
-      body: Option[Array[Byte]], cookies: Seq[Cookie],
-      countDown: CountDownLatch, asyncListeners: util.List[AsyncListener], contextPath: String)
+    new InMemHttpServletRequest(protocol, url, method, headers, body, cookies, countDown, asyncListeners, contextPath)
   }
 }
 

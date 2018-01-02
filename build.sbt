@@ -10,7 +10,7 @@ lazy val commonSettings = Seq(
   trapExit := false,
   cancelable in Global := true,
   publish := {},
-  crossScalaVersions := Seq(scalaVersion.value, "2.11.7"),
+//  crossScalaVersions := Seq(scalaVersion.value, "2.11.7"),
 
   resolvers ++= Seq(
     "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",

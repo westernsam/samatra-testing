@@ -13,10 +13,7 @@ import javax.servlet.http._
 import scala.collection.JavaConverters._
 import com.springer.samatra.testing.servlet.ServletApiHelpers.dateFormat
 
-/**
-  * Created by sam on 13/10/17.
-  */
-class InMemHttpServletRequest(url: String, method: String, headers: Map[String, Seq[String]],
+class InMemHttpServletRequest(protocol: String, url: String, method: String, headers: Map[String, Seq[String]],
                               body: Option[Array[Byte]], cookies: Seq[Cookie], countDown: CountDownLatch = new CountDownLatch(0),
                               asyncListeners: util.List[AsyncListener] = Collections.emptyList(), contextPath: String = "") extends HttpServletRequest {
 
@@ -167,10 +164,10 @@ class InMemHttpServletRequest(url: String, method: String, headers: Map[String, 
   override def getLocalAddr: String = ""
   override def getRealPath(path: String): String = path
 
-  override def getScheme: String = "http"
+  override def getScheme: String = protocol
 
   override def isSecure: Boolean = false
-  override def getProtocol: String = "http"
+  override def getProtocol: String = protocol
   override def getLocalName: String = ""
   override def getDispatcherType: DispatcherType = DispatcherType.REQUEST
   override def getLocale: Locale = Locale.getDefault
