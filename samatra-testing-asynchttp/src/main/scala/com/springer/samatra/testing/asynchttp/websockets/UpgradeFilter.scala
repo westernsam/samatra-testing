@@ -18,6 +18,7 @@ import io.netty.handler.codec.http.{DefaultHttpHeaders, HttpHeaders}
 import org.asynchttpclient.ws._
 
 import scala.collection.JavaConverters._
+import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 
 class UpgradeFilter(websockets: Seq[ServerEndpointConfig], upgradeHandler: UpgradeHandler[WebSocket]) extends Filter {
@@ -29,7 +30,9 @@ class UpgradeFilter(websockets: Seq[ServerEndpointConfig], upgradeHandler: Upgra
     val resp = response.asInstanceOf[HttpServletResponse]
 
     //todo: url template match
-    websockets.find(_.getPath == path) match {
+    val uriMatcher = uriMatch(path) _
+
+    websockets.find(uriMatcher(_).isDefined) match {
       case Some(c) if req.getProtocol == "ws" =>
         //todo: modify handshake
         //        c.getConfigurator.modifyHandshake(c, new HandshakeRequest {
@@ -46,7 +49,7 @@ class UpgradeFilter(websockets: Seq[ServerEndpointConfig], upgradeHandler: Upgra
 
         val local = new LocalEndOfWebSocket(c.getConfigurator.getEndpointInstance(c.getEndpointClass))
         val remote = new RemoteEndOfWebSocket(req, local)
-        val session = new InMemWsSession(remote)
+        val session = new InMemWsSession(remote, req, uriMatcher(c).get)
 
         upgradeHandler.onSuccess(remote)
         local.onOpen(session)
@@ -55,6 +58,28 @@ class UpgradeFilter(websockets: Seq[ServerEndpointConfig], upgradeHandler: Upgra
       case _ => chain.doFilter(req, response)
     }
   }
+
+  def uriMatch(path:String)(serverEndpoint: ServerEndpointConfig) : Option[Map[String, String]] = {
+    val actual: Array[String] = path.split("/")
+    val pattern: Array[String] = serverEndpoint.getPath.split("/")
+
+    if (actual.length != pattern.length)
+      None
+    else {
+      val res: mutable.Map[String, String] = mutable.Map()
+
+      for ((left, right) <- pattern.zip(actual)) {
+        if (!left.equals(right))
+          if (left.startsWith("{"))
+            res.put(left.substring(1, left.length-1), right)
+          else
+            return None
+      }
+
+      Some(res.toMap)
+    }
+  }
+
 }
 
 trait AggregateListener extends WebSocketByteListener with WebSocketTextListener with WebSocketPingListener with WebSocketPongListener
@@ -155,7 +180,7 @@ class RemoteEndOfWebSocket(upgradeRequest: HttpServletRequest, local: LocalEndOf
   override def stream(fragment: String, last: Boolean): WebSocket = ???
 }
 
-class InMemWsSession(remote: RemoteEndOfWebSocket) extends Session {
+class InMemWsSession(remote: RemoteEndOfWebSocket, req: HttpServletRequest, pathParams: Map[String, String]) extends Session {
   override def getUserPrincipal: Principal = ???
   override def setMaxIdleTimeout(milliseconds: Long): Unit = ???
   override def getUserProperties: util.Map[String, AnyRef] = ???
@@ -195,7 +220,7 @@ class InMemWsSession(remote: RemoteEndOfWebSocket) extends Session {
   override def addMessageHandler[T](clazz: Class[T], handler: MessageHandler.Partial[T]): Unit = ???
   override def getProtocolVersion: String = ???
   override def isOpen: Boolean = true
-  override def getPathParameters: util.Map[String, String] = ???
+  override def getPathParameters: util.Map[String, String] = pathParams.asJava
   override def setMaxTextMessageBufferSize(length: Int): Unit = ???
   override def getOpenSessions: util.Set[Session] = ???
   override def getMessageHandlers: util.Set[MessageHandler] = ???

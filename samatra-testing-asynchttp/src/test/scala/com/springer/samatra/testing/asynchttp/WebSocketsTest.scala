@@ -15,31 +15,50 @@ class WebSocketsTest extends FunSpec with ScalaFutures with InMemoryBackend {
     self =>
     WsRoutes(self, "/*", new WSController {
       mount("/ping") { ws =>
-        (msg: String) => {
-          println(s"Got $msg")
+        (_: String) => {
           ws.send(s"pong")
+        }
+      }
+      mount("/chat/:name") { ws =>
+        (msg: String) => {
+          ws.send(s"> ${ws.captured("name")}: $msg")
         }
       }
     })
   })
 
-  val latch = new CountDownLatch(5)
+  it("should echo with captured stuff") {
+    val latch = new CountDownLatch(1)
 
-  val socket: WebSocket = http.prepareGet(s"ws:/ping")
-    .execute(new WebSocketUpgradeHandler.Builder().addWebSocketListener(new DefaultWebSocketListener() {
-      override def onMessage(message: String): Unit = {
-        println(s"Got $message")
-        message shouldBe "pong"
-        if (latch.getCount > 0) {
+    val socket: WebSocket = http.prepareGet(s"ws:/chat/sam")
+      .execute(new WebSocketUpgradeHandler.Builder().addWebSocketListener(new DefaultWebSocketListener() {
+        override def onMessage(message: String): Unit = {
+          message shouldBe "> sam: boo"
           latch.countDown()
-          socket.sendMessage("ping")
         }
-      }
-    }).build()).get()
+      }).build()).get()
 
-  it("should do web sockets") {
+    socket.sendMessage("boo")
+    if (!latch.await(1, TimeUnit.SECONDS)) fail("Expected websocket to close")
+    socket.close()
+  }
+
+  it("should do ping/pong") {
+    val latch = new CountDownLatch(5)
+
+    lazy val socket: WebSocket = http.prepareGet(s"ws:/ping")
+      .execute(new WebSocketUpgradeHandler.Builder().addWebSocketListener(new DefaultWebSocketListener() {
+        override def onMessage(message: String): Unit = {
+          message shouldBe "pong"
+          if (latch.getCount > 0) {
+            latch.countDown()
+            socket.sendMessage("ping")
+          }
+        }
+      }).build()).get()
+
     socket.sendMessage("ping")
-    if(!latch.await(1, TimeUnit.SECONDS)) fail("Expected websocket to close")
+    if (!latch.await(1, TimeUnit.SECONDS)) fail("Expected websocket to close")
     socket.close()
   }
 }
