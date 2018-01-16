@@ -4,7 +4,7 @@ import java.util.concurrent.{CountDownLatch, TimeUnit}
 
 import com.springer.samatra.websockets.WsRoutings.{WSController, WsRoutes}
 import org.asynchttpclient.AsyncHttpClient
-import org.asynchttpclient.ws.{DefaultWebSocketListener, WebSocket, WebSocketUpgradeHandler}
+import org.asynchttpclient.ws.{WebSocket, WebSocketListener, WebSocketUpgradeHandler}
 import org.scalatest.FunSpec
 import org.scalatest.Matchers._
 import org.scalatest.concurrent.ScalaFutures
@@ -32,15 +32,15 @@ class WebSocketsTest extends FunSpec with ScalaFutures with InMemoryBackend {
 
     val socket: WebSocket = http.prepareGet(s"ws:/chat/sam")
       .execute(new WebSocketUpgradeHandler.Builder().addWebSocketListener(new DefaultWebSocketListener() {
-        override def onMessage(message: String): Unit = {
-          message shouldBe "> sam: boo"
+        override def onTextFrame(payload: String, finalFragment: Boolean, rsv: Int): Unit = {
+          println(s"got $payload")
+          payload shouldBe "> sam: boo"
           latch.countDown()
         }
       }).build()).get()
 
-    socket.sendMessage("boo")
+    socket.sendTextFrame("boo")
     if (!latch.await(1, TimeUnit.SECONDS)) fail("Expected websocket to close")
-    socket.close()
   }
 
   it("should do ping/pong") {
@@ -48,17 +48,23 @@ class WebSocketsTest extends FunSpec with ScalaFutures with InMemoryBackend {
 
     lazy val socket: WebSocket = http.prepareGet(s"ws:/ping")
       .execute(new WebSocketUpgradeHandler.Builder().addWebSocketListener(new DefaultWebSocketListener() {
-        override def onMessage(message: String): Unit = {
-          message shouldBe "pong"
+
+        override def onTextFrame(payload: String, finalFragment: Boolean, rsv: Int): Unit = {
+          payload shouldBe "pong"
           if (latch.getCount > 0) {
             latch.countDown()
-            socket.sendMessage("ping")
+            socket.sendTextFrame("ping")
           }
         }
       }).build()).get()
 
-    socket.sendMessage("ping")
+    socket.sendTextFrame("ping")
     if (!latch.await(1, TimeUnit.SECONDS)) fail("Expected websocket to close")
-    socket.close()
+  }
+
+  class DefaultWebSocketListener() extends WebSocketListener {
+    override def onError(t: Throwable): Unit = t.printStackTrace()
+    override def onClose(websocket: WebSocket, code: Int, reason: String): Unit = ()
+    override def onOpen(websocket: WebSocket): Unit = ()
   }
 }

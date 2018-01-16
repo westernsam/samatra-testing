@@ -1,12 +1,13 @@
 package com.springer.samatra.testing.asynchttp
 
 import java.util
+import java.util.function.Predicate
 import javax.servlet.DispatcherType
 
 import com.springer.samatra.testing.servlet.InMemServletContext
 
 import scala.collection.JavaConverters._
-import org.asynchttpclient.{AsyncHandler, AsyncHttpClient, BoundRequestBuilder, DefaultAsyncHttpClient, DefaultAsyncHttpClientConfig, ListenableFuture, Request, RequestBuilder, Response, SignatureCalculator}
+import org.asynchttpclient.{AsyncHandler, AsyncHttpClient, AsyncHttpClientConfig, BoundRequestBuilder, ClientStats, DefaultAsyncHttpClient, DefaultAsyncHttpClientConfig, ListenableFuture, Request, RequestBuilder, Response, SignatureCalculator}
 import org.eclipse.jetty.server.{Connector, Server, ServerConnector}
 import org.eclipse.jetty.servlet.{FilterHolder, ServletContextHandler, ServletHolder}
 
@@ -35,6 +36,9 @@ trait JettyBacked extends Backend {
       override def executeRequest(request: Request): ListenableFuture[Response] = underlying.executeRequest(request)
       override def executeRequest(requestBuilder: RequestBuilder): ListenableFuture[Response] = underlying.executeRequest(requestBuilder)
       override def close(): Unit = underlying.close()
+      override def flushChannelPoolPartitions(predicate: Predicate[AnyRef]): Unit = underlying.flushChannelPoolPartitions(predicate)
+      override def getClientStats: ClientStats = underlying.getClientStats
+      override def getConfig: AsyncHttpClientConfig = underlying.getConfig
     }
   }
 

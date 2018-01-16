@@ -2,16 +2,18 @@ package com.springer.samatra.testing.asynchttp
 
 import java.io.{ByteArrayOutputStream, InputStream, OutputStream}
 import java.util.concurrent._
+import java.util.function.Predicate
 import javax.servlet._
 import javax.servlet.http.{Cookie, HttpServletRequest, HttpServletResponse}
 
 import com.springer.samatra.testing.asynchttp.InMemHttpResponses.{sendBody, sendStatus}
-import com.springer.samatra.testing.asynchttp.websockets.{UpgradeFilter, UpgradeHandlerAdapter}
 import com.springer.samatra.testing.servlet.InMemFilterChain
+import com.springer.samatra.testing.asynchttp.websockets.WebSocketUpgradeFilter
 import com.springer.samatra.testing.servlet.ServletApiHelpers.{httpResponse, httpServletRequest}
 import io.netty.handler.codec.http.{DefaultHttpHeaders, HttpHeaders}
 import org.asynchttpclient._
 import org.asynchttpclient.uri.Uri
+import org.asynchttpclient.ws.WebSocketUpgradeHandler
 
 import scala.collection.JavaConverters._
 import scala.collection.immutable.AbstractMap
@@ -57,10 +59,17 @@ trait InMemoryBackend extends Backend {
         val asyncHandler = new InMemAsyncHandler[T](handler, asyncRequest.getUri)
         val request: HttpServletRequest = makeRequest(asyncRequest, path, servletPath, asyncLatch, asyncListeners)
         val response: HttpServletResponse = mkResponse(asyncHandler, asyncRequest.getUri)
-        val handleWsUpgrade = ("/*", new UpgradeFilter(websockets = serverConfig.websockets, new UpgradeHandlerAdapter(handler)))
+
+        val filters =
+          handler match {
+            case h: WebSocketUpgradeHandler =>
+              ("/*", new WebSocketUpgradeFilter(websockets = serverConfig.websockets, h)) +: serverConfig.filters
+
+            case _ => serverConfig.filters
+          }
 
         try {
-          InMemFilterChain(request, response, handleWsUpgrade +: serverConfig.filters, contextAndServlet.map(s => (s._2, s._3, s._4)), asyncLatch, asyncListeners)
+          InMemFilterChain(request, response, filters, contextAndServlet.map(s => (s._2, s._3, s._4)), asyncLatch, asyncListeners)
         } catch {
           case t: Throwable => handler.onThrowable(t); throw t
         } finally {
@@ -72,6 +81,10 @@ trait InMemoryBackend extends Backend {
 
     override def executeRequest(request: Request): ListenableFuture[Response] = executeRequest(request, new AsyncCompletionHandlerBase())
     override def close(): Unit = ()
+
+    override def flushChannelPoolPartitions(predicate: Predicate[AnyRef]): Unit = ()
+    override def getClientStats: ClientStats = throw new UnsupportedOperationException
+    override def getConfig: AsyncHttpClientConfig = throw new UnsupportedOperationException
   }
 
   private def mkResponse[T](handler: AsyncHandler[T], uri: Uri) = httpResponse(
@@ -82,7 +95,7 @@ trait InMemoryBackend extends Backend {
     onHeader = (name, values) => {
       val headers = new DefaultHttpHeaders()
       headers.add(name, values.asJava)
-      handler.onHeadersReceived(new HttpResponseHeaders(headers))
+      handler.onHeadersReceived(headers)
     },
 
     onCookie = c => {
@@ -93,7 +106,7 @@ trait InMemoryBackend extends Backend {
 
       val headers = new DefaultHttpHeaders()
       headers.add("Set-Cookie", cookie)
-      handler.onHeadersReceived(new HttpResponseHeaders(headers))
+      handler.onHeadersReceived(headers)
     },
 
     onBody = bytes => {
@@ -138,10 +151,10 @@ trait InMemoryBackend extends Backend {
       else None
 
     val cookies = asyncRequest.getCookies.asScala.map(c => {
-      val cookie = new Cookie(c.getName, c.getValue)
-      cookie.setDomain(c.getDomain)
+      val cookie = new Cookie(c.name(), c.value())
+      cookie.setDomain(c.domain())
       cookie.setHttpOnly(c.isHttpOnly)
-      cookie.setPath(c.getPath)
+      cookie.setPath(c.path())
 
       cookie
     })

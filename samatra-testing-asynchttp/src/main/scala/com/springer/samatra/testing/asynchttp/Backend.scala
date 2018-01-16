@@ -8,15 +8,24 @@ import javax.websocket.server.{ServerContainer, ServerEndpointConfig}
 import javax.websocket.{ClientEndpointConfig, Endpoint, Extension, Session}
 
 import com.springer.samatra.testing.servlet.InMemServletContext
+import io.netty.handler.codec.http.{DefaultHttpHeaders, HttpHeaders}
 import org.asynchttpclient.AsyncHttpClient
 
-import scala.collection.JavaConverters._
 import scala.collection.mutable.ArrayBuffer
 import scala.language.implicitConversions
+import scala.collection.JavaConverters._
 
 trait Backend {
 
-  implicit def toJavaMap(headers: Map[String, Seq[String]]): util.Map[String, util.Collection[String]] = headers.mapValues(_.asJava.asInstanceOf[util.Collection[String]]).asJava
+  implicit def toHttpHeaders(in: Map[String, Seq[String]]) : HttpHeaders = {
+    val headers = new DefaultHttpHeaders
+
+    in.foreach {
+      case (k, v) => headers.add(k, v.asJava)
+    }
+
+    headers
+  }
 
   def client(serverConfig: ServerConfig): AsyncHttpClient
   def clientAndBaseUrl(serverConfig: ServerConfig): (AsyncHttpClient, String)

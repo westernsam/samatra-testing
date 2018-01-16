@@ -9,7 +9,7 @@ import org.asynchttpclient.uri.Uri
 
 object InMemHttpResponses {
 
-  private class Status(uri: Uri, sc: Int, st: String) extends HttpResponseStatus(uri, null) {
+  private class Status(uri: Uri, sc: Int, st: String) extends HttpResponseStatus(uri) {
     override def getRemoteAddress: SocketAddress = new LocalAddress("samatra-inmem")
     override def getLocalAddress: SocketAddress = new LocalAddress("samatra-inmem")
     override def getProtocolText: String = "http"

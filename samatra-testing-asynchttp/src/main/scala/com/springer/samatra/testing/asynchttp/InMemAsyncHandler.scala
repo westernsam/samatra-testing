@@ -3,9 +3,9 @@ package com.springer.samatra.testing.asynchttp
 import java.util.concurrent.atomic.AtomicBoolean
 
 import com.springer.samatra.testing.asynchttp.InMemHttpResponses.sendStatus
-import io.netty.handler.codec.http.DefaultHttpHeaders
+import io.netty.handler.codec.http.{DefaultHttpHeaders, HttpHeaders}
 import org.asynchttpclient.uri.Uri
-import org.asynchttpclient.{AsyncHandler, HttpResponseBodyPart, HttpResponseHeaders, HttpResponseStatus}
+import org.asynchttpclient.{AsyncHandler, HttpResponseBodyPart, HttpResponseStatus}
 
 class InMemAsyncHandler[T](handler: AsyncHandler[T], uri: Uri) extends AsyncHandler[T] {
 
@@ -18,8 +18,9 @@ class InMemAsyncHandler[T](handler: AsyncHandler[T], uri: Uri) extends AsyncHand
     if (!statusSent.getAndSet(true))
       handler.onStatusReceived(sendStatus(200, "Ok", uri))
 
-    if (!headersSent.getAndSet(true))
-      handler.onHeadersReceived(new HttpResponseHeaders(hs))
+    if (!headersSent.getAndSet(true)) {
+      handler.onHeadersReceived(hs)
+    }
   }
 
   override def onStatusReceived(responseStatus: HttpResponseStatus): AsyncHandler.State = {
@@ -27,11 +28,11 @@ class InMemAsyncHandler[T](handler: AsyncHandler[T], uri: Uri) extends AsyncHand
     handler.onStatusReceived(responseStatus)
   }
 
-  override def onHeadersReceived(headers: HttpResponseHeaders): AsyncHandler.State = {
+  override def onHeadersReceived(headers: HttpHeaders): AsyncHandler.State = {
     if (!statusSent.getAndSet(true))
       handler.onStatusReceived(sendStatus(200, "Ok", uri))
 
-    hs.add(headers.getHeaders)
+    hs.add(headers)
 
     AsyncHandler.State.CONTINUE
   }

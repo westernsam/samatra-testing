@@ -134,7 +134,7 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
 
       val cs = http.prepareHead("/future/morethanone/cookies").execute().get
       val cookie = cs.getCookies.asScala.collectFirst {
-        case c if c.getName == "cookie" => c.getValue
+        case c if c.name == "cookie" => c.value()
       }
       cookie shouldBe Some("tasty")
     }
@@ -176,7 +176,7 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
 
   it("should be able to set cookies") {
     val res = http.prepareGet("/future/morethanone/cookies").execute().get
-    res.getCookies.asScala.head.getValue shouldBe "tasty"
+    res.getCookies.asScala.head.value shouldBe "tasty"
   }
 
   it("should be able to retrieve request uri") {
