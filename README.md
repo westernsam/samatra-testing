@@ -109,7 +109,7 @@ libraryDependencies += "com.github.springernature:samatra-testing-wiremock" % "v
 Create an AsyncHttpClient with wiremock backed in. This uses Wiremock servlet to stub/mock http requests, but again all in memory.
 
 ```scala
-val wm = new WiremockHelper(wmContextPath = "/wm/*") with InMemoryBacked
+val wm = new WiremockHelper(wmContextPath = "/wm/*") with InMemoryBackend
 
 wm.wireMock.register(
   WireMock.post(urlEqualTo("/wm/something"))
