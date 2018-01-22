@@ -127,10 +127,10 @@ class InMemWsSession(remote: NettyWebSocket, req: HttpServletRequest, pathParams
   override def getUserProperties: util.Map[String, AnyRef] = ???
   override def getId: String = "whatever"
   override def getBasicRemote: RemoteEndpoint.Basic = new RemoteEndpoint.Basic {
-    override def sendBinary(data: ByteBuffer): Unit = remote.onBinaryFrame(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(data)))
-    override def sendText(text: String): Unit = remote.onTextFrame(new TextWebSocketFrame(text))
-    override def sendPing(applicationData: ByteBuffer): Unit = remote.onPingFrame(new PingWebSocketFrame())
-    override def sendPong(applicationData: ByteBuffer): Unit = remote.onPongFrame(new PongWebSocketFrame())
+    override def sendBinary(data: ByteBuffer): Unit = remote.handleFrame(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(data)))
+    override def sendText(text: String): Unit = remote.handleFrame(new TextWebSocketFrame(text))
+    override def sendPing(applicationData: ByteBuffer): Unit = remote.handleFrame(new PingWebSocketFrame())
+    override def sendPong(applicationData: ByteBuffer): Unit = remote.handleFrame(new PongWebSocketFrame())
 
     override def getSendWriter: Writer = ???
     override def sendBinary(partialByte: ByteBuffer, isLast: Boolean): Unit = ???
