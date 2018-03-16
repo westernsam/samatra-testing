@@ -17,6 +17,7 @@ trait JettyBacked extends Backend {
     val (underlying, host) = clientAndBaseUrl(serverConfig)
 
     new AsyncHttpClient {
+      override def prepare(method: String, url: String): BoundRequestBuilder =  underlying.prepare(method, s"$host$url")
       override def preparePatch(url: String): BoundRequestBuilder = underlying.preparePatch(s"$host$url")
       override def preparePost(url: String): BoundRequestBuilder = underlying.preparePost(s"$host$url")
       override def prepareGet(url: String): BoundRequestBuilder = underlying.prepareGet(s"$host$url")

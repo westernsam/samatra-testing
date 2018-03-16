@@ -33,6 +33,7 @@ trait InMemoryBackend extends Backend {
       val (scheme, path) = if (url.indexOf(":") > -1) (url.split(":")(0), url.split(":")(1)) else ("http", url)
       new BoundRequestBuilder(this, "GET", false).setUrl(s"$scheme://samatra-inmem$path")
     }
+    override def prepare(method: String, url: String): BoundRequestBuilder = new BoundRequestBuilder(this, method, false).setUrl(s"http://samatra-inmem$url")
     override def prepareHead(url: String): BoundRequestBuilder = new BoundRequestBuilder(this, "HEAD", false).setUrl(s"http://samatra-inmem$url")
     override def prepareDelete(url: String): BoundRequestBuilder = new BoundRequestBuilder(this, "DELETE", false).setUrl(s"http://samatra-inmem$url")
     override def preparePut(url: String): BoundRequestBuilder = new BoundRequestBuilder(this, "PUT", false).setUrl(s"http://samatra-inmem$url")

@@ -2,7 +2,7 @@ val jettyVersion = "9.4.7.v20170914"
 
 libraryDependencies ++=
   Seq(
-    "org.asynchttpclient" % "async-http-client" % "2.1.2",
+    "org.asynchttpclient" % "async-http-client" % "2.4.4",
     "javax.websocket" % "javax.websocket-api" % "1.1",
 
     "com.github.springernature.samatra" %% "samatra" % "v1.5.0" % "test",
