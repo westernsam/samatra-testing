@@ -29,6 +29,10 @@ lazy val `samatra-testing-unit` = project.in(file("samatra-testing-unit"))
   .settings(commonSettings: _*)
   .dependsOn(`samatra-testing-core`)
 
+lazy val `samatra-testing-cats` = project.in(file("samatra-testing-cats"))
+  .settings(commonSettings: _*)
+  .dependsOn(`samatra-testing-unit`)
+
 lazy val `samatra-testing-asynchttp` = project.in(file("samatra-testing-asynchttp"))
   .settings(commonSettings: _*)
   .dependsOn(`samatra-testing-core`)
@@ -47,4 +51,4 @@ lazy val `samatra-testing-htmlunitdriver` = project.in(file("samatra-testing-htm
 
 val `samatra-testing`: sbt.Project = project.in(file("."))
   .settings(commonSettings: _*)
-  .aggregate(`samatra-testing-core`, `samatra-testing-unit`, `samatra-testing-asynchttp`, `samatra-testing-jetty`, `samatra-testing-wiremock`, `samatra-testing-htmlunitdriver`)
+  .aggregate(`samatra-testing-core`, `samatra-testing-unit`, `samatra-testing-cats`, `samatra-testing-asynchttp`, `samatra-testing-jetty`, `samatra-testing-wiremock`, `samatra-testing-htmlunitdriver`)

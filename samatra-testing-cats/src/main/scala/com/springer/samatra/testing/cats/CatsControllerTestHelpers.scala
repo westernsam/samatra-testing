@@ -1,20 +1,21 @@
-package com.springer.samatra.testing.unit
+package com.springer.samatra.testing.cats
 
 import java.io.{ByteArrayOutputStream, PrintStream}
 import java.time.Clock
 import java.util.concurrent.{CopyOnWriteArrayList, CountDownLatch}
 
-import javax.servlet.http._
-import com.springer.samatra.routing.FutureResponses.FutureHttpResp
+import cats.Monad
 import com.springer.samatra.routing.Request
 import com.springer.samatra.routing.Routings._
 import com.springer.samatra.routing.StandardResponses.{Halt, WithHeaders}
-import com.springer.samatra.testing.servlet.ServletApiHelpers._
+import com.springer.samatra.testing.servlet.ServletApiHelpers.httpServletRequest
+import com.springer.samatra.testing.unit.InMemoryHttpReqResp
 import javax.servlet.AsyncListener
+import javax.servlet.http.{Cookie, HttpServletRequest}
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.language.higherKinds
 
-object ControllerTestHelpers {
+object CatsControllerTestHelpers {
 
   implicit val clock: Clock = Clock.systemUTC()
 
@@ -36,27 +37,27 @@ object ControllerTestHelpers {
     }
   }
 
-  implicit class ControllerTests(r: Routes)(implicit clock: Clock) {
+  implicit class CatsControllerTests[F[_]: Monad](r: Routes)(implicit clock: Clock) {
 
-    def get(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
+    def get(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty): F[HttpResp] =
       runRequest(r, httpServletRequest("http", path, "GET", headers, None, cookies, new CountDownLatch(0)))
 
-    def head(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
+    def head(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty): F[HttpResp] =
       runRequest(r, httpServletRequest("http", path, "HEAD", headers, None, cookies, new CountDownLatch(0)))
 
-    def post(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
+    def post(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty): F[HttpResp] =
       runRequest(r, httpServletRequest("http", path, "POST", headers, Some(body), cookies, new CountDownLatch(0)))
 
-    def put(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
+    def put(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty): F[HttpResp] =
       runRequest(r, httpServletRequest("http", path, "PUT", headers, Some(body), cookies, new CountDownLatch(0)))
 
-    def delete(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty)(implicit ex: ExecutionContext): Future[HttpResp] =
+    def delete(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty): F[HttpResp] =
       runRequest(r, httpServletRequest("http", path, "DELETE", headers, None, cookies, new CountDownLatch(0)))
 
-    private def runRequest(r: Routes, httpReq: HttpServletRequest)(implicit ex: ExecutionContext): Future[HttpResp] = {
+    private def runRequest(r: Routes, httpReq: HttpServletRequest): F[HttpResp] = {
       val request = Request(httpReq, started = clock.instant().toEpochMilli)
 
-      futureFrom(r.matching(httpReq, null) match {
+      val httpResp = r.matching(httpReq, null) match {
         case Right(route) =>
           val requestToResp: (Request) => HttpResp = route match {
             case PathParamsRoute(_, _, resp) => resp
@@ -72,14 +73,9 @@ object ControllerTestHelpers {
               Halt(405)
             }
         }
-      })
-    }
-
-    private def futureFrom(resp: HttpResp)(implicit ex: ExecutionContext): Future[HttpResp] = {
-      resp match {
-        case FutureHttpResp(fut: Future[_], _, f : Function1[Any, HttpResp], _, _, _) => fut.map(f)
-        case _ => Future.successful(resp)
       }
+
+      implicitly[Monad[F]].pure(httpResp)
     }
   }
 }

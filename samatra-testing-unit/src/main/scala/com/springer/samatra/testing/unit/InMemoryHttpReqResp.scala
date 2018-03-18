@@ -2,11 +2,12 @@ package com.springer.samatra.testing.unit
 
 import java.io.ByteArrayOutputStream
 import java.util.concurrent.atomic.AtomicInteger
-import java.util.concurrent.{ConcurrentHashMap, CopyOnWriteArrayList}
+import java.util.concurrent.{ConcurrentHashMap, CopyOnWriteArrayList, CountDownLatch, TimeUnit}
 import java.util.function.Function
-import javax.servlet.http.{Cookie, HttpServletRequest, HttpServletResponse}
 
+import javax.servlet.http.{Cookie, HttpServletRequest, HttpServletResponse}
 import com.springer.samatra.testing.servlet.ServletApiHelpers._
+import javax.servlet.{AsyncEvent, AsyncListener}
 
 import scala.collection.JavaConverters._
 
@@ -14,7 +15,7 @@ object InMemoryHttpReqResp {
 
   type Response = (Int, Map[String, Seq[String]], Seq[Cookie], Array[Byte])
 
-  def apply(req: HttpServletRequest, process: (HttpServletRequest, HttpServletResponse) => Unit): Response = {
+  def apply(req: HttpServletRequest, process: (HttpServletRequest, HttpServletResponse) => Unit, asyncLatch: CountDownLatch, asyncListeners: java.util.List[AsyncListener]): Response = {
     val status: AtomicInteger = new AtomicInteger(200)
     val respHeaders = new ConcurrentHashMap[String, CopyOnWriteArrayList[String]]()
     val respCookies = new CopyOnWriteArrayList[Cookie]()
@@ -31,6 +32,11 @@ object InMemoryHttpReqResp {
     )
     try {
       process(req, response)
+      if (req.isAsyncStarted) {
+        if (!asyncLatch.await(req.getAsyncContext.getTimeout, TimeUnit.MILLISECONDS)) {
+          asyncListeners.asScala.foreach(_.onTimeout(new AsyncEvent(req.getAsyncContext)))
+        }
+      }
     } catch {
       case t: Throwable =>
         response.sendError(500)
