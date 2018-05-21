@@ -1,5 +1,5 @@
 
-val jettyVersion = "9.4.7.v20170914"
+val jettyVersion = "9.4.10.v20180503"
 
 libraryDependencies ++=
   Seq(
@@ -7,6 +7,6 @@ libraryDependencies ++=
     "org.eclipse.jetty" % "jetty-servlet" % jettyVersion,
     "org.eclipse.jetty" % "jetty-servlets" % jettyVersion,
 
-    "com.github.springernature" %% "samatra" % "v1.4" % "test",
-    "org.scalatest" %% "scalatest" % "3.0.0" % "test"
+      "com.github.springernature.samatra" %% "samatra" % "v1.5.0" % "test",
+    "org.scalatest" %% "scalatest" % "3.0.5" % "test"
   )

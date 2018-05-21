@@ -1,8 +1,8 @@
-val jettyVersion = "9.4.7.v20170914"
+val jettyVersion = "9.4.10.v20180503"
 
 libraryDependencies ++=
   Seq(
-    "org.asynchttpclient" % "async-http-client" % "2.4.4",
+    "org.asynchttpclient" % "async-http-client" % "2.4.7",
     "javax.websocket" % "javax.websocket-api" % "1.1",
 
     "com.github.springernature.samatra" %% "samatra" % "v1.5.0" % "test",
@@ -11,5 +11,5 @@ libraryDependencies ++=
     "org.eclipse.jetty" % "jetty-servlet" % jettyVersion % "test",
     "org.eclipse.jetty" % "jetty-servlets" % jettyVersion % "test",
 
-    "org.scalatest" %% "scalatest" % "3.0.0" % "test"
+    "org.scalatest" %% "scalatest" % "3.0.5" % "test"
   )

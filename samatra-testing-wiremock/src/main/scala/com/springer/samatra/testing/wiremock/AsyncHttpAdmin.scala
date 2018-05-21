@@ -5,13 +5,14 @@ import java.util.UUID
 
 import com.github.tomakehurst.wiremock.admin.model._
 import com.github.tomakehurst.wiremock.admin.tasks._
-import com.github.tomakehurst.wiremock.admin.{AdminRoutes, AdminTask, RequestSpec}
+import com.github.tomakehurst.wiremock.admin._
 import com.github.tomakehurst.wiremock.client.VerificationException
 import com.github.tomakehurst.wiremock.common.Exceptions.throwUnchecked
 import com.github.tomakehurst.wiremock.common.{AdminException, Json}
-import com.github.tomakehurst.wiremock.core.Admin
+import com.github.tomakehurst.wiremock.core._
 import com.github.tomakehurst.wiremock.global.GlobalSettings
 import com.github.tomakehurst.wiremock.matching.RequestPattern
+import com.github.tomakehurst.wiremock.recording.{RecordSpec, RecordSpecBuilder, RecordingStatusResult, SnapshotRecordResult}
 import com.github.tomakehurst.wiremock.stubbing.StubMapping
 import com.github.tomakehurst.wiremock.verification.{FindNearMissesResult, FindRequestsResult, LoggedRequest, VerificationResult}
 import com.google.common.base.Charsets.UTF_8
@@ -161,5 +162,40 @@ class AsyncHttpAdmin(httpClient: => AsyncHttpClient, val urlPathPrefix: String) 
     checkNotNull(requestSpec)
     String.format(AsyncHttpAdmin.ADMIN_URL_PREFIX + requestSpec.path, urlPathPrefix)
   }
+
+  override def startRecording(targetBaseUrl: String): Unit = {
+    startRecording(RecordSpec.forBaseUrl(targetBaseUrl))
+  }
+
+  override def startRecording(recordSpec: RecordSpec): Unit = {
+    postJsonAssertOkAndReturnBody(urlFor(classOf[StartRecordingTask]), Json.write(recordSpec), 200)
+  }
+
+  override def startRecording(recordSpec: RecordSpecBuilder): Unit = {
+    startRecording(recordSpec.build)
+  }
+
+  override def getAllScenarios: GetScenariosResult = executeRequest(adminRoutes.requestSpecForTask(classOf[GetAllScenariosTask]), classOf[GetScenariosResult])
+
+  override def snapshotRecord: SnapshotRecordResult = {
+    val body = postJsonAssertOkAndReturnBody(urlFor(classOf[SnapshotTask]), "", 200)
+    Json.read(body, classOf[SnapshotRecordResult])
+  }
+
+  override def snapshotRecord(spec: RecordSpecBuilder): SnapshotRecordResult = snapshotRecord(spec.build)
+
+  override def snapshotRecord(spec: RecordSpec): SnapshotRecordResult = {
+    val body = postJsonAssertOkAndReturnBody(urlFor(classOf[SnapshotTask]), Json.write(spec), 200)
+    Json.read(body, classOf[SnapshotRecordResult])
+  }
+
+  override def stopRecording: SnapshotRecordResult = {
+    val body = postJsonAssertOkAndReturnBody(urlFor(classOf[StopRecordingTask]), "", 200)
+    Json.read(body, classOf[SnapshotRecordResult])
+  }
+
+  override def getRecordingStatus: RecordingStatusResult = executeRequest(adminRoutes.requestSpecForTask(classOf[GetRecordingStatusTask]), classOf[RecordingStatusResult])
+
+  override def getOptions = new WireMockConfiguration()
 }
 

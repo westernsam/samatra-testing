@@ -16,6 +16,35 @@ object HtmlUnitHelper {
     def driver: WebDriver = new SamatraHtmlDriver(http)
   }
 
+  class AsyncHttpWebConnection(http: AsyncHttpClient) extends WebConnection {
+    def close(): Unit = ()
+
+    override def getResponse(request: WebRequest): WebResponse = {
+      val uri = request.getUrl.toURI
+      val path = uri.getPath
+      val qs = Option(uri.getRawQuery)
+
+      val pathAndQuery = s"$path${qs.map(q => s"?$q").getOrElse("")}"
+
+      val httpReq = request.getHttpMethod match {
+        case HEAD => http.prepareHead(pathAndQuery)
+        case PATCH => http.preparePatch(pathAndQuery)
+        case TRACE => http.prepareTrace(pathAndQuery)
+        case GET => http.prepareGet(pathAndQuery)
+        case POST => http.preparePost(pathAndQuery).setBody(request.getRequestBody)
+        case PUT => http.preparePut(pathAndQuery).setBody(request.getRequestBody)
+        case DELETE => http.prepareDelete(pathAndQuery)
+        case OPTIONS => http.prepareOptions(pathAndQuery)
+      }
+
+      request.getAdditionalHeaders.asScala.foreach {
+        case (n, v) => httpReq.setHeader(n, v)
+      }
+
+      new StringWebResponse(httpReq.execute().get().getResponseBody, request.getUrl)
+    }
+  }
+
   class SamatraHtmlDriver(http: AsyncHttpClient) extends HtmlUnitDriver() {
     self =>
 
@@ -35,33 +64,7 @@ object HtmlUnitHelper {
     override def navigate(): WebDriver.Navigation = new RelativeUrlNav()
 
     override def modifyWebClient(client: WebClient): WebClient = {
-      client.setWebConnection(new WebConnection {
-        override def getResponse(request: WebRequest): WebResponse = {
-          val uri = request.getUrl.toURI
-          val path = uri.getPath
-          val qs = Option(uri.getRawQuery)
-
-          val pathAndQuery = s"$path${qs.map(q => s"?$q").getOrElse("")}"
-
-          val httpReq = request.getHttpMethod match {
-            case HEAD => http.prepareHead(pathAndQuery)
-            case PATCH => http.preparePatch(pathAndQuery)
-            case TRACE => http.prepareTrace(pathAndQuery)
-            case GET => http.prepareGet(pathAndQuery)
-            case POST => http.preparePost(pathAndQuery).setBody(request.getRequestBody)
-            case PUT => http.preparePut(pathAndQuery).setBody(request.getRequestBody)
-            case DELETE => http.prepareDelete(pathAndQuery)
-            case OPTIONS => http.prepareOptions(pathAndQuery)
-          }
-
-          request.getAdditionalHeaders.asScala.foreach {
-            case (n, v) => httpReq.setHeader(n, v)
-          }
-
-          new StringWebResponse(httpReq.execute().get().getResponseBody, request.getUrl)
-        }
-        override def close(): Unit = ()
-      })
+      client.setWebConnection(new AsyncHttpWebConnection(http))
       client
     }
   }

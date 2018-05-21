@@ -4,7 +4,7 @@ name := "samatra-testing"
 
 lazy val commonSettings = Seq(
   organization := "com.springernature",
-  scalaVersion := "2.12.3",
+  scalaVersion := "2.12.6",
   scalacOptions ++= Seq("-unchecked", "-deprecation:false", "-feature", "-Xfatal-warnings", "-Xlint"),
   testOptions ++= Tests.Argument("-oDF") :: Tests.Argument(TestFrameworks.ScalaTest, "-u", "target/reports/") :: Nil,
   trapExit := false,
