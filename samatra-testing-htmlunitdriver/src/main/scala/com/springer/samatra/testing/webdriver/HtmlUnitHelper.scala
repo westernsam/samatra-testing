@@ -27,14 +27,14 @@ object HtmlUnitHelper {
       val pathAndQuery = s"$path${qs.map(q => s"?$q").getOrElse("")}"
 
       val httpReq = request.getHttpMethod match {
-        case HEAD => http.prepareHead(pathAndQuery)
-        case PATCH => http.preparePatch(pathAndQuery)
-        case TRACE => http.prepareTrace(pathAndQuery)
-        case GET => http.prepareGet(pathAndQuery)
-        case POST => http.preparePost(pathAndQuery).setBody(request.getRequestBody)
-        case PUT => http.preparePut(pathAndQuery).setBody(request.getRequestBody)
-        case DELETE => http.prepareDelete(pathAndQuery)
-        case OPTIONS => http.prepareOptions(pathAndQuery)
+        case HEAD => http.prepareHead(pathAndQuery).setFollowRedirect(true)
+        case PATCH => http.preparePatch(pathAndQuery).setFollowRedirect(true)
+        case TRACE => http.prepareTrace(pathAndQuery).setFollowRedirect(true)
+        case GET => http.prepareGet(pathAndQuery).setFollowRedirect(true)
+        case POST => http.preparePost(pathAndQuery).setBody(request.getRequestBody).setFollowRedirect(true)
+        case PUT => http.preparePut(pathAndQuery).setBody(request.getRequestBody).setFollowRedirect(true)
+        case DELETE => http.prepareDelete(pathAndQuery).setFollowRedirect(true)
+        case OPTIONS => http.prepareOptions(pathAndQuery).setFollowRedirect(true)
       }
 
       request.getAdditionalHeaders.asScala.foreach {
@@ -54,9 +54,9 @@ object HtmlUnitHelper {
       super.get(new URL(s"http://samatra-webdriver$url"))
 
     class RelativeUrlNav extends WebDriver.Navigation {
-      override def forward(): Unit = self.navigate().forward()
-      override def refresh(): Unit = self.navigate().refresh()
-      override def back(): Unit = self.navigate().back()
+      override def forward(): Unit = SamatraHtmlDriver.super.navigate().forward()
+      override def refresh(): Unit = SamatraHtmlDriver.super.navigate().refresh()
+      override def back(): Unit = SamatraHtmlDriver.super.navigate().back()
       override def to(s: String): Unit = to(new URL(s"http://samatra-webdriver$s"))
       override def to(url: URL): Unit = SamatraHtmlDriver.super.navigate().to(url)
     }

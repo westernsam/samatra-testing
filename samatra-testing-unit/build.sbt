@@ -1,4 +1,4 @@
-val jettyVersion = "9.4.11.v20180605"
+val jettyVersion = "9.4.12.v20180830"
 
 libraryDependencies ++=
   Seq(
