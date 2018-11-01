@@ -45,7 +45,7 @@ class InMemListenableFuture[T](handler: AsyncHandler[T], eventualResponse: Futur
     eventualResponse.value match {
       case Some(Success(_)) => handler.onCompleted()
       case Some(Failure(ex)) => handler.onThrowable(ex); throw ex
-      case _ => throw new IllegalStateException("Future should be finishde")
+      case _ => throw new IllegalStateException("Future should be finished")
     }
   }
   override def get(timeout: Long, unit: TimeUnit): T = {
@@ -53,7 +53,7 @@ class InMemListenableFuture[T](handler: AsyncHandler[T], eventualResponse: Futur
     eventualResponse.value match {
       case Some(Success(_)) => handler.onCompleted()
       case Some(Failure(ex)) => handler.onThrowable(ex); throw ex
-      case _ => throw new IllegalStateException("Future should be finishde")
+      case _ => throw new IllegalStateException("Future should be finished")
     }
   }
 }

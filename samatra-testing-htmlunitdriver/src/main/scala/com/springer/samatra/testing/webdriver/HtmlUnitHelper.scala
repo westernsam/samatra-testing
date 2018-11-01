@@ -4,7 +4,7 @@ import java.net.URL
 
 import com.gargoylesoftware.htmlunit.HttpMethod._
 import com.gargoylesoftware.htmlunit._
-import org.asynchttpclient.AsyncHttpClient
+import org.asynchttpclient.{AsyncHttpClient, Response}
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.htmlunit.HtmlUnitDriver
 
@@ -21,27 +21,39 @@ object HtmlUnitHelper {
 
     override def getResponse(request: WebRequest): WebResponse = {
       val uri = request.getUrl.toURI
-      val path = uri.getPath
       val qs = Option(uri.getRawQuery)
 
-      val pathAndQuery = s"$path${qs.map(q => s"?$q").getOrElse("")}"
+      def execute(path: String) = {
+        val pathAndQuery = s"$path${qs.map(q => s"?$q").getOrElse("")}"
 
-      val httpReq = request.getHttpMethod match {
-        case HEAD => http.prepareHead(pathAndQuery).setFollowRedirect(true)
-        case PATCH => http.preparePatch(pathAndQuery).setFollowRedirect(true)
-        case TRACE => http.prepareTrace(pathAndQuery).setFollowRedirect(true)
-        case GET => http.prepareGet(pathAndQuery).setFollowRedirect(true)
-        case POST => http.preparePost(pathAndQuery).setBody(request.getRequestBody).setFollowRedirect(true)
-        case PUT => http.preparePut(pathAndQuery).setBody(request.getRequestBody).setFollowRedirect(true)
-        case DELETE => http.prepareDelete(pathAndQuery).setFollowRedirect(true)
-        case OPTIONS => http.prepareOptions(pathAndQuery).setFollowRedirect(true)
+        val httpReq = request.getHttpMethod match {
+          case HEAD => http.prepareHead(pathAndQuery)
+          case PATCH => http.preparePatch(pathAndQuery)
+          case TRACE => http.prepareTrace(pathAndQuery)
+          case GET => http.prepareGet(pathAndQuery)
+          case POST => http.preparePost(pathAndQuery).setBody(request.getRequestBody)
+          case PUT => http.preparePut(pathAndQuery).setBody(request.getRequestBody)
+          case DELETE => http.prepareDelete(pathAndQuery)
+          case OPTIONS => http.prepareOptions(pathAndQuery)
+        }
+
+        request.getAdditionalHeaders.asScala.foreach {
+          case (n, v) => httpReq.setHeader(n, v)
+        }
+
+        httpReq.execute().get
       }
 
-      request.getAdditionalHeaders.asScala.foreach {
-        case (n, v) => httpReq.setHeader(n, v)
+      val path = uri.getPath
+
+
+      var resp: Response = execute(path)
+
+      while(resp.getStatusCode > 300 && resp.getStatusCode < 400 && resp.getHeader("Location") != null) {
+        resp = execute(resp.getHeader("Location"))
       }
 
-      new StringWebResponse(httpReq.execute().get().getResponseBody, request.getUrl)
+      new StringWebResponse(resp.getResponseBody, new URL(resp.getUri.toUrl))
     }
   }
 

@@ -84,7 +84,7 @@ class InMemHttpServletResponse(onStatus: OnStatus, onHeader: OnHeader, onCookie:
     onCookie(cookie)
   }
 
-  override def getHeader(name: String): String = respHeaders.get(name).asScala.head
+  override def getHeader(name: String): String = respHeaders.asScala.get(name).map(_.asScala.head).orNull
   override def setHeader(name: String, value: String): Unit = if (value != null) {
     val hv = new CopyOnWriteArrayList[String]()
     hv.add(value)
