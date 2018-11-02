@@ -5,7 +5,8 @@ import java.util
 
 import com.gargoylesoftware.htmlunit.HttpMethod._
 import com.gargoylesoftware.htmlunit._
-import com.gargoylesoftware.htmlunit.util.NameValuePair
+import com.gargoylesoftware.htmlunit.util.{Cookie, NameValuePair}
+import io.netty.handler.codec.http.cookie.DefaultCookie
 import org.apache.http.HttpStatus
 import org.asynchttpclient.{AsyncHttpClient, Response}
 import org.openqa.selenium.WebDriver
@@ -19,7 +20,7 @@ object HtmlUnitHelper {
     def driver: WebDriver = new SamatraHtmlDriver(http)
   }
 
-  class AsyncHttpWebConnection(http: AsyncHttpClient) extends WebConnection {
+  class AsyncHttpWebConnection(http: AsyncHttpClient, client: WebClient) extends WebConnection {
     def close(): Unit = ()
 
     override def getResponse(request: WebRequest): WebResponse = {
@@ -44,11 +45,16 @@ object HtmlUnitHelper {
           case (n, v) => httpReq.setHeader(n, v)
         }
 
+        client.getCookies(request.getUrl).asScala.foreach { cookie =>
+          httpReq.addCookie(new DefaultCookie(cookie.getName, cookie.getValue))
+        }
+
         httpReq.execute().get
       }
 
       val path = uri.getPath
       var resp: Response = execute(path)
+
 
       while (resp.getStatusCode > 300 && resp.getStatusCode < 400 && resp.getHeader("Location") != null) {
         resp = execute(resp.getHeader("Location"))
@@ -64,6 +70,12 @@ object HtmlUnitHelper {
       response.getHeaders.asScala.foreach { header =>
         compiledHeaders.add(new NameValuePair(header.getKey, header.getValue))
       }
+
+      response.getCookies.asScala.foreach{ c =>
+
+        client.getCookieManager.addCookie(new Cookie(c.domain(), c.name(), c.value(), c.path(), c.maxAge().toInt, c.isSecure))
+      }
+
 
       new WebResponseData(content, HttpStatus.SC_OK, "OK", compiledHeaders)
     }
@@ -94,7 +106,7 @@ object HtmlUnitHelper {
     override def navigate(): WebDriver.Navigation = new RelativeUrlNav()
 
     override def modifyWebClient(client: WebClient): WebClient = {
-      client.setWebConnection(new AsyncHttpWebConnection(http))
+      client.setWebConnection(new AsyncHttpWebConnection(http, client))
       client
     }
   }
