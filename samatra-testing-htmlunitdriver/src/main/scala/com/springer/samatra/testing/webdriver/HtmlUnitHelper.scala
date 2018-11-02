@@ -36,7 +36,7 @@ object HtmlUnitHelper {
           case PATCH => http.preparePatch(pathAndQuery)
           case TRACE => http.prepareTrace(pathAndQuery)
           case GET => http.prepareGet(pathAndQuery)
-          case POST => http.preparePost(pathAndQuery).setFormParams(request.getRequestParameters.asScala.map(p => (p.getName, List(p.getValue).asJava)).toMap.asJava)
+          case POST => http.preparePost(pathAndQuery)
           case PUT => http.preparePut(pathAndQuery).setBody(request.getRequestBody)
           case DELETE => http.prepareDelete(pathAndQuery)
           case OPTIONS => http.prepareOptions(pathAndQuery)
@@ -44,6 +44,10 @@ object HtmlUnitHelper {
 
         request.getAdditionalHeaders.asScala.foreach {
           case (n, v) => httpReq.setHeader(n, v)
+        }
+
+        request.getRequestParameters.asScala.foreach { rp =>
+          httpReq.addFormParam(rp.getName, rp.getValue)
         }
 
         client.getCookieManager.getCookies.asScala.foreach { cookie =>
