@@ -153,7 +153,7 @@ trait InMemoryBackend extends Backend {
 
     val cookies = asyncRequest.getCookies.asScala.map(c => {
       val cookie = new Cookie(c.name(), c.value())
-      cookie.setDomain(c.domain())
+      Option(c.domain()).foreach(cookie.setDomain)
       cookie.setHttpOnly(c.isHttpOnly)
       cookie.setPath(c.path())
 

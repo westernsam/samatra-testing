@@ -2,6 +2,7 @@ package com.springer.samatra.testing.webdriver
 
 import java.net.URL
 import java.util
+import java.util.Date
 
 import com.gargoylesoftware.htmlunit.HttpMethod._
 import com.gargoylesoftware.htmlunit._
@@ -45,16 +46,20 @@ object HtmlUnitHelper {
           case (n, v) => httpReq.setHeader(n, v)
         }
 
-        client.getCookies(request.getUrl).asScala.foreach { cookie =>
+        client.getCookieManager.getCookies.asScala.foreach { cookie =>
           httpReq.addCookie(new DefaultCookie(cookie.getName, cookie.getValue))
         }
 
-        httpReq.execute().get
+        val resp = httpReq.execute().get
+        resp.getCookies.asScala.foreach{ c =>
+          val date = if (c.maxAge() > 0) new Date(new Date().getTime + (c.maxAge() * 1000L)) else new Date(new Date().getTime + 1000*60*60*24*365L)
+          client.getCookieManager.addCookie(new Cookie("samatra-webdriver", c.name(), c.value(), c.path(), date, c.isSecure, c.isHttpOnly))
+        }
+        resp
       }
 
       val path = uri.getPath
       var resp: Response = execute(path)
-
 
       while (resp.getStatusCode > 300 && resp.getStatusCode < 400 && resp.getHeader("Location") != null) {
         resp = execute(resp.getHeader("Location"))
@@ -70,13 +75,6 @@ object HtmlUnitHelper {
       response.getHeaders.asScala.foreach { header =>
         compiledHeaders.add(new NameValuePair(header.getKey, header.getValue))
       }
-
-      response.getCookies.asScala.foreach{ c =>
-
-        client.getCookieManager.addCookie(new Cookie(c.domain(), c.name(), c.value(), c.path(), c.maxAge().toInt, c.isSecure))
-      }
-
-
       new WebResponseData(content, HttpStatus.SC_OK, "OK", compiledHeaders)
     }
 
@@ -107,6 +105,7 @@ object HtmlUnitHelper {
 
     override def modifyWebClient(client: WebClient): WebClient = {
       client.setWebConnection(new AsyncHttpWebConnection(http, client))
+      client.getCookieManager.setCookiesEnabled(true)
       client
     }
   }
