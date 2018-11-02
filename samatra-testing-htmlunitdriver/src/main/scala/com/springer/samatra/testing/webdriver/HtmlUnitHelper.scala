@@ -29,10 +29,10 @@ object HtmlUnitHelper {
       val uri = request.getUrl.toURI
       val qs = Option(uri.getRawQuery)
 
-      def execute(path: String) = {
+      def execute(path: String, method: HttpMethod) = {
         val pathAndQuery = s"$path${qs.map(q => s"?$q").getOrElse("")}"
 
-        val httpReq = request.getHttpMethod match {
+        val httpReq = method match {
           case HEAD => http.prepareHead(pathAndQuery)
           case PATCH => http.preparePatch(pathAndQuery)
           case TRACE => http.prepareTrace(pathAndQuery)
@@ -65,10 +65,10 @@ object HtmlUnitHelper {
       }
 
       val path = uri.getPath
-      var resp: Response = execute(path)
+      var resp: Response = execute(path, request.getHttpMethod)
 
       while (resp.getStatusCode > 300 && resp.getStatusCode < 400 && resp.getHeader("Location") != null) {
-        resp = execute(resp.getHeader("Location"))
+        resp = execute(resp.getHeader("Location"), GET)
       }
 
       new WebResponse(getWebResponseData(resp), buildWebRequest(new URL(resp.getUri.toUrl)), 0)
