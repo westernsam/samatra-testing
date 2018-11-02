@@ -1,9 +1,12 @@
 package com.springer.samatra.testing.webdriver
 
 import java.net.URL
+import java.util
 
 import com.gargoylesoftware.htmlunit.HttpMethod._
 import com.gargoylesoftware.htmlunit._
+import com.gargoylesoftware.htmlunit.util.NameValuePair
+import org.apache.http.HttpStatus
 import org.asynchttpclient.{AsyncHttpClient, Response}
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.htmlunit.HtmlUnitDriver
@@ -31,7 +34,7 @@ object HtmlUnitHelper {
           case PATCH => http.preparePatch(pathAndQuery)
           case TRACE => http.prepareTrace(pathAndQuery)
           case GET => http.prepareGet(pathAndQuery)
-          case POST => http.preparePost(pathAndQuery).setBody(request.getRequestBody)
+          case POST => http.preparePost(pathAndQuery).setFormParams(request.getRequestParameters.asScala.map(p => (p.getName, List(p.getValue).asJava)).toMap.asJava)
           case PUT => http.preparePut(pathAndQuery).setBody(request.getRequestBody)
           case DELETE => http.prepareDelete(pathAndQuery)
           case OPTIONS => http.prepareOptions(pathAndQuery)
@@ -45,15 +48,30 @@ object HtmlUnitHelper {
       }
 
       val path = uri.getPath
-
-
       var resp: Response = execute(path)
 
-      while(resp.getStatusCode > 300 && resp.getStatusCode < 400 && resp.getHeader("Location") != null) {
+      while (resp.getStatusCode > 300 && resp.getStatusCode < 400 && resp.getHeader("Location") != null) {
         resp = execute(resp.getHeader("Location"))
       }
 
-      new StringWebResponse(resp.getResponseBody, new URL(resp.getUri.toUrl))
+      new WebResponse(getWebResponseData(resp), buildWebRequest(new URL(resp.getUri.toUrl)), 0)
+    }
+
+    private def getWebResponseData(response: Response): WebResponseData = {
+      val content: Array[Byte] = TextUtil.stringToByteArray(response.getResponseBody, "UTF-8")
+      val compiledHeaders: util.List[NameValuePair] = new util.ArrayList[NameValuePair]
+      compiledHeaders.add(new NameValuePair("Content-Type", "text/html; charset=UTF-8"))
+      response.getHeaders.asScala.foreach { header =>
+        compiledHeaders.add(new NameValuePair(header.getKey, header.getValue))
+      }
+
+      new WebResponseData(content, HttpStatus.SC_OK, "OK", compiledHeaders)
+    }
+
+    private def buildWebRequest(originatingURL: URL): WebRequest = {
+      val webRequest: WebRequest = new WebRequest(originatingURL, HttpMethod.GET)
+      webRequest.setCharset("UTF-8")
+      webRequest
     }
   }
 
