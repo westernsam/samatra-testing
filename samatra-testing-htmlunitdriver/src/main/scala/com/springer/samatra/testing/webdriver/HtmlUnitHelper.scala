@@ -1,6 +1,7 @@
 package com.springer.samatra.testing.webdriver
 
 import java.net.URL
+import java.net.URLEncoder.encode
 import java.util
 import java.util.Date
 
@@ -46,9 +47,8 @@ object HtmlUnitHelper {
           case (n, v) => httpReq.setHeader(n, v)
         }
 
-        request.getRequestParameters.asScala.foreach { rp =>
-          httpReq.addFormParam(rp.getName, rp.getValue)
-        }
+        if (!request.getRequestParameters.isEmpty)
+          httpReq.setBody(request.getRequestParameters.asScala.map(p => s"${encode(p.getName, "UTF-8")}=${encode(p.getValue, "UTF-8")}").mkString("&"))
 
         client.getCookieManager.getCookies.asScala.foreach { cookie =>
           httpReq.addCookie(new DefaultCookie(cookie.getName, cookie.getValue))
