@@ -47,8 +47,10 @@ object HtmlUnitHelper {
           case (n, v) => httpReq.setHeader(n, v)
         }
 
-        if (!request.getRequestParameters.isEmpty)
+        if (!request.getRequestParameters.isEmpty) {
+          httpReq.setHeader("Content-Type", "application/x-www-form-urlencoded")
           httpReq.setBody(request.getRequestParameters.asScala.map(p => s"${encode(p.getName, "UTF-8")}=${encode(p.getValue, "UTF-8")}").mkString("&"))
+        }
 
         client.getCookieManager.getCookies.asScala.foreach { cookie =>
           httpReq.addCookie(new DefaultCookie(cookie.getName, cookie.getValue))
@@ -75,7 +77,6 @@ object HtmlUnitHelper {
     private def getWebResponseData(response: Response): WebResponseData = {
       val content: Array[Byte] = TextUtil.stringToByteArray(response.getResponseBody, "UTF-8")
       val compiledHeaders: util.List[NameValuePair] = new util.ArrayList[NameValuePair]
-      compiledHeaders.add(new NameValuePair("Content-Type", "text/html; charset=UTF-8"))
       response.getHeaders.asScala.foreach { header =>
         compiledHeaders.add(new NameValuePair(header.getKey, header.getValue))
       }
