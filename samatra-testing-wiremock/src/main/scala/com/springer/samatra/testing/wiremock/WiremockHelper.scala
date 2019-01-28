@@ -27,8 +27,8 @@ class WiremockHelper(otherConfig: ServerConfig = new ServerConfig, wmContextPath
   val wireMock = new WireMock(admin)
 
   lazy val http: AsyncHttpClient = client(new ServerConfig {
-    mount("/__admin/*", new WireMockHandlerDispatchingServlet(), context, Map(RequestHandler.HANDLER_CLASS_KEY -> classOf[AdminRequestHandler].getName))
-    mount(wmContextPath, new WireMockHandlerDispatchingServlet(), context, Map(RequestHandler.HANDLER_CLASS_KEY -> classOf[StubRequestHandler].getName))
+    mount("/__admin/*", new WireMockHandlerDispatchingServlet(), context, Map(RequestHandler.HANDLER_CLASS_KEY -> classOf[AdminRequestHandler].getName), None)
+    mount(wmContextPath, new WireMockHandlerDispatchingServlet(), context, Map(RequestHandler.HANDLER_CLASS_KEY -> classOf[StubRequestHandler].getName), None)
   } ++ otherConfig)
 
 }

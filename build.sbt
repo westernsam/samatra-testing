@@ -20,7 +20,7 @@ lazy val commonSettings = Seq(
   publishTo := {
     Some(Resolver.file("Local Maven Repository", new File(Path.userHome.absolutePath + "~/.m2/repository")))
   }
-)
+) 
 
 lazy val `samatra-testing-core` = project.in(file("samatra-testing-core"))
   .settings(commonSettings: _*)

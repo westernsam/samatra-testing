@@ -79,6 +79,7 @@ trait RoutesFixtures {
   def basic: Routes = new AggregateRoutes(
     new Controller {
       get("/himynameis/:name")(req => s"hi ${req.captured("name")}")
+      get("/himyusernameis")(req => s"hi ${req.underlying.getUserPrincipal.getName}")
       get("/throws")(_ => throw new RuntimeException)
       get("/404")(_ => Halt(404))
       get("/cookieFromRequest")(req => req.cookie("cookie").get)

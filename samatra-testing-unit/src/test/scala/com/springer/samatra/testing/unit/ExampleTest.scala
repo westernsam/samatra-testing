@@ -1,6 +1,7 @@
 package com.springer.samatra.testing.unit
 
 import java.net.URLEncoder.encode
+import java.security.Principal
 import java.time.{Clock, LocalDate, ZoneId, ZoneOffset}
 import java.util.concurrent.Executors
 
@@ -50,6 +51,10 @@ class ExampleTest extends FunSpec with ScalaFutures {
       }
     }
 
+    get("/user") { req =>
+      req.underlying.getUserPrincipal.getName
+    }
+
     get("/hello/:name") { req =>
       Future {
         WithCookies(Seq(AddCookie("cookie", req.cookie("cookie").get))) {
@@ -89,42 +94,51 @@ class ExampleTest extends FunSpec with ScalaFutures {
       headers("Date") shouldBe Seq("Thu, 18 05 2017 12:00:00 GMT")
       new String(body) shouldBe "sam"
     }
-  }
 
-  it("should test future string") {
-    val result: HttpResp = unwrapFutureResp(routes.get("/hello/sam", cookies = Seq(new Cookie("cookie", "expectedValue"))))
-    result shouldBe
-      WithCookies(Seq(AddCookie("cookie", "expectedValue"))) {
-        WithHeaders("a" -> "b") {
-          StringResp("sam")
-        }
+    it("set user principle") {
+      val principal = new Principal {
+        override def getName: String = "sam"
       }
-  }
 
-  it("returns 404 on no match") {
-    routes.get("/nomatch") shouldBe Halt(404)
-  }
-
-  it("writes errors to output stream") {
-    val (statusCode, _, _, body) = routes.get("/error").run()
-
-    statusCode shouldBe 500
-    new String(body) should include("Error message")
-  }
-
-  it("returns 405 on on MethodNotAllowed") {
-    val result = routes.put("/hello/sam", body = "body".getBytes)
-    result shouldBe WithHeaders("Allow" -> "GET, HEAD") {
-      Halt(405)
+      val (_, _, _, body) = routes.get("/user", userPrincipal = Some(principal)).run()
+      new String(body) shouldBe "sam"
     }
-  }
 
-  it("blows up on no match") {
-    routes.get("/nomatch") shouldBe Halt(404)
-  }
+    it("should test future string") {
+      val result: HttpResp = unwrapFutureResp(routes.get("/hello/sam", cookies = Seq(new Cookie("cookie", "expectedValue"))))
+      result shouldBe
+        WithCookies(Seq(AddCookie("cookie", "expectedValue"))) {
+          WithHeaders("a" -> "b") {
+            StringResp("sam")
+          }
+        }
+    }
 
-  it("bug - future of not http response") {
-    routes.get("/nomatch") shouldBe Halt(404)
+    it("returns 404 on no match") {
+      routes.get("/nomatch") shouldBe Halt(404)
+    }
+
+    it("writes errors to output stream") {
+      val (statusCode, _, _, body) = routes.get("/error").run()
+
+      statusCode shouldBe 500
+      new String(body) should include("Error message")
+    }
+
+    it("returns 405 on on MethodNotAllowed") {
+      val result = routes.put("/hello/sam", body = "body".getBytes)
+      result shouldBe WithHeaders("Allow" -> "GET, HEAD") {
+        Halt(405)
+      }
+    }
+
+    it("blows up on no match") {
+      routes.get("/nomatch") shouldBe Halt(404)
+    }
+
+    it("bug - future of not http response") {
+      routes.get("/nomatch") shouldBe Halt(404)
+    }
   }
 
 }

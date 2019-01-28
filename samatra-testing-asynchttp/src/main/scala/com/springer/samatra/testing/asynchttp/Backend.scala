@@ -1,19 +1,20 @@
 package com.springer.samatra.testing.asynchttp
 
 import java.net.URI
+import java.security.Principal
 import java.util
 import java.util.Collections
-import javax.servlet._
-import javax.websocket.server.{ServerContainer, ServerEndpointConfig}
-import javax.websocket.{ClientEndpointConfig, Endpoint, Extension, Session}
 
 import com.springer.samatra.testing.servlet.InMemServletContext
 import io.netty.handler.codec.http.{DefaultHttpHeaders, HttpHeaders}
+import javax.servlet._
+import javax.websocket.server.{ServerContainer, ServerEndpointConfig}
+import javax.websocket.{ClientEndpointConfig, Endpoint, Extension, Session}
 import org.asynchttpclient.AsyncHttpClient
 
+import scala.collection.JavaConverters._
 import scala.collection.mutable.ArrayBuffer
 import scala.language.implicitConversions
-import scala.collection.JavaConverters._
 
 trait Backend {
 
@@ -35,16 +36,17 @@ class ServerConfig extends ServerContainer {
   self =>
   lazy val websockets: ArrayBuffer[ServerEndpointConfig] = new ArrayBuffer[ServerEndpointConfig]()
   lazy val filters: ArrayBuffer[(String, Filter)] = new ArrayBuffer[(String, Filter)]()
-  lazy val routes: ArrayBuffer[(String, Servlet, ServletContext, Map[String, String])] = new ArrayBuffer[(String, Servlet, ServletContext, Map[String, String])]()
+  lazy val routes: ArrayBuffer[(String, Servlet, ServletContext, Map[String, String], Option[Principal])] = new ArrayBuffer[(String, Servlet, ServletContext, Map[String, String], Option[Principal])]()
 
   def mount(path: String, f: Filter): Unit = filters.append(path -> f)
-  def mount(path: String, s: Servlet): Unit = mount(path, s, new InMemServletContext(s, path))
-  def mount(path: String, s: Servlet, context: ServletContext, initParams: Map[String, String] = Map.empty): Unit = routes.append((path, s, context, initParams))
+  def mount(path: String, s: Servlet): Unit = mount(path, s, None)
+  def mount(path: String, s: Servlet, userPrincipal: Option[Principal] = None): Unit = mount(path, s, new InMemServletContext(s, path), Map.empty, userPrincipal)
+  def mount(path: String, s: Servlet, context: ServletContext, initParams: Map[String, String], userPrincipal: Option[Principal]): Unit = routes.append((path, s, context, initParams, userPrincipal))
 
   def ++(other: ServerConfig): ServerConfig = new ServerConfig() {
     override lazy val websockets: ArrayBuffer[ServerEndpointConfig] = self.websockets ++ other.websockets
     override lazy val filters: ArrayBuffer[(String, Filter)] = self.filters ++ other.filters
-    override lazy val routes: ArrayBuffer[(String, Servlet, ServletContext, Map[String, String])] = self.routes ++ other.routes
+    override lazy val routes: ArrayBuffer[(String, Servlet, ServletContext, Map[String, String], Option[Principal])] = self.routes ++ other.routes
   }
 
   override def addEndpoint(endpointClass: Class[_]): Unit = throw new UnsupportedOperationException("todo: use bloody annotations to call other addEndpoint thingy")

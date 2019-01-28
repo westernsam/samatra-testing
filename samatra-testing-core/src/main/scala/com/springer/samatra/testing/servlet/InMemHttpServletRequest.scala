@@ -15,8 +15,7 @@ import com.springer.samatra.testing.servlet.ServletApiHelpers.dateFormat
 
 class InMemHttpServletRequest(protocol: String, url: String, method: String, headers: Map[String, Seq[String]],
                               body: Option[Array[Byte]], cookies: Seq[Cookie], countDown: CountDownLatch = new CountDownLatch(0),
-                              asyncListeners: util.List[AsyncListener] = Collections.emptyList(), contextPath: String = "") extends HttpServletRequest {
-
+                              asyncListeners: util.List[AsyncListener] = Collections.emptyList(), contextPath: String = "", var userPrincipal: Option[Principal] = None) extends HttpServletRequest {
   val headersLowerCase: Map[String, Seq[String]] = headers.map { case (k, v) => k.toLowerCase -> v }
   val committed: AtomicBoolean = new AtomicBoolean(false)
   val asyncStarted: AtomicBoolean = new AtomicBoolean(false)
@@ -31,7 +30,8 @@ class InMemHttpServletRequest(protocol: String, url: String, method: String, hea
   val attributes: ConcurrentHashMap[String, AnyRef] = new ConcurrentHashMap[String, AnyRef]()
 
   override def getPathInfo: String = path.substring(getServletPath.length)
-  override def getUserPrincipal: Principal = null
+  override def getUserPrincipal: Principal = userPrincipal.orNull
+  def setUserPrincipal(u: Principal): Unit = userPrincipal = Some(u)
   override def getServletPath: String = contextPath
   override def getDateHeader(name: String): Long = if (headersLowerCase.contains(name.toLowerCase)) dateFormat.parse(getHeader(name.toLowerCase)).getTime else -1
   override def getIntHeader(name: String): Int = if (headersLowerCase.contains(name.toLowerCase)) getHeader(name.toLowerCase).toInt else -1

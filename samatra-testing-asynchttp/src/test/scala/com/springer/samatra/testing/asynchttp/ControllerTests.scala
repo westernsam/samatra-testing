@@ -1,8 +1,9 @@
 package com.springer.samatra.testing.asynchttp
 
+import java.security.Principal
+
 import javax.servlet._
 import javax.servlet.http.HttpServletResponse
-
 import com.springer.samatra.routing.Routings.Routes
 import org.asynchttpclient.AsyncHttpClient
 import org.scalatest.Matchers._
@@ -14,6 +15,7 @@ import scala.collection.JavaConverters._
 class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with BeforeAndAfterAll with InMemoryBackend {
 
   val http: AsyncHttpClient = client(new ServerConfig {
+
     mount("/*", new Filter {
       override def init(filterConfig: FilterConfig): Unit = ()
       override def destroy(): Unit = ()
@@ -23,7 +25,9 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
       }
     })
 
-    mount("/*", Routes(basic))
+    mount("/*", Routes(basic), userPrincipal = Some(new Principal() {
+      override def getName: String = "Sam"
+    }))
     mount("/regex/*", Routes(regex))
     mount("/caching/*", Routes(caching))
     mount("/future/*", Routes(futures))
@@ -194,6 +198,11 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
   it("should be able to retrieve request uri") {
     val res = http.prepareGet("/uri?foo=bar#qunx").execute().get
     res.getResponseBody should endWith("/uri?foo=bar")
+  }
+
+  it("should be able to gte user principle") {
+    val res = http.prepareGet("/himyusernameis").execute().get
+    res.getResponseBody shouldBe "hi Sam"
   }
 
   it("should be able to use GzipHandler") {

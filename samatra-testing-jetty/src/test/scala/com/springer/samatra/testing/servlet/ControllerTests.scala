@@ -1,8 +1,9 @@
 package com.springer.samatra.testing.servlet
 
+import java.security.Principal
+
 import javax.servlet._
 import javax.servlet.http.HttpServletResponse
-
 import com.springer.samatra.routing.Routings.Routes
 import com.springer.samatra.testing.asynchttp.{JettyBacked, ServerConfig}
 import org.asynchttpclient.AsyncHttpClient
@@ -24,7 +25,9 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
       }
     })
 
-    mount("/*", Routes(basic))
+    mount("/*", Routes(basic), userPrincipal = Some(new Principal() {
+      override def getName: String = "Sam"
+    }))
     mount("/regex/*", Routes(regex))
     mount("/caching/*", Routes(caching))
     mount("/future/*", Routes(futures))
@@ -144,6 +147,11 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
     val res = http.prepareGet("/future/timeout").execute().get
     res.getStatusCode shouldBe 500
     res.getResponseBody should include("java.util.concurrent.TimeoutException")
+  }
+
+  it("should be able to gte user principle") {
+    val res = http.prepareGet("/himyusernameis").execute().get
+    res.getResponseBody shouldBe "hi Sam"
   }
 
   it("should parse path params") {

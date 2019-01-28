@@ -1,11 +1,12 @@
 package com.springer.samatra.testing.asynchttp
 
 import java.io.{ByteArrayOutputStream, InputStream, OutputStream}
+import java.security.Principal
 import java.util.concurrent._
 import java.util.function.Predicate
+
 import javax.servlet._
 import javax.servlet.http.{Cookie, HttpServletRequest, HttpServletResponse}
-
 import com.springer.samatra.testing.asynchttp.InMemHttpResponses.{sendBody, sendStatus}
 import com.springer.samatra.testing.servlet.InMemFilterChain
 import com.springer.samatra.testing.asynchttp.websockets.WebSocketUpgradeFilter
@@ -50,9 +51,8 @@ trait InMemoryBackend extends Backend {
     override def executeRequest[T](asyncRequest: Request, handler: AsyncHandler[T]): ListenableFuture[T] = {
       val path = asyncRequest.getUri.toRelativeUrl
 
-      val contextAndServlet: Option[(String, Servlet, ServletContext, Map[String, String])] = findContextPath(serverConfig, path)
-      val servletPath = contextAndServlet.map { case (c, _, _, _) => c.substring(0, c.length - 2) }.getOrElse("")
-
+      val contextAndServlet: Option[(String, Servlet, ServletContext, Map[String, String], Option[Principal])] = findContextPath(serverConfig, path)
+      val servletPath = contextAndServlet.map { case (c, _, _, _, _) => c.substring(0, c.length - 2) }.getOrElse("")
       val asyncLatch = new CountDownLatch(1)
       val asyncListeners = new CopyOnWriteArrayList[AsyncListener]()
 
@@ -70,7 +70,7 @@ trait InMemoryBackend extends Backend {
           }
 
         try {
-          InMemFilterChain(request, response, filters, contextAndServlet.map(s => (s._2, s._3, s._4)), asyncLatch, asyncListeners)
+          InMemFilterChain(request, response, filters, contextAndServlet.map(s => (s._2, s._3, s._4, s._5)), asyncLatch, asyncListeners)
         } catch {
           case t: Throwable => handler.onThrowable(t); throw t
         } finally {
@@ -115,7 +115,7 @@ trait InMemoryBackend extends Backend {
     }
   )
 
-  private def makeRequest[T](asyncRequest: Request, path: String, servletPath: String, asyncLatch: CountDownLatch, listeners: CopyOnWriteArrayList[AsyncListener]) = {
+  private def makeRequest[T](asyncRequest: Request, path: String, servletPath: String, asyncLatch: CountDownLatch, listeners: CopyOnWriteArrayList[AsyncListener]):HttpServletRequest = {
     val headers: HttpHeaders = asyncRequest.getHeaders
     val scalaHeaders: Map[String, Seq[String]] = new AbstractMap[String, Seq[String]] {
       override def +[V1 >: Seq[String]](kv: (String, V1)): Map[String, V1] = throw new UnsupportedOperationException
@@ -163,15 +163,15 @@ trait InMemoryBackend extends Backend {
     httpServletRequest(asyncRequest.getUri.getScheme, path, asyncRequest.getMethod, scalaHeaders, maybeBytes, cookies, asyncLatch, listeners, servletPath)
   }
 
-  private def findContextPath(serverConfig: ServerConfig, path: String): Option[(String, Servlet, ServletContext, Map[String, String])] = {
+  private def findContextPath(serverConfig: ServerConfig, path: String): Option[(String, Servlet, ServletContext, Map[String, String], Option[Principal])] = {
     def pathMatches(p: String) = path.startsWith(p.substring(0, p.length - 2))
 
     val sorted = serverConfig.routes.sortBy {
-      case (p, _, _, _) => if (pathMatches(p)) p.length - 2 else -1
+      case (p, _, _, _, _) => if (pathMatches(p)) p.length - 2 else -1
     }.reverse
 
     sorted.find {
-      case (p, _, _, _) => pathMatches(p)
+      case (p, _, _, _, _) => pathMatches(p)
     }
   }
 }

@@ -78,6 +78,7 @@ trait RoutesFixtures {
   def basic: Routes = new AggregateRoutes(
     new Controller {
       get("/himynameis/:name")(req => s"hi ${req.captured("name")}")
+      get("/himyusernameis")(req => s"hi ${req.underlying.getUserPrincipal.getName}")
       get("/file") { _ =>
         WithHeaders("Content-Type" -> "application/xml") {
           Paths.get("build.sbt")

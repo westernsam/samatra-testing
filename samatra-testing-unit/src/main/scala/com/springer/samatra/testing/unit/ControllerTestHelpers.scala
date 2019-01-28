@@ -1,6 +1,7 @@
 package com.springer.samatra.testing.unit
 
 import java.io.{ByteArrayOutputStream, PrintStream}
+import java.security.Principal
 import java.time.Clock
 import java.util.concurrent.{CopyOnWriteArrayList, CountDownLatch, TimeUnit}
 
@@ -45,20 +46,20 @@ object ControllerTestHelpers {
 
   implicit class ControllerTests(r: Routes)(implicit clock: Clock) {
 
-    def get(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty): HttpResp =
-      runRequest(r, httpServletRequest("http", path, "GET", headers, None, cookies, new CountDownLatch(0)))
+    def get(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty, userPrincipal: Option[Principal] = None): HttpResp =
+      runRequest(r, httpServletRequest("http", path, "GET", headers, None, cookies, new CountDownLatch(0), userPrincipal=userPrincipal))
 
-    def head(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty): HttpResp =
-      runRequest(r, httpServletRequest("http", path, "HEAD", headers, None, cookies, new CountDownLatch(0)))
+    def head(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty, userPrincipal: Option[Principal] = None): HttpResp =
+      runRequest(r, httpServletRequest("http", path, "HEAD", headers, None, cookies, new CountDownLatch(0), userPrincipal=userPrincipal))
 
-    def post(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty): HttpResp =
-      runRequest(r, httpServletRequest("http", path, "POST", headers, Some(body), cookies, new CountDownLatch(0)))
+    def post(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty, userPrincipal: Option[Principal] = None): HttpResp =
+      runRequest(r, httpServletRequest("http", path, "POST", headers, Some(body), cookies, new CountDownLatch(0), userPrincipal=userPrincipal))
 
-    def put(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty): HttpResp =
-      runRequest(r, httpServletRequest("http", path, "PUT", headers, Some(body), cookies, new CountDownLatch(0)))
+    def put(path: String, headers: Map[String, Seq[String]] = Map.empty, body: Array[Byte], cookies: Seq[Cookie] = Seq.empty, userPrincipal: Option[Principal] = None): HttpResp =
+      runRequest(r, httpServletRequest("http", path, "PUT", headers, Some(body), cookies, new CountDownLatch(0), userPrincipal=userPrincipal))
 
-    def delete(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty): HttpResp =
-      runRequest(r, httpServletRequest("http", path, "DELETE", headers, None, cookies, new CountDownLatch(0)))
+    def delete(path: String, headers: Map[String, Seq[String]] = Map.empty, cookies: Seq[Cookie] = Seq.empty, userPrincipal: Option[Principal] = None): HttpResp =
+      runRequest(r, httpServletRequest("http", path, "DELETE", headers, None, cookies, new CountDownLatch(0), userPrincipal=userPrincipal))
 
     private def runRequest(r: Routes, httpReq: HttpServletRequest): HttpResp = {
       val request = Request(httpReq, started = clock.instant().toEpochMilli)

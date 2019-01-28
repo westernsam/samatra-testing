@@ -1,15 +1,19 @@
 package com.springer.samatra.testing.asynchttp
 
+import java.security.Principal
 import java.util
 import java.util.function.Predicate
-import javax.servlet.DispatcherType
 
 import com.springer.samatra.testing.servlet.InMemServletContext
+import javax.security.auth.Subject
+import javax.servlet.{DispatcherType, ServletRequest, ServletResponse}
+import org.asynchttpclient.{AsyncHandler, AsyncHttpClient, AsyncHttpClientConfig, BoundRequestBuilder, ClientStats, DefaultAsyncHttpClient, DefaultAsyncHttpClientConfig, ListenableFuture, Request, RequestBuilder, Response, SignatureCalculator}
+import org.eclipse.jetty.security._
+import org.eclipse.jetty.security.authentication.LoginAuthenticator
+import org.eclipse.jetty.server._
+import org.eclipse.jetty.servlet.{FilterHolder, ServletContextHandler, ServletHolder}
 
 import scala.collection.JavaConverters._
-import org.asynchttpclient.{AsyncHandler, AsyncHttpClient, AsyncHttpClientConfig, BoundRequestBuilder, ClientStats, DefaultAsyncHttpClient, DefaultAsyncHttpClientConfig, ListenableFuture, Request, RequestBuilder, Response, SignatureCalculator}
-import org.eclipse.jetty.server.{Connector, Server, ServerConnector}
-import org.eclipse.jetty.servlet.{FilterHolder, ServletContextHandler, ServletHolder}
 
 trait JettyBacked extends Backend {
 
@@ -57,7 +61,7 @@ trait JettyBacked extends Backend {
         }
 
         serverConfig.routes.foreach {
-          case (contextPath, servlet, c, ip) =>
+          case (contextPath, servlet, c, ip, user) =>
 
             c match {
               case sc: InMemServletContext => sc.attributes.asScala.foreach { case (n, v) => getServletContext.setAttribute(n, v) }
@@ -66,6 +70,25 @@ trait JettyBacked extends Backend {
 
             val holder = new ServletHolder(servlet)
             holder.setInitParameters(ip.asJava)
+
+            user.foreach { p =>
+              setSecurityHandler(new ConstraintSecurityHandler {
+                setAuthenticator(new LoginAuthenticator {
+                  override def getAuthMethod: String = "samatra"
+                  override def validateRequest(request: ServletRequest, response: ServletResponse, mandatory: Boolean): Authentication = new UserAuthentication("samatra", new UserIdentity {
+                    override def getSubject: Subject = new Subject()
+                    override def getUserPrincipal: Principal = p
+                    override def isUserInRole(role: String, scope: UserIdentity.Scope): Boolean = true
+                  })
+                  override def secureResponse(request: ServletRequest, response: ServletResponse, mandatory: Boolean, validatedUser: Authentication.User): Boolean = true
+                })
+                setRealmName("samatrarealm")
+                setLoginService(new AbstractLoginService {
+                  override def loadRoleInfo(user: AbstractLoginService.UserPrincipal): Array[String] = Array() //TODO: add abaility to do this
+                  override def loadUserInfo(username: String): AbstractLoginService.UserPrincipal = throw new RuntimeException("boom")
+                })
+              })
+            }
             addServlet(holder, contextPath)
         }
       })

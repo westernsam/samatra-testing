@@ -1,9 +1,11 @@
 package com.springer.samatra.testing.servlet
 
 import java.io.{ByteArrayOutputStream, PrintStream}
+import java.security.Principal
 import java.util
 import java.util.Collections
 import java.util.concurrent.{CopyOnWriteArrayList, CountDownLatch, TimeUnit}
+
 import javax.servlet._
 import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
 
@@ -12,16 +14,16 @@ import scala.collection.mutable
 
 object InMemFilterChain {
 
-  def apply(request: HttpServletRequest, response: HttpServletResponse, filters: Seq[(String, Filter)], contextAndServlet: Option[(Servlet, ServletContext, Map[String, String])], asyncLatch: CountDownLatch, asyncListeners: CopyOnWriteArrayList[AsyncListener]): Unit = {
+  def apply(request: HttpServletRequest, response: HttpServletResponse, filters: Seq[(String, Filter)], contextAndServlet: Option[(Servlet, ServletContext, Map[String, String], Option[Principal])], asyncLatch: CountDownLatch, asyncListeners: CopyOnWriteArrayList[AsyncListener]): Unit = {
     try {
-      contextAndServlet.foreach { case (s, c, ip) => s.init(new ServletConfig {
+      contextAndServlet.foreach { case (s, c, ip, _) => s.init(new ServletConfig {
         override def getServletContext: ServletContext = c
         override def getServletName: String = s"in-mem/${s.hashCode()}"
         override def getInitParameterNames: util.Enumeration[String] = Collections.enumeration(ip.keySet.asJava)
         override def getInitParameter(name: String): String = ip.getOrElse(name, null)
       })
       }
-      new InMemFilterChain(filters, request.getRequestURL.toString, contextAndServlet.map(_._1)).doFilter(request, response)
+      new InMemFilterChain(filters, request.getRequestURL.toString, contextAndServlet.map(_._1), contextAndServlet.flatMap(_._4)).doFilter(request, response)
 
       if (request.isAsyncStarted) {
         if (!asyncLatch.await(request.getAsyncContext.getTimeout, TimeUnit.MILLISECONDS)) {
@@ -45,13 +47,18 @@ object InMemFilterChain {
   }
 }
 
-class InMemFilterChain(filters: Seq[(String, Filter)], path: String, servlet: Option[Servlet]) extends FilterChain {
+class InMemFilterChain(filters: Seq[(String, Filter)], path: String, servlet: Option[Servlet], user: Option[Principal]) extends FilterChain {
   //noinspection ScalaDeprecation
   val fs: mutable.Stack[Filter] = applicableFilters(filters, path)
 
   override def doFilter(req: ServletRequest, res: ServletResponse): Unit = {
     if (fs.nonEmpty) fs.pop.doFilter(req, res, this)
-    else if (servlet.isDefined) servlet.get.service(req, res)
+    else if (servlet.isDefined) {
+      user.foreach { u =>
+        req.asInstanceOf[InMemHttpServletRequest].setUserPrincipal(u)
+      }
+      servlet.get.service(req, res)
+    }
     else res.asInstanceOf[HttpServletResponse].setStatus(404)
   }
 
