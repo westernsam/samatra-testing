@@ -7,16 +7,17 @@ import java.nio.ByteBuffer
 import java.security.Principal
 import java.util
 import java.util.Collections
-import javax.servlet._
-import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
-import javax.websocket._
-import javax.websocket.server.{ServerEndpoint, ServerEndpointConfig}
+import java.util.concurrent.{Callable, Future, FutureTask}
 
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelFuture
 import io.netty.channel.embedded.EmbeddedChannel
 import io.netty.handler.codec.http.websocketx._
 import io.netty.handler.codec.http.{DefaultHttpHeaders, HttpHeaders}
+import javax.servlet._
+import javax.servlet.http.{HttpServletRequest, HttpServletResponse}
+import javax.websocket._
+import javax.websocket.server.{ServerEndpoint, ServerEndpointConfig}
 import org.asynchttpclient.netty.ws.NettyWebSocket
 import org.asynchttpclient.ws._
 
@@ -121,30 +122,33 @@ class LocalEndOfWebSocket(ws: Any) {
   }
 }
 
+class InMemRemoteEndpoint(remote: NettyWebSocket) extends RemoteEndpoint {
+  override def sendPing(applicationData: ByteBuffer): Unit = remote.handleFrame(new PingWebSocketFrame())
+  override def sendPong(applicationData: ByteBuffer): Unit = remote.handleFrame(new PongWebSocketFrame())
+  override def getBatchingAllowed: Boolean = ???
+  override def setBatchingAllowed(allowed: Boolean): Unit = ()
+  override def flushBatch(): Unit = ()
+}
+
 class InMemWsSession(remote: NettyWebSocket, req: HttpServletRequest, pathParams: Map[String, String], userPrincipal: Option[Principal]) extends Session {
   override def getUserPrincipal: Principal = userPrincipal.orNull
   override def setMaxIdleTimeout(milliseconds: Long): Unit = ???
   override def getUserProperties: util.Map[String, AnyRef] = {
     Map(
       "user" -> getUserPrincipal,
-      "headers" -> Collections.list(req.getHeaderNames).asScala.map( k => k -> Collections.list(req.getHeaders(k))).asJava
+      "headers" -> Collections.list(req.getHeaderNames).asScala.map(k => k -> Collections.list(req.getHeaders(k))).asJava
     ).asJava
   }
   override def getId: String = "whatever"
-  override def getBasicRemote: RemoteEndpoint.Basic = new RemoteEndpoint.Basic {
-    override def sendBinary(data: ByteBuffer): Unit = remote.handleFrame(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(data)))
-    override def sendText(text: String): Unit = remote.handleFrame(new TextWebSocketFrame(text))
-    override def sendPing(applicationData: ByteBuffer): Unit = remote.handleFrame(new PingWebSocketFrame())
-    override def sendPong(applicationData: ByteBuffer): Unit = remote.handleFrame(new PongWebSocketFrame())
-
-    override def getSendWriter: Writer = ???
-    override def sendBinary(partialByte: ByteBuffer, isLast: Boolean): Unit = ???
+  override def getBasicRemote: RemoteEndpoint.Basic = new InMemRemoteEndpoint(remote) with RemoteEndpoint.Basic {
     override def sendText(partialMessage: String, isLast: Boolean): Unit = ???
-    override def sendObject(data: scala.Any): Unit = ???
+    override def sendBinary(partialByte: ByteBuffer, isLast: Boolean): Unit = ???
     override def getSendStream: OutputStream = ???
-    override def getBatchingAllowed: Boolean = ???
-    override def flushBatch(): Unit = ()
-    override def setBatchingAllowed(allowed: Boolean): Unit = ()
+    override def getSendWriter: Writer = ???
+    override def sendObject(data: Any): Unit = ???
+
+    def sendBinary(data: ByteBuffer): Unit = remote.handleFrame(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(data)))
+    def sendText(text: String): Unit = remote.handleFrame(new TextWebSocketFrame(text))
   }
   override def getMaxBinaryMessageBufferSize: Int = ???
   override def getMaxTextMessageBufferSize: Int = ???
@@ -152,7 +156,36 @@ class InMemWsSession(remote: NettyWebSocket, req: HttpServletRequest, pathParams
   override def getNegotiatedExtensions: util.List[Extension] = ???
   override def close(closeReason: CloseReason): Unit = remote.onClose(closeReason.getCloseCode.getCode, closeReason.getReasonPhrase)
   override def close(): Unit = this.close(new CloseReason(CloseReason.CloseCodes.NORMAL_CLOSURE, ""))
-  override def getAsyncRemote: RemoteEndpoint.Async = ???
+  override def getAsyncRemote: RemoteEndpoint.Async =
+  new InMemRemoteEndpoint(remote) with RemoteEndpoint.Async {
+    override def getSendTimeout: Long = -1
+    override def setSendTimeout(timeoutmillis: Long): Unit = ()
+    override def sendText(text: String, handler: SendHandler): Unit = ???
+    override def sendBinary(data: ByteBuffer, handler: SendHandler): Unit = ???
+    override def sendObject(data: Any): Future[Void] = ???
+    override def sendObject(data: Any, handler: SendHandler): Unit = ???
+
+    override def sendText(text: String): Future[Void] =  {
+      val value = new FutureTask[Void](new Callable[Void] {
+        override def call(): Void = {
+          remote.handleFrame(new TextWebSocketFrame(text))
+          null
+        }
+      })
+      value.run()
+      value
+    }
+    override def sendBinary(data: ByteBuffer): Future[Void] = {
+      val value = new FutureTask[Void](new Callable[Void] {
+        override def call(): Void = {
+          remote.handleFrame(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(data)))
+          null
+        }
+      })
+      value.run()
+      value
+    }
+  }
   override def getRequestParameterMap: util.Map[String, util.List[String]] = ???
   override def removeMessageHandler(handler: MessageHandler): Unit = ???
   override def setMaxBinaryMessageBufferSize(length: Int): Unit = ???

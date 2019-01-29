@@ -32,9 +32,9 @@ trait RoutesFixtures {
           case "headers" => WithHeaders("hi" -> "there")("body")
           case "pathInfo" => req.underlying.getPathInfo
           case "cookies" =>
-            WithCookies(Seq(AddCookie("cookie", "tasty", httpOnly = true)))("body")
+            WithCookies(AddCookie("cookie", "tasty", httpOnly = true))("body")
           case "securedcookies" =>
-            WithCookies(Seq(AddCookie("cookie", "tasty", httpOnly = true)))("body")
+            WithCookies(AddCookie("cookie", "tasty", httpOnly = true))("body")
         }
       }
     }
