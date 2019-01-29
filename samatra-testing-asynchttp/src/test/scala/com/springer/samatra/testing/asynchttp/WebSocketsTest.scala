@@ -1,8 +1,10 @@
 package com.springer.samatra.testing.asynchttp
 
+import java.security.Principal
 import java.util.concurrent.{CountDownLatch, TimeUnit}
 
 import com.springer.samatra.websockets.WsRoutings.{WSController, WsRoutes}
+import javax.servlet._
 import org.asynchttpclient.AsyncHttpClient
 import org.asynchttpclient.ws.{WebSocket, WebSocketListener, WebSocketUpgradeHandler}
 import org.scalatest.FunSpec
@@ -13,10 +15,26 @@ class WebSocketsTest extends FunSpec with ScalaFutures with InMemoryBackend {
 
   val http: AsyncHttpClient = client(new ServerConfig {
     self =>
+    mount("/*", new Filter() {
+      override def init(filterConfig: FilterConfig): Unit = ()
+      override def doFilter(request: ServletRequest, response: ServletResponse, chain: FilterChain): Unit = chain.doFilter(request, response)
+      override def destroy(): Unit = ()
+    }, Some(new Principal {
+      override def getName: String = "sowen@kiwipowered.com"
+    }))
+
     WsRoutes(self, "/*", new WSController {
       mount("/ping") { ws =>
         (_: String) => {
           ws.send(s"pong")
+        }
+      }
+      mount("/user") { ws =>
+        (_: String) => {
+           ws.user match {
+            case Some(p) => ws.send(p.getName)
+            case None => ws.send("dunno")
+          }
         }
       }
       mount("/chat/:name") { ws =>
@@ -40,6 +58,22 @@ class WebSocketsTest extends FunSpec with ScalaFutures with InMemoryBackend {
       }).build()).get()
 
     socket.sendTextFrame("boo")
+    if (!latch.await(1, TimeUnit.SECONDS)) fail("Expected websocket to close")
+  }
+
+  it("should get the logged in user principal") {
+    val latch = new CountDownLatch(1)
+
+    val socket: WebSocket = http.prepareGet(s"ws:/user")
+      .execute(new WebSocketUpgradeHandler.Builder().addWebSocketListener(new DefaultWebSocketListener() {
+        override def onTextFrame(payload: String, finalFragment: Boolean, rsv: Int): Unit = {
+          println(s"got $payload")
+          payload shouldBe "sowen@kiwipowered.com"
+          latch.countDown()
+        }
+      }).build()).get()
+
+    socket.sendTextFrame("hi")
     if (!latch.await(1, TimeUnit.SECONDS)) fail("Expected websocket to close")
   }
 

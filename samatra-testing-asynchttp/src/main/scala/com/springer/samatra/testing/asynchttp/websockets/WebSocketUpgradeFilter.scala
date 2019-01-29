@@ -58,7 +58,7 @@ class WebSocketUpgradeFilter(websockets: Seq[ServerEndpointConfig], upgradeHandl
           }
         }
         val remote = new NettyWebSocket(channel, getUpgradeHeaders(req))
-        val session = new InMemWsSession(remote, req, uriMatcher(c).get)
+        val session = new InMemWsSession(remote, req, uriMatcher(c).get, Option(req.getUserPrincipal))
 
         upgradeHandler.setWebSocket(remote)
         upgradeHandler.onOpen()
@@ -121,10 +121,15 @@ class LocalEndOfWebSocket(ws: Any) {
   }
 }
 
-class InMemWsSession(remote: NettyWebSocket, req: HttpServletRequest, pathParams: Map[String, String]) extends Session {
-  override def getUserPrincipal: Principal = ???
+class InMemWsSession(remote: NettyWebSocket, req: HttpServletRequest, pathParams: Map[String, String], userPrincipal: Option[Principal]) extends Session {
+  override def getUserPrincipal: Principal = userPrincipal.orNull
   override def setMaxIdleTimeout(milliseconds: Long): Unit = ???
-  override def getUserProperties: util.Map[String, AnyRef] = ???
+  override def getUserProperties: util.Map[String, AnyRef] = {
+    Map(
+      "user" -> getUserPrincipal,
+      "headers" -> Collections.list(req.getHeaderNames).asScala.map( k => k -> Collections.list(req.getHeaders(k))).asJava
+    ).asJava
+  }
   override def getId: String = "whatever"
   override def getBasicRemote: RemoteEndpoint.Basic = new RemoteEndpoint.Basic {
     override def sendBinary(data: ByteBuffer): Unit = remote.handleFrame(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(data)))

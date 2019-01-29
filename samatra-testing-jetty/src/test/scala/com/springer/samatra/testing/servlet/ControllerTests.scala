@@ -23,11 +23,11 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
         response.asInstanceOf[HttpServletResponse].setHeader("X-Extra-Header", "extra")
         chain.doFilter(request, response)
       }
-    })
-
-    mount("/*", Routes(basic), userPrincipal = Some(new Principal() {
+    }, userPrincipal = Some(new Principal() {
       override def getName: String = "Sam"
     }))
+
+    mount("/*", Routes(basic))
     mount("/regex/*", Routes(regex))
     mount("/caching/*", Routes(caching))
     mount("/future/*", Routes(futures))

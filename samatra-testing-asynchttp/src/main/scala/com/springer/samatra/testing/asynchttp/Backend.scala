@@ -35,18 +35,17 @@ trait Backend {
 class ServerConfig extends ServerContainer {
   self =>
   lazy val websockets: ArrayBuffer[ServerEndpointConfig] = new ArrayBuffer[ServerEndpointConfig]()
-  lazy val filters: ArrayBuffer[(String, Filter)] = new ArrayBuffer[(String, Filter)]()
-  lazy val routes: ArrayBuffer[(String, Servlet, ServletContext, Map[String, String], Option[Principal])] = new ArrayBuffer[(String, Servlet, ServletContext, Map[String, String], Option[Principal])]()
+  lazy val filters: ArrayBuffer[(String, Filter, Option[Principal])] = new ArrayBuffer[(String, Filter, Option[Principal])]()
+  lazy val routes: ArrayBuffer[(String, Servlet, ServletContext, Map[String, String])] = new ArrayBuffer[(String, Servlet, ServletContext, Map[String, String])]()
 
-  def mount(path: String, f: Filter): Unit = filters.append(path -> f)
-  def mount(path: String, s: Servlet): Unit = mount(path, s, None)
-  def mount(path: String, s: Servlet, userPrincipal: Option[Principal] = None): Unit = mount(path, s, new InMemServletContext(s, path), Map.empty, userPrincipal)
-  def mount(path: String, s: Servlet, context: ServletContext, initParams: Map[String, String], userPrincipal: Option[Principal]): Unit = routes.append((path, s, context, initParams, userPrincipal))
+  def mount(path: String, f: Filter, userPrincipal: Option[Principal] = None): Unit = filters.append((path, f, userPrincipal))
+  def mount(path: String, s: Servlet): Unit = mount(path, s, context = new InMemServletContext(s, path), initParams = Map.empty)
+  def mount(path: String, s: Servlet, context: ServletContext, initParams: Map[String, String]): Unit = routes.append((path, s, context, initParams))
 
   def ++(other: ServerConfig): ServerConfig = new ServerConfig() {
     override lazy val websockets: ArrayBuffer[ServerEndpointConfig] = self.websockets ++ other.websockets
-    override lazy val filters: ArrayBuffer[(String, Filter)] = self.filters ++ other.filters
-    override lazy val routes: ArrayBuffer[(String, Servlet, ServletContext, Map[String, String], Option[Principal])] = self.routes ++ other.routes
+    override lazy val filters: ArrayBuffer[(String, Filter, Option[Principal])] = self.filters ++ other.filters
+    override lazy val routes: ArrayBuffer[(String, Servlet, ServletContext, Map[String, String])] = self.routes ++ other.routes
   }
 
   override def addEndpoint(endpointClass: Class[_]): Unit = throw new UnsupportedOperationException("todo: use bloody annotations to call other addEndpoint thingy")

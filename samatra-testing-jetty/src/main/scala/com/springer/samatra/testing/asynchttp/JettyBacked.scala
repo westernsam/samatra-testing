@@ -56,20 +56,8 @@ trait JettyBacked extends Backend {
       setHandler(new ServletContextHandler() {
 
         serverConfig.filters.foreach {
-          case (contextPath, filter) =>
+          case (contextPath, filter, user) =>
             addFilter(new FilterHolder(filter), contextPath, util.EnumSet.of(DispatcherType.REQUEST))
-        }
-
-        serverConfig.routes.foreach {
-          case (contextPath, servlet, c, ip, user) =>
-
-            c match {
-              case sc: InMemServletContext => sc.attributes.asScala.foreach { case (n, v) => getServletContext.setAttribute(n, v) }
-              case _ =>
-            }
-
-            val holder = new ServletHolder(servlet)
-            holder.setInitParameters(ip.asJava)
 
             user.foreach { p =>
               setSecurityHandler(new ConstraintSecurityHandler {
@@ -89,6 +77,19 @@ trait JettyBacked extends Backend {
                 })
               })
             }
+        }
+
+        serverConfig.routes.foreach {
+          case (contextPath, servlet, c, ip) =>
+
+            c match {
+              case sc: InMemServletContext => sc.attributes.asScala.foreach { case (n, v) => getServletContext.setAttribute(n, v) }
+              case _ =>
+            }
+
+            val holder = new ServletHolder(servlet)
+            holder.setInitParameters(ip.asJava)
+
             addServlet(holder, contextPath)
         }
       })
