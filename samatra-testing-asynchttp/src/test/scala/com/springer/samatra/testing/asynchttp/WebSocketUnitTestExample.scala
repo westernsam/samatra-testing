@@ -1,8 +1,12 @@
 package com.springer.samatra.testing.asynchttp
 
+import java.util.concurrent.TimeUnit
+
 import com.springer.samatra.websockets.WsRoutings.{WSController, WriteOnly}
 import org.scalatest.FunSpec
 import org.scalatest.Matchers._
+
+import scala.concurrent.duration.Duration
 
 class WebSocketUnitTestExample extends FunSpec {
 
@@ -30,4 +34,9 @@ class WebSocketUnitTestExample extends FunSpec {
       _ shouldBe "hiya"
     }
   }
+
+  it("support never") {
+    controller.noEventExpectedOn("/ping",  _ => (), timeout = Duration(100, TimeUnit.MILLISECONDS))
+  }
+
 }

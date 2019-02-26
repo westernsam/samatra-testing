@@ -15,6 +15,7 @@ import org.asynchttpclient.ws.{WebSocket, WebSocketListener}
 import org.scalatest.Matchers._
 
 import scala.collection.mutable
+import scala.concurrent.duration.Duration
 
 object WebSocketUnitTestHelpers {
   implicit class WebSocketTextFrameTestingOps(ws: WSController) {
@@ -40,8 +41,13 @@ object WebSocketUnitTestHelpers {
       }
     }
 
-    def on(path: String, blk: WebSocket => Any, upgradeReqHeaders: Map[String, Seq[String]] = Map.empty, user: Option[Principal] = None)(expect: String => Unit): WebSocketTextFrameTestingOps = {
+    def noEventExpectedOn(path: String, blk: WebSocket => Any, upgradeReqHeaders: Map[String, Seq[String]] = Map.empty, user: Option[Principal] = None, timeout : Duration = Duration(1, TimeUnit.SECONDS)): WebSocketTextFrameTestingOps =
+      run(path, blk, upgradeReqHeaders, user, timeout)(Left(()))
 
+    def on(path: String, blk: WebSocket => Any, upgradeReqHeaders: Map[String, Seq[String]] = Map.empty, user: Option[Principal] = None, timeout : Duration = Duration(1, TimeUnit.SECONDS))(expect: String => Unit): WebSocketTextFrameTestingOps =
+      run(path, blk, upgradeReqHeaders, user, timeout)(Right(expect))
+
+    private def run(path: String, blk: WebSocket => Any, upgradeReqHeaders: Map[String, Seq[String]], user: Option[Principal], timeout : Duration)(expect: Either[Unit, String => Unit]): WebSocketTextFrameTestingOps = {
       ws.routes.find(p => uriMatch(path, p.path).isDefined) match {
         case None => fail("no path found")
         case Some(r) =>
@@ -79,11 +85,14 @@ object WebSocketUnitTestHelpers {
 
           blk(nettyWebSocket)
 
-          val bool = latch.await(1, TimeUnit.SECONDS)
-          if (!bool) fail("No events received in 1 second")
-          else {
-            expect(ref.get())
-            this
+          val timedOut = !latch.await(timeout.toMillis, TimeUnit.MILLISECONDS)
+
+          (timedOut, expect.isRight) match {
+            case (true, true) => fail(s"No events received in ${timeout.toMillis} millis")
+            case (false, false) => fail(s"Something unexpected happened!! ${ref.get()}")
+            case (true, false) =>  ; this
+            case (false, true) => expect.right.get(ref.get()) ; this
+            case _ => this
           }
       }
     }
