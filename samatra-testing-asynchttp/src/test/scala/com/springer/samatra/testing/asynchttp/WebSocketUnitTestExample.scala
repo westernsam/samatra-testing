@@ -38,5 +38,4 @@ class WebSocketUnitTestExample extends FunSpec {
   it("support never") {
     controller.noEventExpectedOn("/ping",  _ => (), timeout = Duration(100, TimeUnit.MILLISECONDS))
   }
-
 }
