@@ -57,7 +57,7 @@ class ExampleTest extends FunSpec with ScalaFutures {
 
     get("/hello/:name") { req =>
       Future {
-        WithCookies(Seq(AddCookie("cookie", req.cookie("cookie").get))) {
+        WithCookies(AddCookie("cookie", req.cookie("cookie").get)) {
           WithHeaders("a" -> "b") {
             req.captured("name")
           }
@@ -107,7 +107,7 @@ class ExampleTest extends FunSpec with ScalaFutures {
     it("should test future string") {
       val result: HttpResp = unwrapFutureResp(routes.get("/hello/sam", cookies = Seq(new Cookie("cookie", "expectedValue"))))
       result shouldBe
-        WithCookies(Seq(AddCookie("cookie", "expectedValue"))) {
+        WithCookies(AddCookie("cookie", "expectedValue")) {
           WithHeaders("a" -> "b") {
             StringResp("sam")
           }

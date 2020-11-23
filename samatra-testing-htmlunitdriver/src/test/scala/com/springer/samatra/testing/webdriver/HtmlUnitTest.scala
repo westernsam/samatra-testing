@@ -16,7 +16,7 @@ class HtmlUnitTest extends FunSpec with InMemoryBackend {
     val http: AsyncHttpClient = client(new ServerConfig {
       mount("/home/*", Routes(new Controller {
         get("/Redirect") { _ =>
-          WithCookies(Seq(AddCookie("cookie", "hi", domain = "", path=null))) {
+          WithCookies(AddCookie("cookie", "hi", domain = None, path=None)) {
             Redirect("/home/Hello")
           }
         }
