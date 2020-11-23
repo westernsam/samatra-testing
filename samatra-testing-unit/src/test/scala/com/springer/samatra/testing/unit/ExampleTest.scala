@@ -1,13 +1,16 @@
 package com.springer.samatra.testing.unit
 
+import cats.effect.IO
+
 import java.net.URLEncoder.encode
 import java.security.Principal
 import java.time.{Clock, LocalDate, ZoneId, ZoneOffset}
 import java.util.concurrent.Executors
-
 import com.springer.samatra.routing.Routings.{Controller, HttpResp, Routes}
 import com.springer.samatra.routing.StandardResponses._
 import com.springer.samatra.testing.unit.ControllerTestHelpers._
+import com.springer.samatra.extras.cats.IoResponses.IoResponse
+
 import javax.servlet.http.{Cookie, HttpServletRequest, HttpServletResponse}
 import org.scalatest.FunSpec
 import org.scalatest.Matchers._
@@ -35,19 +38,23 @@ class ExampleTest extends FunSpec with ScalaFutures {
       }
     }
 
-    get("/request-response") { req =>
-      new HttpResp {
-        def process(req: HttpServletRequest, resp: HttpServletResponse) = {
-          resp.setDateHeader("Date", LocalDate.of(2017, 5, 18).atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli)
-          resp.setStatus(200)
-          resp.getWriter.print("sam")
-        }
+    get("/request-response") { _ =>
+      (req: HttpServletRequest, resp: HttpServletResponse) => {
+        resp.setDateHeader("Date", LocalDate.of(2017, 5, 18).atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli)
+        resp.setStatus(200)
+        resp.getWriter.print("sam")
       }
     }
 
-    get("/futurebug") { req =>
+    get("/futurebug") { _ =>
       Future {
         "hello"
+      }
+    }
+
+    get("/hello-io") { _ =>
+      IO {
+        "hello io"
       }
     }
 
@@ -84,6 +91,12 @@ class ExampleTest extends FunSpec with ScalaFutures {
       val result = routes.get("/futurebug")
       val (_, _, _, bytes) = result.run()
       new String(bytes) shouldBe "hello"
+    }
+
+    it("should get io string") {
+      val result = routes.get("/hello-io")
+      val (_, _, _, bytes) = result.run()
+      new String(bytes) shouldBe "hello io"
     }
 
     it("should test with helper methods") {
