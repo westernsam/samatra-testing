@@ -1,4 +1,4 @@
-# Samatra-testing[![Build Status](https://travis-ci.org/springernature/samatra-testing.svg?branch=master)](https://travis-ci.org/springernature/samatra-testing) [![](https://jitpack.io/v/springernature/samatra-testing.svg)](https://jitpack.io/#springernature/samatra-testing)
+# Samatra-testing [![](https://jitpack.io/v/westernsam/samatra-testing.svg)](https://jitpack.io/#westernsam/samatra-testing)
 
 Samatra-testing is a collection of utilities for testing Samatra controllers or any other servlets in memory, without requiring a running server. 
 
@@ -19,7 +19,7 @@ Submit issues and PR's to this github.
 ### Getting
 ```
 resolvers += "jitpack" at "https://jitpack.io",
-libraryDependencies += "com.github.springernature:samatra-testing-unit" % "v1.0"
+libraryDependencies += "com.github.westernsam:samatra-testing-unit" % "v1.0"
 ```
 
 ### Usage
@@ -52,7 +52,7 @@ See [ExampleTest](samatra-testing-unit/src/test/scala/com/springer/samatra/testi
 ### Getting
 ```
 resolvers += "jitpack" at "https://jitpack.io",
-libraryDependencies += "com.github.springernature:samatra-testing-asynchttp" % "v1.0"
+libraryDependencies += "com.github.westernsam:samatra-testing-asynchttp" % "v1.0"
 ```
 
 ### Usage
@@ -78,7 +78,7 @@ You can set up your servlet under test _and_ all of the http services it calls a
 ### Getting
 ```
 resolvers += "jitpack" at "https://jitpack.io",
-libraryDependencies += "com.github.springernature:samatra-testing-jetty" % "v1.0"
+libraryDependencies += "com.github.westernsam:samatra-testing-jetty" % "v1.0"
 ```
 
 ### Usage
@@ -101,7 +101,7 @@ See [ControllerTest](samatra-testing/blob/master/samatra-testing-jetty/src/test/
 ### Getting
 ```
 resolvers += "jitpack" at "https://jitpack.io",
-libraryDependencies += "com.github.springernature:samatra-testing-wiremock" % "v1.0"
+libraryDependencies += "com.github.westernsam:samatra-testing-wiremock" % "v1.0"
 ```
 
 ### Usage
@@ -137,7 +137,7 @@ See [WiremockTest](samatra-testing-wiremock/src/test/scala/com/springer/samatra/
 ### Getting
 ```
 resolvers += "jitpack" at "https://jitpack.io",
-libraryDependencies += "com.github.springernature:samatra-testing-htmlunitdriver" % "v1.0"
+libraryDependencies += "com.github.westernsam:samatra-testing-htmlunitdriver" % "v1.0"
 ```
 
 ### Usage
