@@ -90,7 +90,7 @@ class InMemHttpServletResponse(onStatus: OnStatus, onHeader: OnHeader, onCookie:
     hv.add(value)
 
     respHeaders.put(name, hv)
-    onHeader(name, hv.asScala)
+    onHeader(name, hv.asScala.toSeq)
   }
 
   override def addHeader(name: String, value: String): Unit = {
@@ -98,7 +98,7 @@ class InMemHttpServletResponse(onStatus: OnStatus, onHeader: OnHeader, onCookie:
       override def apply(t: Any): CopyOnWriteArrayList[String] = new CopyOnWriteArrayList[String]()
     })
     headers.add(value)
-    onHeader(name, headers.asScala)
+    onHeader(name, headers.asScala.toSeq)
   }
 
   override def setIntHeader(name: String, value: Int): Unit = setHeader(name, value.toString)

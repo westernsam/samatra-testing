@@ -1,19 +1,20 @@
 package com.springer.samatra.testing.servlet
 
 import java.security.Principal
-
 import javax.servlet._
 import javax.servlet.http.HttpServletResponse
 import com.springer.samatra.routing.Routings.Routes
 import com.springer.samatra.testing.asynchttp.{JettyBacked, ServerConfig}
 import org.asynchttpclient.AsyncHttpClient
-import org.scalatest.Matchers._
+import org.scalatest.matchers.should.Matchers._
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{BeforeAndAfterAll, FunSpec}
+import org.scalatest.BeforeAndAfterAll
+import org.scalatest.funspec.AnyFunSpec
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters.CollectionHasAsScala
 
-class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with BeforeAndAfterAll with JettyBacked {
+
+class ControllerTests extends AnyFunSpec with ScalaFutures with RoutesFixtures with BeforeAndAfterAll with JettyBacked {
 
   val http: AsyncHttpClient = client(new ServerConfig {
     mount("/*", new Filter {
@@ -146,7 +147,9 @@ class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with
   it("should return 500 for timeout") {
     val res = http.prepareGet("/future/timeout").execute().get
     res.getStatusCode shouldBe 500
-    res.getResponseBody should include("java.util.concurrent.TimeoutException")
+    withClue(res.getResponseBody) {
+      res.getResponseBody should include("java.util.concurrent.TimeoutException")
+    }
   }
 
   it("should be able to gte user principle") {

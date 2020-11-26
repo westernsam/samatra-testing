@@ -7,10 +7,10 @@ import com.springer.samatra.testing.asynchttp.{InMemoryBackend, ServerConfig}
 import com.springer.samatra.testing.webdriver.HtmlUnitHelper.SamatraHtmlDriverWrapper
 import org.asynchttpclient.AsyncHttpClient
 import org.openqa.selenium.{By, WebDriver}
-import org.scalatest.FunSpec
-import org.scalatest.Matchers._
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers._
 
-class HtmlUnitTest extends FunSpec with InMemoryBackend {
+class HtmlUnitTest extends AnyFunSpec with InMemoryBackend {
 
   it("should be able to get a page") {
     val http: AsyncHttpClient = client(new ServerConfig {

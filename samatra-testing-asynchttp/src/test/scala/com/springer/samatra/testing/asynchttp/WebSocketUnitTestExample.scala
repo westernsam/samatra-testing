@@ -1,14 +1,13 @@
 package com.springer.samatra.testing.asynchttp
 
 import java.util.concurrent.TimeUnit
-
 import com.springer.samatra.websockets.WsRoutings.{WSController, WriteOnly}
-import org.scalatest.FunSpec
-import org.scalatest.Matchers._
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers._
 
 import scala.concurrent.duration.Duration
 
-class WebSocketUnitTestExample extends FunSpec {
+class WebSocketUnitTestExample extends AnyFunSpec {
 
   import com.springer.samatra.testing.asynchttp.websockets.WebSocketUnitTestHelpers._
 

@@ -1,18 +1,19 @@
 package com.springer.samatra.testing.asynchttp
 
 import java.security.Principal
-
 import javax.servlet._
 import javax.servlet.http.HttpServletResponse
 import com.springer.samatra.routing.Routings.Routes
 import org.asynchttpclient.AsyncHttpClient
-import org.scalatest.Matchers._
+import org.scalatest.matchers.should.Matchers._
 import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.{BeforeAndAfterAll, FunSpec}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.BeforeAndAfterAll
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters.CollectionHasAsScala
 
-class ControllerTests extends FunSpec with ScalaFutures with RoutesFixtures with BeforeAndAfterAll with InMemoryBackend {
+
+class ControllerTests extends AnyFunSpec with ScalaFutures with RoutesFixtures with BeforeAndAfterAll with InMemoryBackend {
 
   val http: AsyncHttpClient = client(new ServerConfig {
 

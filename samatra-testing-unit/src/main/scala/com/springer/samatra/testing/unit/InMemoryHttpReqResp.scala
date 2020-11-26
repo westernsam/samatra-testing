@@ -45,6 +45,6 @@ object InMemoryHttpReqResp {
       response.flushBuffer()
     }
 
-    (status.get(), respHeaders.asScala.mapValues(_.asScala.toSeq).toMap, respCookies.asScala, out.toByteArray)
+    (status.get(), respHeaders.asScala.mapValues(_.asScala.toSeq).toMap, respCookies.asScala.toSeq, out.toByteArray)
   }
 }

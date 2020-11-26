@@ -2,16 +2,16 @@ package com.springer.samatra.testing.asynchttp
 
 import java.security.Principal
 import java.util.concurrent.{CountDownLatch, TimeUnit}
-
 import com.springer.samatra.websockets.WsRoutings.{WSController, WsRoutes}
+
 import javax.servlet._
 import org.asynchttpclient.AsyncHttpClient
 import org.asynchttpclient.ws.{WebSocket, WebSocketListener, WebSocketUpgradeHandler}
-import org.scalatest.FunSpec
-import org.scalatest.Matchers._
+import org.scalatest.matchers.should.Matchers._
 import org.scalatest.concurrent.ScalaFutures
+import org.scalatest.funspec.AnyFunSpec
 
-class WebSocketsTest extends FunSpec with ScalaFutures with InMemoryBackend {
+class WebSocketsTest extends AnyFunSpec with ScalaFutures with InMemoryBackend {
 
   val http: AsyncHttpClient = client(new ServerConfig {
     self =>

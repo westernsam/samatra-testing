@@ -4,10 +4,10 @@ import com.github.tomakehurst.wiremock.client.WireMock
 import com.github.tomakehurst.wiremock.client.WireMock.{aResponse, urlEqualTo}
 import com.github.tomakehurst.wiremock.matching.EqualToPattern
 import com.springer.samatra.testing.asynchttp.{InMemoryBackend, JettyBacked}
-import org.scalatest.FunSpec
-import org.scalatest.Matchers._
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers._
 
-class WiremockTest extends FunSpec {
+class WiremockTest extends AnyFunSpec {
 
   it("should mock without wires") {
     test(new WiremockHelper(wmContextPath = "/wm/*") with InMemoryBackend)

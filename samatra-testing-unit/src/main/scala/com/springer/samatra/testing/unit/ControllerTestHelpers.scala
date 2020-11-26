@@ -65,10 +65,11 @@ object ControllerTestHelpers {
       val request = Request(httpReq, started = clock.instant().toEpochMilli)
 
       r.matching(httpReq, null) match {
-        case Right(route) =>
-          val requestToResp: (Request) => HttpResp = route match {
+        case Right(route: Route) =>
+          val requestToResp: Request => HttpResp = route match {
             case PathParamsRoute(_, _, resp) => resp
             case RegexRoute(_, _, resp) => resp
+            case _ => throw new UnsupportedOperationException("Not a WritingRoute " + route)
           }
           val matches = route.matches(request)
           requestToResp(request.copy(params = matches.get))

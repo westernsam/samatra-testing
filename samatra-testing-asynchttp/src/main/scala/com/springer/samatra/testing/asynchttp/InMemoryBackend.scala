@@ -63,13 +63,13 @@ trait InMemoryBackend extends Backend {
         val filters =
           handler match {
             case h: WebSocketUpgradeHandler =>
-              serverConfig.filters :+ (("/*", new WebSocketUpgradeFilter(websockets = serverConfig.websockets, h), None))
+              serverConfig.filters :+ (("/*", new WebSocketUpgradeFilter(websockets = serverConfig.websockets.toSeq, h), None))
 
             case _ => serverConfig.filters
           }
 
         try {
-          InMemFilterChain(request, response, filters, contextAndServlet.map(s => (s._2, s._3, s._4)), asyncLatch, asyncListeners)
+          InMemFilterChain(request, response, filters.toSeq, contextAndServlet.map(s => (s._2, s._3, s._4)), asyncLatch, asyncListeners)
         } catch {
           case t: Throwable => handler.onThrowable(t); throw t
         } finally {
@@ -117,12 +117,14 @@ trait InMemoryBackend extends Backend {
   private def makeRequest[T](asyncRequest: Request, path: String, servletPath: String, asyncLatch: CountDownLatch, listeners: CopyOnWriteArrayList[AsyncListener]): HttpServletRequest = {
     val headers: HttpHeaders = asyncRequest.getHeaders
     val scalaHeaders: Map[String, Seq[String]] = new AbstractMap[String, Seq[String]] {
-      override def +[V1 >: Seq[String]](kv: (String, V1)): Map[String, V1] = throw new UnsupportedOperationException
-      override def -(key: String): Map[String, Seq[String]] = throw new UnsupportedOperationException
       override def iterator: Iterator[(String, Seq[String])] = {
-        for {k <- headers.names().asScala} yield k -> headers.getAll(k).asScala
-      }.toIterator
-      override def get(key: String): Option[Seq[String]] = if (headers.contains(key)) Some(headers.getAll(key).asScala) else None
+        for {k <- headers.names().asScala} yield k -> headers.getAll(k).asScala.toSeq
+      }.toSeq.iterator
+      override def get(key: String): Option[Seq[String]] = if (headers.contains(key)) Some(headers.getAll(key).asScala.toSeq) else None
+
+      override def removed(key: String): Map[String, Seq[String]] = throw new UnsupportedOperationException
+
+      override def updated[V1 >: Seq[String]](key: String, value: V1): Map[String, V1] = throw new UnsupportedOperationException
     }
 
     val maybeBytes =
@@ -159,7 +161,7 @@ trait InMemoryBackend extends Backend {
       cookie
     })
 
-    httpServletRequest(asyncRequest.getUri.getScheme, path, asyncRequest.getMethod, scalaHeaders, maybeBytes, cookies, asyncLatch, listeners, servletPath)
+    httpServletRequest(asyncRequest.getUri.getScheme, path, asyncRequest.getMethod, scalaHeaders, maybeBytes, cookies.toSeq, asyncLatch, listeners, servletPath)
   }
 
   private def findContextPath(serverConfig: ServerConfig, path: String): Option[(String, Servlet, ServletContext, Map[String, String])] = {

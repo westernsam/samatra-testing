@@ -12,9 +12,8 @@ import io.netty.handler.codec.http.DefaultHttpHeaders
 import io.netty.handler.codec.http.websocketx.{BinaryWebSocketFrame, TextWebSocketFrame}
 import org.asynchttpclient.netty.ws.NettyWebSocket
 import org.asynchttpclient.ws.{WebSocket, WebSocketListener}
-import org.scalatest.Matchers._
+import org.scalatest.matchers.should.Matchers._
 
-import scala.collection.mutable
 import scala.concurrent.duration.Duration
 
 object WebSocketUnitTestHelpers {
@@ -27,17 +26,16 @@ object WebSocketUnitTestHelpers {
       if (actual.length != pattern.length)
         None
       else {
-        val res: mutable.Map[String, String] = mutable.Map()
-
-        for ((left, right) <- pattern.zip(actual)) {
-          if (!left.equals(right))
-            if (left.startsWith(":"))
-              res.put(left.substring(1, left.length), right)
-            else
-              return None
+        if (actual.length != pattern.length) None
+        else pattern.zip(actual).foldLeft[Option[Map[String, String]]](Some(Map.empty)) {
+          case (r, (left, right)) => r match {
+            case None => None
+            case Some(map) =>
+              if (left == right) r
+              else if (left.startsWith(":")) Some(map + (left.substring(1) -> right))
+              else None
+          }
         }
-
-        Some(res.toMap)
       }
     }
 
@@ -58,6 +56,7 @@ object WebSocketUnitTestHelpers {
               msg match {
                 case text: TextWebSocketFrame => local.onMessage(text.text())
                 case bin: BinaryWebSocketFrame => local.onMessage(bin.content.array())
+                case _ => throw new UnsupportedOperationException("Unknown message type "  + msg)
               }
               super.writeAndFlush(msg)
             }
@@ -90,8 +89,11 @@ object WebSocketUnitTestHelpers {
           (timedOut, expect.isRight) match {
             case (true, true) => fail(s"No events received in ${timeout.toMillis} millis")
             case (false, false) => fail(s"Something unexpected happened!! ${ref.get()}")
-            case (true, false) =>  ; this
-            case (false, true) => expect.right.get(ref.get()) ; this
+            case (true, false) => this
+            case (false, true) => expect.map {
+              a => a(ref.get()); this
+            }.getOrElse(this)
+
             case _ => this
           }
       }

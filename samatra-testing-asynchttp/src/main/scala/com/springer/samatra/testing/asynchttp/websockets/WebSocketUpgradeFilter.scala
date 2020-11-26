@@ -22,7 +22,6 @@ import org.asynchttpclient.netty.ws.NettyWebSocket
 import org.asynchttpclient.ws._
 
 import scala.collection.JavaConverters._
-import scala.collection.mutable
 
 class WebSocketUpgradeFilter(websockets: Seq[ServerEndpointConfig], upgradeHandler: WebSocketUpgradeHandler) extends Filter {
 
@@ -54,6 +53,7 @@ class WebSocketUpgradeFilter(websockets: Seq[ServerEndpointConfig], upgradeHandl
             msg match {
               case text: TextWebSocketFrame => local.onMessage(text.text())
               case bin: BinaryWebSocketFrame => local.onMessage(bin.content.array())
+              case _ => throw new UnsupportedOperationException("Unknown message type "  + msg)
             }
             super.writeAndFlush(msg)
           }
@@ -74,20 +74,15 @@ class WebSocketUpgradeFilter(websockets: Seq[ServerEndpointConfig], upgradeHandl
     val actual: Array[String] = path.split("/")
     val pattern: Array[String] = serverEndpoint.getPath.split("/")
 
-    if (actual.length != pattern.length)
-      None
-    else {
-      val res: mutable.Map[String, String] = mutable.Map()
-
-      for ((left, right) <- pattern.zip(actual)) {
-        if (!left.equals(right))
-          if (left.startsWith("{"))
-            res.put(left.substring(1, left.length - 1), right)
-          else
-            return None
+    if (actual.length != pattern.length) None
+    else pattern.zip(actual).foldLeft[Option[Map[String, String]]](Some(Map.empty)) {
+      case (r, (left, right)) => r match {
+        case None => None
+        case Some(map) =>
+          if (left == right) r
+          else if (left.startsWith("{")) Some(map + (left.substring(1, left.length - 1) -> right))
+          else None
       }
-
-      Some(res.toMap)
     }
   }
 }
@@ -134,10 +129,16 @@ class InMemWsSession(remote: NettyWebSocket, req: HttpServletRequest, pathParams
   override def getUserPrincipal: Principal = userPrincipal.orNull
   override def setMaxIdleTimeout(milliseconds: Long): Unit = ???
   override def getUserProperties: util.Map[String, AnyRef] = {
-    Map(
+    val java1: util.List[(String, util.ArrayList[String])] = Collections.list(req.getHeaderNames).asScala.map(k => k -> Collections.list(req.getHeaders(k))).asJava
+
+    val value: Map[String, Object] = Map(
       "user" -> getUserPrincipal,
-      "headers" -> Collections.list(req.getHeaderNames).asScala.map(k => k -> Collections.list(req.getHeaders(k))).asJava
-    ).asJava
+      "headers" -> java1
+    )
+
+    val java = value.asJava
+
+    java
   }
   override def getId: String = "whatever"
   override def getBasicRemote: RemoteEndpoint.Basic = new InMemRemoteEndpoint(remote) with RemoteEndpoint.Basic {

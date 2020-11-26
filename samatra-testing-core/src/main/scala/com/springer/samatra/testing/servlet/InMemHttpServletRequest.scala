@@ -43,7 +43,7 @@ class InMemHttpServletRequest(protocol: String, url: String, method: String, hea
   override def isRequestedSessionIdFromURL: Boolean = false
   override def logout(): Unit = ()
   override def changeSessionId(): String = ""
-  override def getRequestURL: StringBuffer = new StringBuffer(path)
+  override def getRequestURL: StringBuffer = new StringBuffer(protocol + "://samatra" + path + "")
   override def upgrade[T <: HttpUpgradeHandler](handlerClass: Class[T]): T = throw new UnsupportedOperationException
   override def getRequestURI: String = path
   override def isRequestedSessionIdValid: Boolean = true
@@ -140,7 +140,7 @@ class InMemHttpServletRequest(protocol: String, url: String, method: String, hea
 
       tuples.groupBy {
         case (k, _) => k
-      }.mapValues(_.map(_._2))
+      }.view.mapValues(_.map(_._2)).toMap
     }
 
     val bodyParams = if (headersLowerCase.get("content-type").exists(_.head == "application/x-www-form-urlencoded") && body.isDefined) {

@@ -1,6 +1,5 @@
 package com.springer.samatra.testing.unit
 
-import cats.effect.IO
 
 import java.net.URLEncoder.encode
 import java.security.Principal
@@ -9,16 +8,15 @@ import java.util.concurrent.Executors
 import com.springer.samatra.routing.Routings.{Controller, HttpResp, Routes}
 import com.springer.samatra.routing.StandardResponses._
 import com.springer.samatra.testing.unit.ControllerTestHelpers._
-import com.springer.samatra.extras.cats.IoResponses.IoResponse
 
 import javax.servlet.http.{Cookie, HttpServletRequest, HttpServletResponse}
-import org.scalatest.FunSpec
-import org.scalatest.Matchers._
+import org.scalatest.matchers.should.Matchers._
 import org.scalatest.concurrent.ScalaFutures
+import org.scalatest.funspec.AnyFunSpec
 
 import scala.concurrent.{ExecutionContext, Future}
 
-class ExampleTest extends FunSpec with ScalaFutures {
+class ExampleTest extends AnyFunSpec with ScalaFutures {
   implicit val ex: ExecutionContext = ExecutionContext.fromExecutor(Executors.newFixedThreadPool(5))
 
   val routes: Routes = new Controller {
@@ -49,12 +47,6 @@ class ExampleTest extends FunSpec with ScalaFutures {
     get("/futurebug") { _ =>
       Future {
         "hello"
-      }
-    }
-
-    get("/hello-io") { _ =>
-      IO {
-        "hello io"
       }
     }
 
@@ -91,12 +83,6 @@ class ExampleTest extends FunSpec with ScalaFutures {
       val result = routes.get("/futurebug")
       val (_, _, _, bytes) = result.run()
       new String(bytes) shouldBe "hello"
-    }
-
-    it("should get io string") {
-      val result = routes.get("/hello-io")
-      val (_, _, _, bytes) = result.run()
-      new String(bytes) shouldBe "hello io"
     }
 
     it("should test with helper methods") {

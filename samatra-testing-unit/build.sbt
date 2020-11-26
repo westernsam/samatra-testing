@@ -1,8 +1,8 @@
-val jettyVersion = "9.4.12.v20180830"
+val jettyVersion = "9.4.35.v20201120"
+
 
 libraryDependencies ++=
   Seq(
-    "com.github.westernsam.samatra" %% "samatra" % "v1.0",
-    "com.github.westernsam.samatra-extras" %% "samatra-extras-cats" % "v1.0",
-    "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+    "com.github.westernsam.samatra" %% "samatra" % "v1.1",
+    "org.scalatest" %% "scalatest" % "3.2.3" % "test"
   )

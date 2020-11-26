@@ -2,7 +2,6 @@ package com.springer.samatra.testing.wiremock
 
 import java.net.HttpURLConnection.{HTTP_NO_CONTENT, HTTP_OK}
 import java.util.UUID
-
 import com.github.tomakehurst.wiremock.admin.model._
 import com.github.tomakehurst.wiremock.admin.tasks._
 import com.github.tomakehurst.wiremock.admin._
@@ -11,10 +10,10 @@ import com.github.tomakehurst.wiremock.common.Exceptions.throwUnchecked
 import com.github.tomakehurst.wiremock.common.{AdminException, Json}
 import com.github.tomakehurst.wiremock.core._
 import com.github.tomakehurst.wiremock.global.GlobalSettings
-import com.github.tomakehurst.wiremock.matching.RequestPattern
+import com.github.tomakehurst.wiremock.matching.{RequestPattern, StringValuePattern}
 import com.github.tomakehurst.wiremock.recording.{RecordSpec, RecordSpecBuilder, RecordingStatusResult, SnapshotRecordResult}
-import com.github.tomakehurst.wiremock.stubbing.StubMapping
-import com.github.tomakehurst.wiremock.verification.{FindNearMissesResult, FindRequestsResult, LoggedRequest, VerificationResult}
+import com.github.tomakehurst.wiremock.stubbing.{StubImport, StubMapping}
+import com.github.tomakehurst.wiremock.verification.{FindNearMissesResult, FindRequestsResult, FindServeEventsResult, LoggedRequest, VerificationResult}
 import com.google.common.base.Charsets.UTF_8
 import com.google.common.base.Preconditions.checkNotNull
 import org.apache.http.HttpEntityEnclosingRequest
@@ -197,5 +196,19 @@ class AsyncHttpAdmin(httpClient: => AsyncHttpClient, val urlPathPrefix: String) 
   override def getRecordingStatus: RecordingStatusResult = executeRequest(adminRoutes.requestSpecForTask(classOf[GetRecordingStatusTask]), classOf[RecordingStatusResult])
 
   override def getOptions = new WireMockConfiguration()
+
+  override def removeServeEvent(eventId: UUID): Unit = ()
+
+  override def removeServeEventsMatching(requestPattern: RequestPattern): FindServeEventsResult = ???
+
+  override def removeServeEventsForStubsMatchingMetadata(pattern: StringValuePattern): FindServeEventsResult = ???
+
+  override def findAllStubsByMetadata(pattern: StringValuePattern): ListStubMappingsResult = ???
+
+  override def removeStubsByMetadata(pattern: StringValuePattern): Unit = ???
+
+  override def importStubs(stubImport: StubImport): Unit = ???
+
+  override def getGlobalSettings: GetGlobalSettingsResult = ???
 }
 

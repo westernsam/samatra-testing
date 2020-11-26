@@ -3,14 +3,13 @@ import sbt.Keys.publishTo
 name := "samatra-testing"
 
 lazy val commonSettings = Seq(
-  organization := "com.springernature",
-  scalaVersion := "2.12.6",
+  organization := "com.westernsam",
+  scalaVersion := "2.13.4",
   scalacOptions ++= Seq("-unchecked", "-deprecation:false", "-feature", "-Xfatal-warnings", "-Xlint"),
   testOptions ++= Tests.Argument("-oDF") :: Tests.Argument(TestFrameworks.ScalaTest, "-u", "target/reports/") :: Nil,
   trapExit := false,
   cancelable in Global := true,
   publish := {},
-//  crossScalaVersions := Seq(scalaVersion.value, "2.11.7"),
 
   resolvers ++= Seq(
     "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",

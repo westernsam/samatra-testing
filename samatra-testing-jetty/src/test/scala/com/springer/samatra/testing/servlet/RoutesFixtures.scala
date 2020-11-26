@@ -40,10 +40,10 @@ trait RoutesFixtures {
 
     //use explicits
     get("/timeout") { _ =>
-      fromFutureWithTimeout(timeout = 1, Future {
+      fromFutureWithTimeout(timeout = 10, Future {
         Thread.sleep(200)
         fromString("oh hello there - i didn't expect to see you")
-      }, logThreadDumpOnTimeout = true)
+      })
     }
   }
 
